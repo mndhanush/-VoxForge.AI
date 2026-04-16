@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" dir="ltr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Register - VoxForge AI</title>
+    <meta name="description" content="Create your VoxForge AI account - Start your voice generation journey today.">
+
+    <link rel="icon" href="Images/Growwpark Favicon.jpg">
+    
+    <script src="tailwind.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563EB',   /* Strong Blue */
+                        secondary: '#60A5FA', /* Light Blue */
+                        bgLight: '#FFFFFF',   /* White */
+                        bgDark: '#000000',    /* True Black */
+                        cardLight: '#F8FAFC',
+                        cardDark: '#0A0A0A',  /* Very Dark Grey */
+                        textLight: '#000000',
+                        textDark: '#FFFFFF',
+                        accent: '#3B82F6'     /* Medium Blue */
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    animation: { 'fadeInUp': 'fadeInUp 0.4s ease-out' },
+                    keyframes: {
+                        fadeInUp: {
+                            'from': { opacity: '0', transform: 'translateY(20px)' },
+                            'to': { opacity: '1', transform: 'translateY(0)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        :root {
+            /* Light Theme Variables */
+            --bg-color: #FFFFFF;
+            --text-color: #000000;
+            --text-muted: #64748B;
+            --card-bg: #F8FAFC;
+            --border-color: #E2E8F0;
+            --nav-bg: rgba(255, 255, 255, 0.75);
+            --hover-highlight: #2563EB;
+        }
+        
+        [data-theme="dark"] {
+            /* Dark Theme Variables */
+            --bg-color: #000000;
+            --text-color: #FFFFFF;
+            --text-muted: #9CA3AF;
+            --card-bg: #0A0A0A;
+            --border-color: #262626;
+            --nav-bg: rgba(0, 0, 0, 0.85);
+            --hover-highlight: #60A5FA;
+        }
+
+        html, body {
+            margin: 0; 
+            padding: 0; 
+            height: 100vh; /* Locks height */
+            overflow: hidden; /* Removes all scrollbars */
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color); 
+            color: var(--text-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Utility Classes */
+        .bg-card-theme { background-color: var(--card-bg); border-color: var(--border-color); }
+        .text-body-muted { color: var(--text-muted); }
+        .border-theme { border-color: var(--border-color); }
+        .navbar-brand-text { color: var(--text-color); }
+
+        /* Glassmorphism Navbar */
+        .glass-nav {
+            background: var(--nav-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+            height: 70px; /* Slightly shorter navbar for auth pages */
+        }
+
+        /* Form Styling */
+        .input-field {
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            border-radius: 0.75rem;
+            padding: 0.55rem 2.5rem;
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+        [data-theme="light"] .input-field {
+            background-color: rgba(0, 0, 0, 0.02);
+        }
+        .input-field:focus {
+            border-color: var(--hover-highlight);
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+            background-color: transparent;
+        }
+        .input-field::placeholder { color: var(--text-muted); opacity: 0.7; }
+
+        .form-label {
+            display: block;
+            color: var(--text-color);
+            font-weight: 700;
+            margin-bottom: 0.15rem;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-left: 0.25rem;
+        }
+
+        .social-btn {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.4rem 0;
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .social-btn:hover {
+            border-color: var(--primary);
+            background-color: rgba(59, 130, 246, 0.05);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-primary selection:text-white">
+
+    <nav class="glass-nav w-full px-4 lg:px-8 flex justify-between items-center absolute top-0 z-50 transition-colors duration-300">
+        
+        <a href="index.html" class="flex items-center gap-2 no-underline transition-transform duration-300 hover:scale-105">
+            <div class="w-8 h-8 md:w-10 md:h-10 bg-primary rounded-xl flex items-center justify-center text-white shrink-0 shadow-md">
+                <i class="fas fa-microphone-lines text-sm md:text-base"></i>
+            </div>
+            <div class="text-xl md:text-2xl font-black tracking-tight navbar-brand-text">VoxForge<span class="text-primary">.AI</span></div>
+        </a>
+        
+        <div class="flex items-center gap-2 shrink-0">
+            <button class="theme-toggle w-9 h-9 rounded-full flex items-center justify-center border border-theme hover:bg-primary hover:text-white hover:border-primary transition-all text-[var(--text-color)] shrink-0 group cursor-pointer" title="Toggle Dark/Light Mode">
+                <i class="fas fa-moon transition-transform group-hover:text-white text-sm theme-icon"></i>
+            </button>
+
+            <button class="rtl-toggle-btn w-9 h-9 rounded-full flex items-center justify-center border border-theme hover:bg-primary hover:text-white hover:border-primary transition-all font-bold text-[10px] text-[var(--text-color)] shrink-0 cursor-pointer" title="Toggle RTL">
+                RTL
+            </button>
+        </div>
+    </nav>
+
+    <section class="flex flex-col items-center justify-center h-screen px-4 pt-14 relative w-full">
+        
+        <div class="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-primary/10 rounded-full blur-[100px] pointer-events-none -translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-[300px] h-[300px] bg-accent/10 rounded-full blur-[100px] pointer-events-none translate-x-1/2 translate-y-1/2"></div>
+
+        <div class="w-full max-w-[360px] bg-card-theme rounded-[1.5rem] shadow-2xl border border-theme animate-fadeInUp p-6 relative z-10">
+            
+            <div class="mb-5 text-center">
+                <h1 class="text-2xl font-black text-[var(--text-color)] mb-1 tracking-tight">Create Account</h1>
+                <p class="text-body-muted text-xs font-medium">Start your voice generation journey today.</p>
+            </div>
+
+            <form id="registerFormElement" class="space-y-3">
+                
+                <div>
+                    <label class="form-label" for="fullName">Full Name</label>
+                    <div class="relative">
+                        <i class="fas fa-user absolute top-1/2 -translate-y-1/2 text-body-muted left-3.5 text-xs"></i>
+                        <input type="text" placeholder="John Doe" required class="input-field" id="fullName" autocomplete="name">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="form-label" for="registerEmail">Email Address</label>
+                    <div class="relative">
+                        <i class="fas fa-envelope absolute top-1/2 -translate-y-1/2 text-body-muted left-3.5 text-xs"></i>
+                        <input type="email" placeholder="creator@voxforge.ai" required class="input-field" id="registerEmail" autocomplete="email">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="form-label" for="registerPassword">Password</label>
+                    <div class="relative">
+                        <i class="fas fa-lock absolute top-1/2 -translate-y-1/2 text-body-muted left-3.5 text-xs"></i>
+                        <input type="password" id="registerPassword" placeholder="Create a strong password" required class="input-field" autocomplete="new-password">
+                        <button type="button" onclick="togglePasswordVisibility('registerPassword', 'registerEyeIcon')" class="absolute top-1/2 -translate-y-1/2 right-3.5 text-body-muted hover:text-[var(--text-color)] focus:outline-none cursor-pointer bg-transparent border-0 p-0 transition-colors">
+                            <i class="fas fa-eye text-xs" id="registerEyeIcon"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="form-label" for="registerConfirmPassword">Confirm Password</label>
+                    <div class="relative">
+                        <i class="fas fa-lock absolute top-1/2 -translate-y-1/2 text-body-muted left-3.5 text-xs"></i>
+                        <input type="password" id="registerConfirmPassword" placeholder="Repeat your password" required class="input-field" autocomplete="new-password">
+                        <button type="button" onclick="togglePasswordVisibility('registerConfirmPassword', 'registerConfirmEyeIcon')" class="absolute top-1/2 -translate-y-1/2 right-3.5 text-body-muted hover:text-[var(--text-color)] focus:outline-none cursor-pointer bg-transparent border-0 p-0 transition-colors">
+                            <i class="fas fa-eye text-xs" id="registerConfirmEyeIcon"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="flex items-start gap-2 pt-1 pb-1">
+                    <div class="flex items-center h-4 mt-0.5">
+                        <input id="terms" type="checkbox" required class="w-3.5 h-3.5 text-primary rounded border-theme focus:ring-primary bg-[var(--bg-color)] cursor-pointer">
+                    </div>
+                    <label for="terms" class="text-body-muted text-[10px] font-medium leading-tight cursor-pointer mt-0.5">
+                        I agree to the <a href="#" class="text-primary font-bold hover:text-accent transition-colors no-underline">Terms</a> and <a href="#" class="text-primary font-bold hover:text-accent transition-colors no-underline">Privacy Policy</a>.
+                    </label>
+                </div>
+
+                <button type="submit" class="w-full bg-gradient-to-r from-primary to-accent text-white py-2.5 rounded-xl font-bold text-sm transition-all duration-300 shadow-[0_4px_15px_rgba(59,130,246,0.3)] hover:shadow-[0_6px_20px_rgba(59,130,246,0.5)] transform hover:-translate-y-0.5 border-0 cursor-pointer uppercase tracking-wider" id="registerButton">
+                    Create Account
+                </button>
+            </form>
+
+            <div class="mt-5">
+                <div class="relative flex items-center py-1.5 mb-3">
+                    <div class="flex-grow border-t border-theme"></div>
+                    <span class="flex-shrink-0 mx-3 text-body-muted text-[9px] font-bold uppercase tracking-widest">Or sign up with</span>
+                    <div class="flex-grow border-t border-theme"></div>
+                </div>
+
+                <div class="flex gap-2.5 w-full mb-3">
+                    <button class="social-btn" title="Sign up with Google">
+                        <img src="https://www.svgrepo.com/show/475656/google-color.svg" class="w-4 h-4" alt="Google">
+                    </button>
+                    <button class="social-btn" title="Sign up with GitHub">
+                        <i class="fab fa-github text-[var(--text-color)] text-lg"></i>
+                    </button>
+                    <button class="social-btn" title="Sign up with Discord">
+                        <i class="fab fa-discord text-[#5865F2] text-lg"></i>
+                    </button>
+                </div>
+
+                <p class="text-center text-xs text-body-muted font-medium">
+                    Already a member? 
+                    <a href="login.html" class="text-primary font-bold hover:text-accent transition-colors ml-1 no-underline">Log In</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // --- Theme Logic ---
+        const themeToggleBtns = document.querySelectorAll('.theme-toggle');
+        const htmlElement = document.documentElement;
+
+        function updateTheme() {
+            const isDark = htmlElement.classList.contains('dark');
+            htmlElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+            
+            themeToggleBtns.forEach(btn => {
+                const icon = btn.querySelector('.theme-icon');
+                if (icon) {
+                    if (isDark) {
+                        icon.classList.remove('fa-moon');
+                        icon.classList.add('fa-sun');
+                    } else {
+                        icon.classList.remove('fa-sun');
+                        icon.classList.add('fa-moon');
+                    }
+                }
+            });
+            
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        }
+
+        themeToggleBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                htmlElement.classList.toggle('dark');
+                updateTheme();
+            });
+        });
+
+        const savedTheme = localStorage.getItem('theme') || 'dark'; 
+        if (savedTheme === 'light') {
+            htmlElement.classList.remove('dark');
+            htmlElement.setAttribute('data-theme', 'light');
+        } else {
+            htmlElement.classList.add('dark'); 
+            htmlElement.setAttribute('data-theme', 'dark');
+        }
+        updateTheme();
+
+        // --- RTL Logic ---
+        const rtlToggleBtns = document.querySelectorAll('.rtl-toggle-btn');
+        
+        function updateRTLIcons(dir) {
+            rtlToggleBtns.forEach(btn => {
+                btn.innerText = dir === 'rtl' ? 'LTR' : 'RTL';
+            });
+        }
+
+        function toggleRTL() {
+            const current = htmlElement.getAttribute("dir") || "ltr";
+            const next = current === "rtl" ? "ltr" : "rtl";
+            htmlElement.setAttribute("dir", next);
+            localStorage.setItem("direction", next);
+            updateRTLIcons(next);
+        }
+
+        rtlToggleBtns.forEach(btn => {
+            btn.addEventListener('click', toggleRTL);
+        });
+        
+        if (localStorage.getItem("direction") === "rtl") {
+            htmlElement.setAttribute("dir", "rtl");
+            updateRTLIcons("rtl");
+        } else {
+            htmlElement.setAttribute("dir", "ltr");
+            updateRTLIcons("ltr");
+        }
+
+        // --- Form Logic ---
+        document.getElementById('registerFormElement').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const pwd = document.getElementById('registerPassword').value;
+            const confirmPwd = document.getElementById('registerConfirmPassword').value;
+            
+            if (pwd !== confirmPwd) {
+                alert("Passwords do not match!");
+                return;
+            }
+
+            const btn = document.getElementById('registerButton');
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Creating Account...';
+            setTimeout(() => window.location.href = 'user-dashboard.html', 1500);
+        });
+
+        function togglePasswordVisibility(inputId, iconId) {
+            const input = document.getElementById(inputId);
+            const icon = document.getElementById(iconId);
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                input.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        }
+    </script>
+</body>
+</html>

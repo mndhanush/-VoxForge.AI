@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" dir="ltr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="VoxForge AI - Clone Voices in Seconds">
+    <title>Home 1 | VoxForge AI</title>
+    
+    <link rel="icon" href="Images/Growwpark Favicon.jpg">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script src="tailwind.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563EB',   /* Deep Blue */
+                        secondary: '#60A5FA', /* Light Blue */
+                        bgLight: '#FFFFFF',   /* White */
+                        bgDark: '#111111',    /* Pure dark grey aesthetic */
+                        cardLight: '#FFFFFF',
+                        cardDark: '#000000',  /* Pure black card */
+                        textLight: '#000000',
+                        textDark: '#FFFFFF',
+                        accent: '#1D4ED8'     /* Darker Blue */
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    screens: {
+                        'xs': '360px', 
+                        'sm': '390px', 
+                        'md': '768px', 
+                        'lg': '1024px', 
+                        'xl': '1280px', 
+                        '2xl': '1536px', 
+                    },
+                    animation: {
+                        'wave': 'wave 1.2s ease-in-out infinite',
+                        'blob': 'blob 7s infinite',
+                    },
+                    keyframes: {
+                        wave: {
+                            '0%, 100%': { transform: 'scaleY(0.5)' },
+                            '50%': { transform: 'scaleY(1.5)' },
+                        },
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        :root {
+            --bg-color: #F8FAFC; /* Slightly off-white to match image background naturally */
+            --text-color: #0F172A;
+            --text-muted: #4B5563;
+            --card-bg: #FFFFFF;
+            --border-color: #E2E8F0;
+            
+            /* Navbar Specific Variables */
+            --navbar-bg: #FFFFFF;
+            --nav-text: #0F172A;
+            --dropdown-bg: #FFFFFF;
+        }
+        
+        [data-theme="dark"] {
+            --bg-color: #111111;
+            --text-color: #FFFFFF;
+            --text-muted: #9CA3AF;
+            --card-bg: #000000;
+            --border-color: #1F2937;
+            
+            /* Navbar Specific Variables */
+            --navbar-bg: #111111;
+            --nav-text: #FFFFFF;
+            --dropdown-bg: #000000;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
+            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .text-body-muted { color: var(--text-muted); transition: color 0.3s ease; }
+        .bg-card { background-color: var(--card-bg); border-color: var(--border-color); }
+        .border-theme { border-color: var(--border-color); }
+
+        /* --- NAVBAR STYLES --- */
+        .navbar-container {
+            background-color: var(--navbar-bg);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            border-bottom: 1px solid var(--border-color);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+        
+        .nav-link {
+            color: var(--nav-text);
+            padding: 8px 12px;
+            transition: all 0.3s ease;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-weight: 600;
+            white-space: nowrap;
+            cursor: pointer;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .nav-link:hover { color: #2563EB; }
+        .nav-link.active { color: #2563EB; font-weight: 700; }
+        
+        .navbar-brand-text { color: var(--nav-text); }
+
+        /* Nav Icon Buttons */
+        .nav-icon-btn {
+            background-color: transparent; 
+            color: var(--nav-text);
+        }
+
+        /* Dropdowns */
+        .dropdown { position: relative; }
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            inset-inline-start: 0;
+            background-color: var(--dropdown-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            min-width: 180px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        html[dir="rtl"] .dropdown-menu {
+            inset-inline-start: auto;
+            inset-inline-end: 0;
+        }
+        .dropdown:hover .dropdown-menu, .dropdown.active .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .dropdown-item {
+            display: block;
+            padding: 12px 20px;
+            color: var(--nav-text);
+            transition: all 0.3s ease;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        .dropdown-item:hover {
+            background-color: rgba(37, 99, 235, 0.1);
+            color: #2563EB;
+            padding-inline-start: 25px;
+        }
+        .dropdown-arrow { font-size: 0.7rem; transition: transform 0.3s ease; }
+        .dropdown:hover .dropdown-arrow { transform: rotate(180deg); }
+        
+        /* Reference Image Specific Mobile Menu */
+        .mobile-menu {
+            transform: translateX(-100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background-color: var(--card-bg);
+        }
+        html[dir="rtl"] .mobile-menu { transform: translateX(100%); }
+        .mobile-menu.active { transform: translateX(0); }
+        html[dir="rtl"] .mobile-menu.active { transform: translateX(0); }
+        
+        .mobile-dropdown-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background-color: transparent;
+        }
+        .mobile-dropdown-content.active { max-height: 500px; }
+
+        .mobile-overlay {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+        }
+        .mobile-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        @media (max-width: 1279px) {
+            .desktop-nav, .navbar-right-desktop { display: none !important; }
+            .mobile-menu-button { display: flex !important; }
+        }
+        @media (min-width: 1280px) {
+            .desktop-nav { display: flex !important; }
+            .navbar-right-desktop { display: flex !important; }
+            .mobile-menu-button { display: none !important; }
+        }
+
+        /* Custom Audio Player Styling */
+        .audio-progress::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #2563EB;
+            cursor: pointer;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-color); }
+        ::-webkit-scrollbar-thumb { background: #2563EB; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #1D4ED8; }
+    </style>
+</head>
+<body class="antialiased selection:bg-primary selection:text-white">
+
+    <nav id="navbar" class="navbar-container py-3 fixed top-0 w-full z-[1000]">
+        <div class="container mx-auto px-4 lg:px-8 max-w-[1600px]">
+            <div class="flex items-center justify-between h-14 md:h-auto">
+                
+                <a href="index.html" class="flex items-center gap-2 no-underline transition-transform duration-300 hover:scale-105">
+                    <div class="w-8 h-8 md:w-10 md:h-10 bg-primary rounded-xl flex items-center justify-center text-white shrink-0 shadow-md">
+                        <i class="fas fa-microphone-lines text-sm md:text-base"></i>
+                    </div>
+                    <div class="text-xl md:text-2xl font-black tracking-tight navbar-brand-text">VoxForge<span class="text-primary">.AI</span></div>
+                </a>
+                
+                <div class="desktop-nav items-center space-x-1 lg:space-x-3 rtl:space-x-reverse">
+                    <div class="dropdown" id="home-dropdown">
+                        <div class="nav-link active" onclick="toggleDesktopDropdown('home-dropdown')">
+                            Home <i class="fas fa-chevron-down dropdown-arrow"></i>
+                        </div>
+                        <div class="dropdown-menu">
+                            <a href="index.html" class="dropdown-item active">Home 1</a>
+                            <a href="home-2.html" class="dropdown-item">Home 2</a>
+                        </div>
+                    </div>
+
+                    <a href="about.html" class="nav-link">About</a>
+                    <a href="features.html" class="nav-link">Features</a>
+                    <a href="ai-voice.html" class="nav-link">AI Voice</a>
+                    <a href="case-studies.html" class="nav-link">Case Studies</a>
+                    <a href="pricing.html" class="nav-link">Pricing</a>
+                    <a href="faq.html" class="nav-link">FAQ</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+
+                    <div class="dropdown" id="dashboard-dropdown">
+                        <div class="nav-link" onclick="toggleDesktopDropdown('dashboard-dropdown')">
+                            Dashboard <i class="fas fa-chevron-down dropdown-arrow"></i>
+                        </div>
+                        <div class="dropdown-menu">
+                            <a href="user-dashboard.html" class="dropdown-item"><i class="fas fa-user me-2 text-primary"></i> User</a>
+                            <a href="admin-dashboard.html" class="dropdown-item"><i class="fas fa-shield me-2 text-primary"></i> Admin</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="navbar-right-desktop flex items-center gap-2 lg:gap-3">
+                    <button class="w-10 h-10 nav-icon-btn rounded-full flex items-center justify-center transition-all duration-300 hover:bg-primary/10 hover:text-primary shrink-0 border border-theme cursor-pointer" id="desktop-theme-toggle-btn" title="Toggle Dark/Light Mode">
+                        <i class="fas fa-moon text-sm" id="desktop-theme-icon"></i>
+                    </button>
+                    <button class="w-10 h-10 nav-icon-btn rounded-full flex items-center justify-center transition-all duration-300 hover:bg-primary/10 hover:text-primary shrink-0 border border-theme cursor-pointer text-[10px] font-bold" id="desktop-rtl-toggle-btn" title="Toggle RTL">
+                        RTL
+                    </button>
+                    
+                    <div class="flex items-center gap-2 ms-2">
+                        <a href="login.html" class="h-10 px-6 rounded-full border border-theme bg-card text-[var(--text-color)] hover:border-primary hover:text-primary flex items-center justify-center font-bold text-xs transition-all uppercase tracking-wider">
+                            Login
+                        </a>
+                        <a href="register.html" class="h-10 px-6 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xs transition-all hover:bg-accent shadow-[0_0_15px_rgba(37,99,235,0.4)] uppercase tracking-wider">
+                            Register
+                        </a>
+                    </div>
+                </div>
+                
+                <button id="mobile-menu-btn" class="nav-icon-btn text-xl cursor-pointer p-2 rounded-lg w-10 h-10 flex items-center justify-center mobile-menu-button hover:bg-primary/10 hover:text-primary transition-colors">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <div id="mobile-overlay" class="mobile-overlay fixed inset-0 z-[9998]"></div>
+
+    <div id="mobile-menu" class="mobile-menu fixed top-4 bottom-4 start-4 w-[85%] max-w-[340px] z-[9999] rounded-2xl shadow-2xl flex flex-col border border-theme">
+        <div class="p-6 flex flex-col h-full overflow-y-auto">
+            
+            <div class="flex justify-between items-center mb-6 pb-6 border-b border-[var(--border-color)]">
+                <a href="index.html" class="flex items-center gap-2 no-underline">
+                    <div class="w-7 h-7 bg-primary rounded flex items-center justify-center text-white shrink-0">
+                        <i class="fas fa-microphone text-[10px]"></i>
+                    </div>
+                    <span class="text-[15px] font-bold tracking-tight text-[var(--text-color)] block">VoxForge<span class="text-primary">.AI</span></span>
+                </a>
+                
+                <div class="flex items-center gap-2">
+                    <button class="w-7 h-7 rounded-full flex items-center justify-center transition-all duration-300 hover:bg-primary/10 hover:text-primary shrink-0 border border-[var(--border-color)] cursor-pointer text-[9px] font-bold text-[var(--text-color)]" id="mobile-rtl-toggle" title="Toggle RTL">
+                        RTL
+                    </button>
+                    
+                    <button class="w-7 h-7 rounded-full flex items-center justify-center transition-all duration-300 hover:bg-primary/10 hover:text-primary shrink-0 border border-[var(--border-color)] cursor-pointer text-[var(--text-color)]" id="mobile-theme-toggle" title="Toggle Dark Mode">
+                        <i class="fas fa-moon text-[10px]" id="mobile-theme-icon"></i>
+                    </button>
+                    
+                    <button id="close-mobile-menu" class="text-[var(--text-color)] text-sm ms-1 transition-transform active:scale-90 border-none bg-transparent cursor-pointer hover:text-primary font-bold">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="space-y-1 flex-grow">
+                <div>
+                    <button class="flex items-center justify-between w-full text-primary bg-primary/10 text-[11px] font-bold py-3.5 px-4 rounded-lg cursor-pointer border-0 uppercase tracking-widest" onclick="toggleMobileDropdown('home-mobile')">
+                        <span>HOME</span>
+                        <i class="fas fa-chevron-down text-primary dropdown-arrow"></i>
+                    </button>
+                    <div id="home-mobile" class="mobile-dropdown-content">
+                        <a href="index.html" class="block text-primary py-2.5 px-6 transition-all duration-300 font-bold text-[11px] uppercase tracking-widest">Home 1</a>
+                        <a href="home-2.html" class="block text-[var(--text-color)] py-2.5 px-6 transition-all duration-300 hover:text-primary font-bold text-[11px] uppercase tracking-widest">Home 2</a>
+                    </div>
+                </div>
+
+                <a href="about.html" class="block text-[var(--text-color)] text-[11px] font-bold py-3.5 px-4 no-underline uppercase tracking-widest hover:bg-primary/5 rounded-lg transition-colors">ABOUT</a>
+                <a href="features.html" class="block text-[var(--text-color)] text-[11px] font-bold py-3.5 px-4 no-underline uppercase tracking-widest hover:bg-primary/5 rounded-lg transition-colors">FEATURES</a>
+                <a href="ai-voice.html" class="block text-[var(--text-color)] text-[11px] font-bold py-3.5 px-4 no-underline uppercase tracking-widest hover:bg-primary/5 rounded-lg transition-colors">AI VOICE</a>
+                <a href="case-studies.html" class="block text-[var(--text-color)] text-[11px] font-bold py-3.5 px-4 no-underline uppercase tracking-widest hover:bg-primary/5 rounded-lg transition-colors">CASE STUDIES</a>
+                <a href="pricing.html" class="block text-[var(--text-color)] text-[11px] font-bold py-3.5 px-4 no-underline uppercase tracking-widest hover:bg-primary/5 rounded-lg transition-colors">PRICING</a>
+                <a href="faq.html" class="block text-[var(--text-color)] text-[11px] font-bold py-3.5 px-4 no-underline uppercase tracking-widest hover:bg-primary/5 rounded-lg transition-colors">FAQ</a>
+                <a href="contact.html" class="block text-[var(--text-color)] text-[11px] font-bold py-3.5 px-4 no-underline uppercase tracking-widest hover:bg-primary/5 rounded-lg transition-colors">CONTACT</a>
+                
+                <div>
+                    <button class="flex items-center justify-between w-full text-[var(--text-color)] hover:bg-primary/5 text-[11px] font-bold py-3.5 px-4 rounded-lg cursor-pointer border-0 bg-transparent uppercase tracking-widest transition-colors" onclick="toggleMobileDropdown('dashboard-mobile')">
+                        <span>DASHBOARD</span>
+                        <i class="fas fa-chevron-down text-[var(--text-muted)] dropdown-arrow"></i>
+                    </button>
+                    <div id="dashboard-mobile" class="mobile-dropdown-content">
+                        <a href="user-dashboard.html" class="block text-[var(--text-color)] py-2.5 px-6 transition-all duration-300 hover:text-primary font-bold text-[11px] uppercase tracking-widest">User Dashboard</a>
+                        <a href="admin-dashboard.html" class="block text-[var(--text-color)] py-2.5 px-6 transition-all duration-300 hover:text-primary font-bold text-[11px] uppercase tracking-widest">Admin Dashboard</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-6 pt-6 border-t border-[var(--border-color)] flex flex-col gap-3 shrink-0">
+                <a href="login.html" class="flex items-center justify-center w-full py-3.5 rounded-full border border-[var(--border-color)] bg-[var(--bg-color)] text-[var(--text-color)] hover:border-primary hover:text-primary font-bold text-[11px] transition-all uppercase tracking-widest">
+                    LOGIN
+                </a>
+                <a href="register.html" class="flex items-center justify-center w-full py-3.5 rounded-full bg-primary text-white font-bold text-[11px] transition-all hover:bg-accent uppercase tracking-widest shadow-sm">
+                    REGISTER
+                </a>
+            </div>
+            
+        </div>
+    </div>
+
+    <main class="w-full flex-grow">
+
+        <section class="relative h-[100dvh] w-full flex flex-col justify-center overflow-hidden bg-[var(--bg-color)] border-b border-theme pt-14">
+            <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full mix-blend-multiply filter blur-[128px] animate-blob pointer-events-none"></div>
+            <div class="absolute top-1/3 right-1/4 w-96 h-96 bg-secondary/20 rounded-full mix-blend-multiply filter blur-[128px] animate-blob animation-delay-2000 pointer-events-none"></div>
+            
+            <div class="container mx-auto px-4 relative z-10 text-center w-full flex flex-col items-center justify-center h-full">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-card border border-theme text-primary text-xs font-bold uppercase tracking-wider mb-6 lg:mb-8 shadow-sm">
+                    <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                    VoxForge AI Engine v2.0 Live
+                </div>
+                
+                <h1 class="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold text-[var(--text-color)] tracking-tight mb-4 lg:mb-6 leading-tight">
+                    Clone Voices in <br class="hidden sm:block"/>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Seconds.</span>
+                </h1>
+                
+                <p class="text-base sm:text-lg md:text-xl text-body-muted max-w-2xl mx-auto mb-8 lg:mb-10 leading-relaxed font-medium">
+                    The most advanced AI voice generator. Create hyper-realistic, human-like voiceovers for podcasts, videos, games, and ads in over 50 languages.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10 lg:mb-16 w-full sm:w-auto">
+                    <a href="#demo" class="w-full sm:w-auto px-8 py-3.5 lg:py-4 bg-primary text-white rounded-full font-bold text-base lg:text-lg hover:bg-accent transition-all transform hover:-translate-y-1 shadow-[0_10px_25px_rgba(37,99,235,0.5)] flex items-center justify-center gap-2">
+                        Try Demo <i class="fas fa-play text-sm"></i>
+                    </a>
+                    <a href="register.html" class="w-full sm:w-auto px-8 py-3.5 lg:py-4 bg-card text-[var(--text-color)] border-2 border-theme rounded-full font-bold text-base lg:text-lg hover:border-primary hover:text-primary transition-all flex items-center justify-center gap-2">
+                        Start for Free
+                    </a>
+                </div>
+
+                <div class="max-w-3xl w-full mx-auto bg-card border border-theme rounded-3xl p-4 sm:p-8 shadow-xl flex items-center justify-center gap-1 md:gap-2 h-24 sm:h-32 md:h-40 relative overflow-hidden group cursor-pointer">
+                    <div class="absolute inset-0 bg-gradient-to-r from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div id="hero-waveform" class="flex items-center justify-center gap-1 h-full w-full"></div>
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <button class="w-12 h-12 sm:w-16 sm:h-16 bg-primary text-white rounded-full flex items-center justify-center text-lg sm:text-xl shadow-[0_0_30px_rgba(37,99,235,0.6)] group-hover:scale-110 transition-transform">
+                            <i class="fas fa-microphone"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="demo" class="py-24 bg-card border-b border-theme relative transition-colors">
+            <div class="container mx-auto px-4 md:px-8 max-w-5xl">
+                <div class="text-center mb-16">
+                    <span class="text-primary font-bold tracking-widest uppercase text-sm block mb-3 text-center">Live Demo</span>
+                    <h2 class="text-3xl md:text-5xl font-bold text-[var(--text-color)]">Hear the Magic</h2>
+                </div>
+
+                <div class="bg-[var(--bg-color)] rounded-3xl border border-theme shadow-lg overflow-hidden flex flex-col md:flex-row">
+                    
+                    <div class="w-full md:w-1/3 bg-card border-r border-theme border-b md:border-b-0 p-6 flex flex-col gap-3">
+                        <h3 class="text-xs font-bold text-body-muted uppercase tracking-wider mb-2">Select Voice Model</h3>
+                        
+                        <button class="voice-select-btn active flex items-center gap-4 p-3 rounded-xl bg-primary/10 border border-primary text-left transition-colors w-full">
+                            <img src="Images/sarah.jpg" alt="Avatar" class="w-10 h-10 rounded-full border-2 border-white shadow-sm">
+                            <div>
+                                <h4 class="font-bold text-[var(--text-color)] text-sm">Sarah (Warm)</h4>
+                                <p class="text-xs text-primary font-medium">Narrative / Audiobook</p>
+                            </div>
+                        </button>
+                        
+                        <button class="voice-select-btn flex items-center gap-4 p-3 rounded-xl hover:bg-card border border-transparent hover:border-theme text-left transition-colors w-full">
+                            <img src="Images/marcus.jpg" alt="Avatar" class="w-10 h-10 rounded-full border-2 border-white shadow-sm">
+                            <div>
+                                <h4 class="font-bold text-[var(--text-color)] text-sm">Marcus (Deep)</h4>
+                                <p class="text-xs text-body-muted font-medium">Trailer / Cinematic</p>
+                            </div>
+                        </button>
+
+                        <button class="voice-select-btn flex items-center gap-4 p-3 rounded-xl hover:bg-card border border-transparent hover:border-theme text-left transition-colors w-full">
+                            <img src="Images/emma.jpg" alt="Avatar" class="w-10 h-10 rounded-full border-2 border-white shadow-sm">
+                            <div>
+                                <h4 class="font-bold text-[var(--text-color)] text-sm">Emma (Gen Z)</h4>
+                                <p class="text-xs text-body-muted font-medium">TikTok / Casual</p>
+                            </div>
+                        </button>
+                    </div>
+
+                    <div class="w-full md:w-2/3 p-8 md:p-12 flex flex-col justify-center">
+                        <div class="bg-card p-6 rounded-2xl border border-theme mb-8 relative">
+                            <i class="fas fa-quote-left text-3xl text-primary/20 absolute top-4 left-4"></i>
+                            <p class="text-[var(--text-color)] font-medium text-lg leading-relaxed relative z-10 pl-6">
+                                "The future of audio is not just about listening; it's about creating entirely new experiences. With VoxForge, creating hyper-realistic voices is as simple as typing a sentence."
+                            </p>
+                        </div>
+
+                        <div class="flex items-center gap-4 w-full bg-card rounded-full p-3 border border-theme shadow-inner">
+                            <button id="main-play-btn" class="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center shrink-0 hover:bg-accent transition-colors shadow-md">
+                                <i class="fas fa-play ml-1"></i>
+                            </button>
+                            <div class="flex-grow flex flex-col justify-center gap-1">
+                                <div class="flex justify-between text-xs font-bold text-body-muted px-1">
+                                    <span>0:00</span>
+                                    <span>0:14</span>
+                                </div>
+                                <input type="range" min="0" max="100" value="0" class="audio-progress w-full h-1.5 bg-theme rounded-full appearance-none cursor-pointer">
+                            </div>
+                            <button class="w-10 h-10 text-body-muted hover:text-primary transition-colors shrink-0">
+                                <i class="fas fa-volume-high"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 bg-[var(--bg-color)] border-b border-theme transition-colors relative overflow-hidden">
+    <div class="container mx-auto px-4 md:px-8">
+        <div class="text-center mb-16">
+            <span class="text-primary font-bold tracking-widest uppercase text-sm block mb-3 text-center">Simple Process</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-[var(--text-color)]">How It Works</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
+            <div class="hidden md:block absolute top-1/2 left-[15%] right-[15%] h-0.5 bg-gradient-to-r from-primary/10 via-primary/50 to-primary/10 -z-10 -translate-y-1/2 border-dashed"></div>
+
+            <div class="bg-card rounded-3xl p-8 border border-theme text-center relative group hover:border-primary transition-colors shadow-sm">
+                <div class="w-20 h-20 mx-auto bg-[var(--bg-color)] rounded-2xl flex items-center justify-center text-3xl text-primary mb-6 border border-theme shadow-md group-hover:scale-110 transition-transform group-hover:bg-primary group-hover:text-white">
+                    <i class="fas fa-cloud-arrow-up"></i>
+                </div>
+                <div class="absolute -top-4 -right-4 w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center font-bold text-lg border-4 border-card shadow-sm">1</div>
+                <h3 class="text-xl font-bold text-[var(--text-color)] mb-3">Upload Audio</h3>
+                <p class="text-sm text-body-muted font-medium">Upload just 1 minute of clean audio. No massive datasets required.</p>
+            </div>
+
+            <div class="bg-card rounded-3xl p-8 border border-theme text-center relative group hover:border-primary transition-colors shadow-sm">
+                <div class="w-20 h-20 mx-auto bg-[var(--bg-color)] rounded-2xl flex items-center justify-center text-3xl text-primary mb-6 border border-theme shadow-md group-hover:scale-110 transition-transform group-hover:bg-primary group-hover:text-white">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <div class="absolute -top-4 -right-4 w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center font-bold text-lg border-4 border-card shadow-sm">2</div>
+                <h3 class="text-xl font-bold text-[var(--text-color)] mb-3">AI Training</h3>
+                <p class="text-sm text-body-muted font-medium">Our neural network analyzes pitch, tone, and emotion in seconds.</p>
+            </div>
+
+            <div class="bg-card rounded-3xl p-8 border border-theme text-center relative group hover:border-primary transition-colors shadow-sm">
+                <div class="w-20 h-20 mx-auto bg-[var(--bg-color)] rounded-2xl flex items-center justify-center text-3xl text-primary mb-6 border border-theme shadow-md group-hover:scale-110 transition-transform group-hover:bg-primary group-hover:text-white">
+                    <i class="fas fa-wave-square"></i>
+                </div>
+                <div class="absolute -top-4 -right-4 w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center font-bold text-lg border-4 border-card shadow-sm">3</div>
+                <h3 class="text-xl font-bold text-[var(--text-color)] mb-3">Generate</h3>
+                <p class="text-sm text-body-muted font-medium">Type any text and generate studio-quality audio in your cloned voice.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+        <section class="py-24 bg-card border-b border-theme transition-colors">
+            <div class="container mx-auto px-4 md:px-8">
+                <div class="text-center mb-16">
+                    <span class="text-primary font-bold tracking-widest uppercase text-sm block mb-3 text-center">Built For Creators</span>
+                    <h2 class="text-3xl md:text-5xl font-bold text-[var(--text-color)]">Endless Possibilities</h2>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    
+                    <div class="bg-[var(--bg-color)] p-8 rounded-3xl border border-theme hover:-translate-y-2 transition-transform shadow-sm flex flex-col items-start group">
+                        <div class="w-12 h-12 bg-primary/10 text-primary rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
+                            <i class="fab fa-youtube"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-[var(--text-color)] mb-3">YouTubers</h3>
+                        <p class="text-sm text-body-muted font-medium">Fix flubbed lines instantly or narrate faceless channels with hyper-realistic emotion.</p>
+                    </div>
+
+                    <div class="bg-[var(--bg-color)] p-8 rounded-3xl border border-theme hover:-translate-y-2 transition-transform shadow-sm flex flex-col items-start group">
+                        <div class="w-12 h-12 bg-primary/10 text-primary rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
+                            <i class="fas fa-podcast"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-[var(--text-color)] mb-3">Podcasters</h3>
+                        <p class="text-sm text-body-muted font-medium">Create dynamic intros, generate ad reads in your own voice, or translate episodes.</p>
+                    </div>
+
+                    <div class="bg-[var(--bg-color)] p-8 rounded-3xl border border-theme hover:-translate-y-2 transition-transform shadow-sm flex flex-col items-start group">
+                        <div class="w-12 h-12 bg-primary/10 text-primary rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-[var(--text-color)] mb-3">Game Devs</h3>
+                        <p class="text-sm text-body-muted font-medium">Voice hundreds of NPCs affordably. Prototype dialogue trees without booking studios.</p>
+                    </div>
+
+                    <div class="bg-[var(--bg-color)] p-8 rounded-3xl border border-theme hover:-translate-y-2 transition-transform shadow-sm flex flex-col items-start group">
+                        <div class="w-12 h-12 bg-primary/10 text-primary rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
+                            <i class="fas fa-bullhorn"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-[var(--text-color)] mb-3">Advertising</h3>
+                        <p class="text-sm text-body-muted font-medium">A/B test voiceovers rapidly. Generate dynamic, localized ad reads at scale.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 bg-[var(--bg-color)] border-b border-theme transition-colors relative">
+            <div class="container mx-auto px-4 md:px-8">
+                <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left mb-12 gap-4">
+                    <div class="w-full">
+                        <span class="text-primary font-bold tracking-widest uppercase text-sm block mb-3 text-center">Library</span>
+                        <h2 class="text-3xl md:text-5xl font-bold text-[var(--text-color)]">Featured Voices</h2>
+                    </div>
+                    <a href="ai-voice.html" class="text-primary font-bold hover:text-accent transition-colors flex items-center gap-2 whitespace-nowrap mt-4 md:mt-0 absolute right-4 md:right-8 top-28 md:top-32 hidden md:flex">View All Voices <i class="fas fa-arrow-right text-xs"></i></a>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    
+                    <div class="bg-card p-6 rounded-3xl border border-theme shadow-sm hover:border-primary transition-colors flex flex-col">
+                        <div class="flex items-center gap-4 mb-6">
+                            <img src="Images/Alex.jpg" alt="Avatar" class="w-14 h-14 rounded-xl border-2 border-theme shadow-sm">
+                            <div>
+                                <h3 class="font-bold text-[var(--text-color)] text-lg">Alex (Tech)</h3>
+                                <p class="text-xs text-body-muted font-bold uppercase tracking-wider">Documentary</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-[var(--bg-color)] border border-theme text-xs px-2 py-1 rounded font-medium text-[var(--text-color)]">English (US)</span>
+                            <span class="bg-[var(--bg-color)] border border-theme text-xs px-2 py-1 rounded font-medium text-[var(--text-color)]">Calm</span>
+                        </div>
+                        <button class="mt-auto w-full py-3 rounded-xl bg-primary/10 text-primary font-bold hover:bg-primary hover:text-white transition-colors flex items-center justify-center gap-2">
+                            <i class="fas fa-play text-xs"></i> Play Sample
+                        </button>
+                    </div>
+
+                    <div class="bg-card p-6 rounded-3xl border border-theme shadow-sm hover:border-primary transition-colors flex flex-col">
+                        <div class="flex items-center gap-4 mb-6">
+                            <img src="Images/chole.jpg" alt="Avatar" class="w-14 h-14 rounded-xl border-2 border-theme shadow-sm">
+                            <div>
+                                <h3 class="font-bold text-[var(--text-color)] text-lg">Chloe (Pop)</h3>
+                                <p class="text-xs text-body-muted font-bold uppercase tracking-wider">Commercial</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-[var(--bg-color)] border border-theme text-xs px-2 py-1 rounded font-medium text-[var(--text-color)]">English (UK)</span>
+                            <span class="bg-[var(--bg-color)] border border-theme text-xs px-2 py-1 rounded font-medium text-[var(--text-color)]">Energetic</span>
+                        </div>
+                        <button class="mt-auto w-full py-3 rounded-xl bg-primary/10 text-primary font-bold hover:bg-primary hover:text-white transition-colors flex items-center justify-center gap-2">
+                            <i class="fas fa-play text-xs"></i> Play Sample
+                        </button>
+                    </div>
+
+                    <div class="bg-card p-6 rounded-3xl border border-theme shadow-sm hover:border-primary transition-colors flex flex-col relative overflow-hidden">
+                        <div class="absolute top-3 right-3 bg-gradient-to-r from-primary to-accent text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider shadow-sm">Pro</div>
+                        <div class="flex items-center gap-4 mb-6">
+                            <img src="Images/david.jpg" alt="Avatar" class="w-14 h-14 rounded-xl border-2 border-theme shadow-sm">
+                            <div>
+                                <h3 class="font-bold text-[var(--text-color)] text-lg">David (Epic)</h3>
+                                <p class="text-xs text-body-muted font-bold uppercase tracking-wider">Cinematic</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-[var(--bg-color)] border border-theme text-xs px-2 py-1 rounded font-medium text-[var(--text-color)]">English (US)</span>
+                            <span class="bg-[var(--bg-color)] border border-theme text-xs px-2 py-1 rounded font-medium text-[var(--text-color)]">Deep</span>
+                        </div>
+                        <button class="mt-auto w-full py-3 rounded-xl bg-primary/10 text-primary font-bold hover:bg-primary hover:text-white transition-colors flex items-center justify-center gap-2">
+                            <i class="fas fa-play text-xs"></i> Play Sample
+                        </button>
+                    </div>
+
+                    <div class="bg-card p-6 rounded-3xl border border-theme shadow-sm hover:border-primary transition-colors flex flex-col">
+                        <div class="flex items-center gap-4 mb-6">
+                            <img src="Images/emma.jpg" alt="Avatar" class="w-14 h-14 rounded-xl border-2 border-theme shadow-sm">
+                            <div>
+                                <h3 class="font-bold text-[var(--text-color)] text-lg">Yuki (Anime)</h3>
+                                <p class="text-xs text-body-muted font-bold uppercase tracking-wider">Character</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-[var(--bg-color)] border border-theme text-xs px-2 py-1 rounded font-medium text-[var(--text-color)]">Japanese</span>
+                            <span class="bg-[var(--bg-color)] border border-theme text-xs px-2 py-1 rounded font-medium text-[var(--text-color)]">Expressive</span>
+                        </div>
+                        <button class="mt-auto w-full py-3 rounded-xl bg-primary/10 text-primary font-bold hover:bg-primary hover:text-white transition-colors flex items-center justify-center gap-2">
+                            <i class="fas fa-play text-xs"></i> Play Sample
+                        </button>
+                    </div>
+                    
+                    <div class="md:hidden flex justify-center w-full mt-2">
+                        <a href="ai-voice.html" class="text-primary font-bold hover:text-accent transition-colors flex items-center gap-2">View All Voices <i class="fas fa-arrow-right text-xs"></i></a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 bg-card transition-colors relative overflow-hidden">
+            <div class="container mx-auto px-4 md:px-8">
+                <div class="bg-gradient-to-br from-primary to-accent rounded-[3rem] p-10 md:p-20 text-center relative overflow-hidden shadow-[0_20px_50px_rgba(37,99,235,0.2)]">
+                    <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 mix-blend-overlay"></div>
+                    
+                    <div class="relative z-10 max-w-3xl mx-auto">
+                        <h2 class="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">Ready to build your digital twin?</h2>
+                        <p class="text-xl text-white/90 font-medium mb-10">Join 50,000+ creators generating studio-quality voiceovers instantly.</p>
+                        
+                        <a href="register.html" class="inline-flex items-center justify-center gap-3 bg-white text-primary px-10 py-5 rounded-full font-bold text-lg hover:scale-105 transition-transform shadow-xl">
+                            Generate Your First Voice <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <p class="text-sm text-white/70 mt-6 font-medium">No credit card required for free trial.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+   
+    <footer class="bg-[var(--bg-color)] text-[var(--text-muted)] pt-20 pb-10 border-t border-theme w-full flex flex-col items-center">
+        <div class="container mx-auto px-4 md:px-8 max-w-[1600px]">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16 text-center md:text-left">
+                <div class="flex flex-col items-center md:items-start">
+                    <a href="index.html" class="flex items-center gap-2 no-underline transition-transform duration-300 hover:scale-105">
+                    <div class="w-8 h-8 md:w-10 md:h-10 bg-primary rounded-xl flex items-center justify-center text-white shrink-0 shadow-md">
+                        <i class="fas fa-microphone-lines text-sm md:text-base"></i>
+                    </div>
+                    <div class="text-xl md:text-2xl font-black tracking-tight navbar-brand-text">VoxForge<span class="text-primary">.AI</span></div>
+                </a>
+                    <p class="text-sm mb-6 leading-relaxed">
+                        Pioneering the future of synthetic media with ethical, hyper-realistic voice cloning technology.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-card border border-theme flex items-center justify-center hover:bg-primary hover:border-primary hover:text-white transition-all text-[var(--text-color)]"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-card border border-theme flex items-center justify-center hover:bg-primary hover:border-primary hover:text-white transition-all text-[var(--text-color)]"><i class="fab fa-discord"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-card border border-theme flex items-center justify-center hover:bg-primary hover:border-primary hover:text-white transition-all text-[var(--text-color)]"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="flex flex-col items-center md:items-start">
+                    <h4 class="font-bold text-lg mb-6 text-[var(--text-color)] tracking-wide">Product</h4>
+                    <ul class="space-y-3 font-medium text-sm text-center md:text-left">
+                        <li><a href="features.html" class="hover:text-primary transition-colors">Features</a></li>
+                        <li><a href="ai-voice.html" class="hover:text-primary transition-colors">Voice Library</a></li>
+                        <li><a href="pricing.html" class="hover:text-primary transition-colors">Pricing</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">API Documentation</a></li>
+                    </ul>
+                </div>
+
+                <div class="flex flex-col items-center md:items-start">
+                    <h4 class="font-bold text-lg mb-6 text-[var(--text-color)] tracking-wide">Resources</h4>
+                    <ul class="space-y-3 font-medium text-sm text-center md:text-left">
+                        <li><a href="case-studies.html" class="hover:text-primary transition-colors">Case Studies</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Blog</a></li>
+                        <li><a href="faq.html" class="hover:text-primary transition-colors">Help Center</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Community</a></li>
+                    </ul>
+                </div>
+
+                <div class="flex flex-col items-center md:items-start">
+                    <h4 class="font-bold text-lg mb-6 text-[var(--text-color)] tracking-wide">Company</h4>
+                    <ul class="space-y-3 font-medium text-sm text-center md:text-left">
+                        <li><a href="about.html" class="hover:text-primary transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Careers</a></li>
+                        <li><a href="contact.html" class="hover:text-primary transition-colors">Contact</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Ethics Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-theme pt-8 flex flex-col md:flex-row justify-between items-center text-sm font-medium">
+                <p>&copy; 2026 VoxForge AI. All rights reserved.</p>
+                <div class="flex gap-6 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-primary transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-primary transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // --- THEME LOGIC ---
+        const htmlElement = document.documentElement;
+        const themeToggles = document.querySelectorAll('#desktop-theme-toggle-btn, #mobile-theme-toggle');
+
+        function updateThemeIcon() {
+            const isDark = htmlElement.classList.contains('dark');
+            themeToggles.forEach(btn => {
+                const icon = btn.querySelector('i');
+                if (icon) {
+                    icon.className = isDark ? 'fas fa-sun text-[10px]' : 'fas fa-moon text-[10px]';
+                }
+            });
+        }
+
+        function toggleDarkMode() {
+            htmlElement.classList.toggle('dark');
+            const isDark = htmlElement.classList.contains('dark');
+            htmlElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            updateThemeIcon();
+        }
+
+        themeToggles.forEach(btn => btn.addEventListener('click', toggleDarkMode));
+
+        const savedTheme = localStorage.getItem('theme') || 'dark'; 
+        if (savedTheme === 'dark') {
+            htmlElement.classList.add("dark");
+            htmlElement.setAttribute('data-theme', 'dark');
+        } else {
+            htmlElement.classList.remove("dark");
+            htmlElement.setAttribute('data-theme', 'light');
+        }
+        updateThemeIcon();
+
+        // --- RTL LOGIC ---
+        const rtlToggles = document.querySelectorAll('#desktop-rtl-toggle-btn, #mobile-rtl-toggle');
+
+        function toggleRTL() {
+            const current = htmlElement.getAttribute("dir") || "ltr";
+            const next = current === "rtl" ? "ltr" : "rtl";
+            htmlElement.setAttribute("dir", next);
+            localStorage.setItem("direction", next);
+            updateRTLIcons(next);
+        }
+
+        function updateRTLIcons(dir) {
+            // Keep the text RTL since the image just has "RTL" as text for mobile, 
+            // but desktop might use an icon if you revert it, keeping it text for now based on image matching.
+        }
+
+        rtlToggles.forEach(btn => btn.addEventListener("click", toggleRTL));
+
+        if (localStorage.getItem("direction") === "rtl") {
+            htmlElement.setAttribute("dir", "rtl");
+            updateRTLIcons("rtl");
+        } else {
+            updateRTLIcons("ltr");
+        }
+
+        // --- DROPDOWNS & MENU ---
+        function toggleDesktopDropdown(id) {
+            document.querySelectorAll('.dropdown').forEach(d => {
+                if(d.id !== id) d.classList.remove('active');
+            });
+            document.getElementById(id).classList.toggle('active');
+        }
+        
+        window.toggleMobileDropdown = function(id) {
+            const content = document.getElementById(id);
+            const button = content.previousElementSibling;
+            const arrow = button.querySelector('.dropdown-arrow');
+            
+            content.classList.toggle('active');
+            
+            if(content.classList.contains('active')) {
+                arrow.style.transform = 'rotate(180deg)';
+            } else {
+                arrow.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.dropdown')) {
+                document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('active'));
+            }
+        });
+
+        // --- MOBILE MENU BEHAVIOR ---
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileOverlay = document.getElementById('mobile-overlay');
+        const closeMobileMenu = document.getElementById('close-mobile-menu');
+
+        function openMobileNav() {
+            mobileMenu.classList.add('active');
+            mobileOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden'; 
+        }
+
+        function closeMobileNav() {
+            mobileMenu.classList.remove('active');
+            mobileOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        if(mobileMenuBtn) mobileMenuBtn.addEventListener('click', openMobileNav);
+        if(closeMobileMenu) closeMobileMenu.addEventListener('click', closeMobileNav);
+        if(mobileOverlay) mobileOverlay.addEventListener('click', closeMobileNav);
+
+        window.addEventListener('resize', () => {
+            if(window.innerWidth >= 1280 && mobileMenu) {
+                closeMobileNav();
+            }
+        });
+
+        // --- JS for Hero Waveform Generation ---
+        const waveContainer = document.getElementById('hero-waveform');
+        if(waveContainer) {
+            for(let i = 0; i < 30; i++) {
+                const bar = document.createElement('div');
+                bar.className = 'w-1.5 md:w-2 bg-primary rounded-full animate-wave';
+                bar.style.height = `${Math.max(20, Math.random() * 100)}%`;
+                bar.style.animationDelay = `${Math.random() * 1.5}s`;
+                bar.style.opacity = Math.max(0.3, Math.random());
+                waveContainer.appendChild(bar);
+            }
+        }
+
+        // --- Simple Demo Player Interaction UI ---
+        const mainPlayBtn = document.getElementById('main-play-btn');
+        const playIcon = mainPlayBtn ? mainPlayBtn.querySelector('i') : null;
+        let isPlaying = false;
+
+        if(mainPlayBtn && playIcon) {
+            mainPlayBtn.addEventListener('click', () => {
+                isPlaying = !isPlaying;
+                if(isPlaying) {
+                    playIcon.classList.remove('fa-play', 'ml-1');
+                    playIcon.classList.add('fa-pause');
+                } else {
+                    playIcon.classList.remove('fa-pause');
+                    playIcon.classList.add('fa-play', 'ml-1');
+                }
+            });
+        }
+        
+        // Voice selection active state toggle
+        const voiceBtns = document.querySelectorAll('.voice-select-btn');
+        voiceBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                voiceBtns.forEach(b => {
+                    b.classList.remove('active', 'bg-primary/10', 'border-primary');
+                    b.classList.add('border-transparent');
+                });
+                this.classList.remove('border-transparent');
+                this.classList.add('active', 'bg-primary/10', 'border-primary');
+            });
+        });
+    </script>
+</body>
+</html>

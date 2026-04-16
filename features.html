@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" dir="ltr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="VoxForge AI Features - Powerful AI Audio Tools">
+    <title>Features | VoxForge AI</title>
+    
+    <link rel="icon" href="Images/Growwpark Favicon.jpg">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script src="tailwind.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563EB',   /* Deep Blue from Home 2 */
+                        secondary: '#60A5FA', /* Light Blue from Home 2 */
+                        bgLight: '#FFFFFF',   /* White */
+                        bgDark: '#111111',    /* Pure dark grey aesthetic */
+                        cardLight: '#FFFFFF',
+                        cardDark: '#000000',  /* Pure black card */
+                        textLight: '#000000',
+                        textDark: '#FFFFFF',
+                        accent: '#1D4ED8'     /* Darker Blue */
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    screens: {
+                        'xs': '360px', 
+                        'sm': '390px', 
+                        'md': '768px', 
+                        'lg': '1024px', 
+                        'xl': '1280px', 
+                        '2xl': '1536px', 
+                    },
+                    animation: {
+                        'wave': 'wave 1.2s ease-in-out infinite',
+                        'blob': 'blob 7s infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        wave: {
+                            '0%, 100%': { transform: 'scaleY(0.5)' },
+                            '50%': { transform: 'scaleY(1.5)' },
+                        },
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        glow: {
+                            '0%': { filter: 'drop-shadow(0 0 10px rgba(37,99,235,0.4))' },
+                            '100%': { filter: 'drop-shadow(0 0 25px rgba(96,165,250,0.8))' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        :root {
+            /* Home 2 Light Theme Variables */
+            --bg-color: #F8FAFC; 
+            --text-color: #0F172A;
+            --text-muted: #4B5563;
+            --card-bg: #FFFFFF;
+            --border-color: #E2E8F0;
+            --hover-highlight: #2563EB;
+            
+            /* Navbar Specific Variables */
+            --navbar-bg: #FFFFFF;
+            --nav-text: #0F172A;
+            --dropdown-bg: #FFFFFF;
+        }
+        
+        [data-theme="dark"] {
+            /* Home 2 Dark Theme Variables */
+            --bg-color: #111111;
+            --text-color: #FFFFFF;
+            --text-muted: #9CA3AF;
+            --card-bg: #000000;
+            --border-color: #1F2937;
+            --hover-highlight: #60A5FA;
+            
+            /* Navbar Specific Variables */
+            --navbar-bg: #111111;
+            --nav-text: #FFFFFF;
+            --dropdown-bg: #000000;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
+            overflow-x: hidden;
+        }
+
+        .text-body-muted { color: var(--text-muted); transition: color 0.3s ease; }
+        .bg-card { background-color: var(--card-bg); border-color: var(--border-color); }
+        .border-theme { border-color: var(--border-color); }
+
+        /* --- NAVBAR STYLES --- */
+        .navbar-container {
+            background-color: var(--navbar-bg);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            border-bottom: 1px solid var(--border-color);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+        
+        .nav-link {
+            color: var(--nav-text);
+            padding: 8px 12px;
+            transition: all 0.3s ease;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-weight: 600;
+            white-space: nowrap;
+            cursor: pointer;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .nav-link:hover { color: var(--hover-highlight); }
+        .nav-link.active { color: var(--hover-highlight); font-weight: 700; }
+        
+        .navbar-brand-text { color: var(--nav-text); }
+
+        .nav-icon-btn {
+            background-color: transparent; 
+            color: var(--nav-text);
+        }
+
+        /* Dropdowns */
+        .dropdown { position: relative; }
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            inset-inline-start: 0;
+            background-color: var(--dropdown-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            min-width: 180px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        html[dir="rtl"] .dropdown-menu {
+            inset-inline-start: auto;
+            inset-inline-end: 0;
+        }
+        .dropdown:hover .dropdown-menu, .dropdown.active .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .dropdown-item {
+            display: block;
+            padding: 12px 20px;
+            color: var(--nav-text);
+            transition: all 0.3s ease;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        .dropdown-item:hover {
+            background-color: rgba(37, 99, 235, 0.1);
+            color: var(--hover-highlight);
+            padding-inline-start: 25px;
+        }
+        .dropdown-arrow { font-size: 0.7rem; transition: transform 0.3s ease; }
+        .dropdown:hover .dropdown-arrow { transform: rotate(180deg); }
+        
+        /* Mobile Menu */
+        .mobile-menu {
+            transform: translateX(-100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background-color: var(--card-bg);
+        }
+        html[dir="rtl"] .mobile-menu { transform: translateX(100%); }
+        .mobile-menu.active { transform: translateX(0); }
+        html[dir="rtl"] .mobile-menu.active { transform: translateX(0); }
+        
+        .mobile-dropdown-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background-color: transparent;
+        }
+        .mobile-dropdown-content.active { max-height: 500px; }
+
+        .mobile-overlay {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+        }
+        .mobile-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        @media (max-width: 1279px) {
+            .desktop-nav, .navbar-right-desktop { display: none !important; }
+            .mobile-menu-button { display: flex !important; }
+        }
+        @media (min-width: 1280px) {
+            .desktop-nav { display: flex !important; }
+            .navbar-right-desktop { display: flex !important; }
+            .mobile-menu-button { display: none !important; }
+        }
+
+        /* Glassmorphism Classes */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        [data-theme="light"] .glass-card {
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        /* Custom Sliders for Features */
+        .studio-slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 6px;
+            border-radius: 5px;  
+            background: var(--border-color);
+            outline: none;
+        }
+        .studio-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #2563EB;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(37, 99, 235, 0.5);
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-color); }
+        ::-webkit-scrollbar-thumb { background: #2563EB; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #1D4ED8; }
+    </style>
+</head>
+<body class="antialiased selection:bg-primary selection:text-white flex flex-col items-center">
+
+    <nav id="navbar" class="navbar-container py-3 fixed top-0 w-full z-[1000]">
+        <div class="container mx-auto px-4 lg:px-8 max-w-[1600px]">
+            <div class="flex items-center justify-between h-14 md:h-auto">
+                
+                <a href="index.html" class="flex items-center gap-2 no-underline transition-transform duration-300 hover:scale-105">
+                    <div class="w-8 h-8 md:w-10 md:h-10 bg-primary rounded-xl flex items-center justify-center text-white shrink-0 shadow-md">
+                        <i class="fas fa-microphone-lines text-sm md:text-base"></i>
+                    </div>
+                    <div class="text-xl md:text-2xl font-black tracking-tight navbar-brand-text">VoxForge<span class="text-primary">.AI</span></div>
+                </a>
+                
+                <div class="desktop-nav items-center space-x-1 lg:space-x-3 rtl:space-x-reverse">
+                    <div class="dropdown" id="home-dropdown">
+                        <div class="nav-link" onclick="toggleDesktopDropdown('home-dropdown')">
+                            Home <i class="fas fa-chevron-down dropdown-arrow"></i>
+                        </div>
+                        <div class="dropdown-menu">
+                            <a href="index.html" class="dropdown-item">Home 1</a>
+                            <a href="home-2.html" class="dropdown-item">Home 2</a>
+                        </div>
+                    </div>
+
+                    <a href="about.html" class="nav-link">About</a>
+                    <a href="features.html" class="nav-link active">Features</a>
+                    <a href="ai-voice.html" class="nav-link">AI Voice</a>
+                    <a href="case-studies.html" class="nav-link">Case Studies</a>
+                    <a href="pricing.html" class="nav-link">Pricing</a>
+                    <a href="faq.html" class="nav-link">FAQ</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+
+                    <div class="dropdown" id="dashboard-dropdown">
+                        <div class="nav-link" onclick="toggleDesktopDropdown('dashboard-dropdown')">
+                            Dashboard <i class="fas fa-chevron-down dropdown-arrow"></i>
+                        </div>
+                        <div class="dropdown-menu">
+                            <a href="user-dashboard.html" class="dropdown-item"><i class="fas fa-user me-2 text-primary"></i> User</a>
+                            <a href="admin-dashboard.html" class="dropdown-item"><i class="fas fa-shield me-2 text-primary"></i> Admin</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="navbar-right-desktop flex items-center gap-2 lg:gap-3">
+                    <button class="w-10 h-10 nav-icon-btn rounded-full flex items-center justify-center transition-all duration-300 hover:bg-primary/10 hover:text-primary shrink-0 border border-theme cursor-pointer" id="desktop-theme-toggle-btn" title="Toggle Dark/Light Mode">
+                        <i class="fas fa-moon text-sm" id="desktop-theme-icon"></i>
+                    </button>
+                    <button class="w-10 h-10 nav-icon-btn rounded-full flex items-center justify-center transition-all duration-300 hover:bg-primary/10 hover:text-primary shrink-0 border border-theme cursor-pointer text-[10px] font-bold" id="desktop-rtl-toggle-btn" title="Toggle RTL">
+                        RTL
+                    </button>
+                    
+                    <div class="flex items-center gap-2 ms-2">
+                        <a href="login.html" class="h-10 px-6 rounded-full border border-theme bg-card text-[var(--text-color)] hover:border-primary hover:text-primary flex items-center justify-center font-bold text-xs transition-all uppercase tracking-wider">
+                            Login
+                        </a>
+                        <a href="register.html" class="h-10 px-6 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xs transition-all hover:bg-accent shadow-[0_0_15px_rgba(37,99,235,0.4)] uppercase tracking-wider">
+                            Register
+                        </a>
+                    </div>
+                </div>
+                
+                <button id="mobile-menu-btn" class="nav-icon-btn text-xl cursor-pointer p-2 rounded-lg w-10 h-10 flex items-center justify-center mobile-menu-button hover:bg-primary/10 hover:text-primary transition-colors">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <div id="mobile-overlay" class="mobile-overlay fixed inset-0 z-[9998]"></div>
+
+    <div id="mobile-menu" class="mobile-menu fixed top-4 bottom-4 start-4 w-[85%] max-w-[340px] z-[9999] rounded-2xl shadow-2xl flex flex-col border border-theme">
+        <div class="p-6 flex flex-col h-full overflow-y-auto">
+            
+            <div class="flex justify-between items-center mb-6 pb-6 border-b border-[var(--border-color)]">
+                <a href="index.html" class="flex items-center gap-2 no-underline">
+                    <div class="w-7 h-7 bg-primary rounded flex items-center justify-center text-white shrink-0">
+                        <i class="fas fa-microphone text-[10px]"></i>
+                    </div>
+                    <span class="text-[15px] font-bold tracking-tight text-[var(--text-color)] block">VoxForge<span class="text-primary">.AI</span></span>
+                </a>
+                
+                <div class="flex items-center gap-2">
+                    <button class="w-7 h-7 rounded-full flex items-center justify-center transition-all duration-300 hover:bg-primary/10 hover:text-primary shrink-0 border border-[var(--border-color)] cursor-pointer text-[9px] font-bold text-[var(--text-color)]" id="mobile-rtl-toggle" title="Toggle RTL">
+                        RTL
+                    </button>
+                    
+                    <button class="w-7 h-7 rounded-full flex items-center justify-center transition-all duration-300 hover:bg-primary/10 hover:text-primary shrink-0 border border-[var(--border-color)] cursor-pointer text-[var(--text-color)]" id="mobile-theme-toggle" title="Toggle Dark Mode">
+                        <i class="fas fa-moon text-[10px]" id="mobile-theme-icon"></i>
+                    </button>
+                    
+                    <button id="close-mobile-menu" class="text-[var(--text-color)] text-sm ms-1 transition-transform active:scale-90 border-none bg-transparent cursor-pointer hover:text-primary font-bold">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="space-y-1 flex-grow">
+                <div>
+                    <button class="flex items-center justify-between w-full text-[var(--text-color)] hover:bg-primary/5 text-[11px] font-bold py-3.5 px-4 rounded-lg cursor-pointer border-0 uppercase tracking-widest transition-colors bg-transparent" onclick="toggleMobileDropdown('home-mobile')">
+                        <span>HOME</span>
+                        <i class="fas fa-chevron-down text-[var(--text-muted)] dropdown-arrow"></i>
+                    </button>
+                    <div id="home-mobile" class="mobile-dropdown-content">
+                        <a href="index.html" class="block text-[var(--text-color)] py-2.5 px-6 transition-all duration-300 hover:text-primary font-bold text-[11px] uppercase tracking-widest">Home 1</a>
+                        <a href="home-2.html" class="block text-[var(--text-color)] py-2.5 px-6 transition-all duration-300 hover:text-primary font-bold text-[11px] uppercase tracking-widest">Home 2</a>
+                    </div>
+                </div>
+
+                <a href="about.html" class="block text-[var(--text-color)] text-[11px] font-bold py-3.5 px-4 no-underline uppercase tracking-widest hover:bg-primary/5 rounded-lg transition-colors">ABOUT</a>
+                <a href="features.html" class="block text-primary bg-primary/10 text-[11px] font-bold py-3.5 px-4 no-underline uppercase tracking-widest rounded-lg transition-colors">FEATURES</a>
+                <a href="ai-voice.html" class="block text-[var(--text-color)] text-[11px] font-bold py-3.5 px-4 no-underline uppercase tracking-widest hover:bg-primary/5 rounded-lg transition-colors">AI VOICE</a>
+                <a href="case-studies.html" class="block text-[var(--text-color)] text-[11px] font-bold py-3.5 px-4 no-underline uppercase tracking-widest hover:bg-primary/5 rounded-lg transition-colors">CASE STUDIES</a>
+                <a href="pricing.html" class="block text-[var(--text-color)] text-[11px] font-bold py-3.5 px-4 no-underline uppercase tracking-widest hover:bg-primary/5 rounded-lg transition-colors">PRICING</a>
+                <a href="faq.html" class="block text-[var(--text-color)] text-[11px] font-bold py-3.5 px-4 no-underline uppercase tracking-widest hover:bg-primary/5 rounded-lg transition-colors">FAQ</a>
+                <a href="contact.html" class="block text-[var(--text-color)] text-[11px] font-bold py-3.5 px-4 no-underline uppercase tracking-widest hover:bg-primary/5 rounded-lg transition-colors">CONTACT</a>
+                
+                <div>
+                    <button class="flex items-center justify-between w-full text-[var(--text-color)] hover:bg-primary/5 text-[11px] font-bold py-3.5 px-4 rounded-lg cursor-pointer border-0 bg-transparent uppercase tracking-widest transition-colors" onclick="toggleMobileDropdown('dashboard-mobile')">
+                        <span>DASHBOARD</span>
+                        <i class="fas fa-chevron-down text-[var(--text-muted)] dropdown-arrow"></i>
+                    </button>
+                    <div id="dashboard-mobile" class="mobile-dropdown-content">
+                        <a href="user-dashboard.html" class="block text-[var(--text-color)] py-2.5 px-6 transition-all duration-300 hover:text-primary font-bold text-[11px] uppercase tracking-widest">User Dashboard</a>
+                        <a href="admin-dashboard.html" class="block text-[var(--text-color)] py-2.5 px-6 transition-all duration-300 hover:text-primary font-bold text-[11px] uppercase tracking-widest">Admin Dashboard</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-6 pt-6 border-t border-[var(--border-color)] flex flex-col gap-3 shrink-0">
+                <a href="login.html" class="flex items-center justify-center w-full py-3.5 rounded-full border border-[var(--border-color)] bg-[var(--bg-color)] text-[var(--text-color)] hover:border-primary hover:text-primary font-bold text-[11px] transition-all uppercase tracking-widest">
+                    LOGIN
+                </a>
+                <a href="register.html" class="flex items-center justify-center w-full py-3.5 rounded-full bg-primary text-white font-bold text-[11px] transition-all hover:bg-accent uppercase tracking-widest shadow-sm">
+                    REGISTER
+                </a>
+            </div>
+            
+        </div>
+    </div>
+
+    <main class="w-full flex-grow flex flex-col items-center">
+
+        <section class="relative h-[100dvh] w-full flex flex-col justify-center items-center overflow-hidden bg-black border-b border-theme pt-14">
+            
+            <img src="Images/voice features.jpg" alt="Features Hero" class="absolute inset-0 w-full h-full object-cover opacity-60 z-0 pointer-events-none">
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 z-0 pointer-events-none"></div>
+
+            <div class="container mx-auto px-4 relative z-10 text-center flex-grow flex flex-col justify-center items-center w-full">
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tight mb-6 leading-tight text-white drop-shadow-lg max-w-5xl mx-auto">
+                    Powerful AI <br/>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-white animate-glow drop-shadow-none">Audio Tools</span>
+                </h1>
+                
+                <p class="text-lg md:text-2xl text-white/90 max-w-3xl mx-auto mb-12 font-medium tracking-wide drop-shadow-md">
+                    Discover the suite of cutting-edge features designed to revolutionize your audio production workflow.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-6 w-full max-w-lg mx-auto">
+                    <a href="#explore" class="w-full sm:w-auto px-10 py-4 bg-primary text-white rounded-full font-bold text-lg transition-all transform hover:scale-105 shadow-[0_0_25px_rgba(37,99,235,0.5)] flex items-center justify-center gap-3 border border-white/10 uppercase tracking-widest">
+                        Explore Features
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="explore" class="py-24 md:py-32 bg-[var(--bg-color)] border-b border-theme transition-colors relative w-full overflow-hidden">
+            <div class="container mx-auto px-4 md:px-8">
+                <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+                    
+                    <div class="w-full lg:w-1/2 relative group">
+                        <div class="absolute inset-0 bg-primary/20 rounded-3xl blur-[80px] pointer-events-none transition-opacity group-hover:opacity-60 duration-500"></div>
+                        <img src="Images/David Ross.jpg" alt="Instant Voice Cloning" class="w-full aspect-[4/3] rounded-[2rem] object-cover shadow-2xl relative z-10 border border-theme transition-transform duration-700 hover:scale-[1.02]">
+                    </div>
+
+                    <div class="w-full lg:w-1/2 text-center lg:text-left">
+                        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider mb-6 border border-primary/20">
+                            <i class="fas fa-fingerprint"></i> Core Feature
+                        </div>
+                        <h2 class="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--text-color)] mb-6 leading-tight">Instant Voice Cloning</h2>
+                        <p class="text-lg text-body-muted font-medium mb-8 leading-relaxed">
+                            Replicate any voice with astonishing accuracy using just a 60-second audio sample. Our neural engine captures the unique timbre, pacing, and breath patterns of the original speaker, creating a flawless digital twin.
+                        </p>
+                        <div class="flex flex-col items-center lg:items-start gap-5 mb-10">
+                            <div class="flex items-start gap-4 text-left">
+                                <div class="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0 mt-1 border border-primary/20"><i class="fas fa-check text-sm"></i></div>
+                                <div>
+                                    <h4 class="font-bold text-[var(--text-color)] text-lg">Zero Studio Time</h4>
+                                    <p class="text-sm text-body-muted font-medium mt-1">Clone from existing recordings or phone memos anywhere, instantly.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4 text-left">
+                                <div class="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0 mt-1 border border-primary/20"><i class="fas fa-check text-sm"></i></div>
+                                <div>
+                                    <h4 class="font-bold text-[var(--text-color)] text-lg">Emotional Integrity</h4>
+                                    <p class="text-sm text-body-muted font-medium mt-1">Retains the natural emotional resonance and human touch of the source.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 md:py-32 bg-card border-b border-theme transition-colors relative w-full overflow-hidden">
+            <div class="container mx-auto px-4 md:px-8 relative z-10">
+                <div class="flex flex-col lg:flex-row-reverse items-center gap-12 lg:gap-20">
+                    
+                    <div class="w-full lg:w-1/2 relative">
+                        <div class="glass-card rounded-[2.5rem] border border-theme shadow-2xl relative z-10 overflow-hidden transform transition-transform hover:-translate-y-2 duration-500">
+                            <div class="bg-[#1e1e1e] px-4 py-3 flex items-center gap-2 border-b border-[#000]">
+                                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                                <span class="ml-4 text-xs font-sans font-bold text-gray-400">script_draft_01.txt</span>
+                            </div>
+                            <div class="p-6 md:p-8 bg-[#000000] font-sans font-medium text-sm leading-loose">
+                                <span class="text-gray-500">1</span> <span class="text-secondary">import</span> <span class="text-white">VoxForge</span><br>
+                                <span class="text-gray-500">2</span> <br>
+                                <span class="text-gray-500">3</span> <span class="text-green-500"># Input text for synthesis</span><br>
+                                <span class="text-gray-500">4</span> <span class="text-primary">text</span> <span class="text-white">=</span> <span class="text-yellow-500">"The future of audio is here. It sounds perfectly human."</span><br>
+                                <span class="text-gray-500">5</span> <br>
+                                <span class="text-gray-500">6</span> <span class="text-white">audio = VoxForge.generate(</span><br>
+                                <span class="text-gray-500">7</span> &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-primary">text</span><span class="text-white">=text,</span><br>
+                                <span class="text-gray-500">8</span> &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-primary">voice_id</span><span class="text-white">=</span><span class="text-yellow-500">"marcus_v2"</span><br>
+                                <span class="text-gray-500">9</span> <span class="text-white">)</span>
+                            </div>
+                            <div class="p-5 bg-primary text-white flex items-center gap-4">
+                                <i class="fas fa-circle-play text-3xl cursor-pointer hover:scale-110 transition-transform"></i>
+                                <div class="flex-grow flex items-center gap-1 h-8">
+                                    <div class="w-1 bg-white/50 h-1/4 rounded-full"></div><div class="w-1 bg-white h-full rounded-full"></div><div class="w-1 bg-white/80 h-1/2 rounded-full"></div><div class="w-1 bg-white h-3/4 rounded-full"></div><div class="w-1 bg-white/40 h-1/4 rounded-full"></div><div class="w-1 bg-white h-full rounded-full"></div><div class="w-1 bg-white/60 h-2/3 rounded-full"></div><div class="w-1 bg-white/90 h-1/3 rounded-full"></div><div class="w-1 bg-white/30 h-full rounded-full"></div>
+                                </div>
+                                <span class="text-sm font-bold">0:04</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w-full lg:w-1/2 text-center lg:text-left">
+                        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider mb-6 border border-primary/20">
+                            <i class="fas fa-keyboard"></i> Synthesis
+                        </div>
+                        <h2 class="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--text-color)] mb-6 leading-tight">Ultra-Realistic Text-to-Speech</h2>
+                        <p class="text-lg text-body-muted font-medium mb-8 leading-relaxed">
+                            Generate studio-quality voiceovers from text in milliseconds. Eliminate robotic cadences with our context-aware pronunciation models that understand natural sentence flow, punctuation, and emphasis.
+                        </p>
+                        <a href="register.html" class="inline-flex items-center gap-2 text-primary font-bold hover:text-accent transition-colors uppercase tracking-widest text-sm bg-primary/5 px-6 py-3 rounded-full border border-primary/20 hover:bg-primary/10">
+                            Try the TTS Editor <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 md:py-32 bg-[var(--bg-color)] border-b border-theme transition-colors relative w-full overflow-hidden">
+            <div class="container mx-auto px-4 md:px-8">
+                <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+                    
+                    <div class="w-full lg:w-1/2 relative">
+                        <div class="glass-card rounded-[2.5rem] p-8 md:p-10 border border-theme shadow-2xl relative z-10 transition-transform duration-500 hover:scale-[1.02]">
+                            <h3 class="text-xl font-bold text-[var(--text-color)] mb-8 border-b border-theme pb-4 uppercase tracking-widest text-center">Performance Settings</h3>
+                            
+                            <div class="space-y-8 text-left">
+                                <div>
+                                    <div class="flex justify-between items-center mb-3">
+                                        <label class="text-sm font-bold text-body-muted tracking-wide uppercase">Stability</label>
+                                        <span class="text-xs text-primary font-bold bg-primary/10 px-3 py-1 rounded-full border border-primary/20">75%</span>
+                                    </div>
+                                    <input type="range" min="0" max="100" value="75" class="studio-slider w-full pointer-events-none">
+                                    <div class="flex justify-between text-[10px] text-body-muted mt-2 uppercase font-bold"><span>Variable</span><span>Monotone</span></div>
+                                </div>
+
+                                <div>
+                                    <div class="flex justify-between items-center mb-3">
+                                        <label class="text-sm font-bold text-body-muted tracking-wide uppercase">Clarity / Similarity</label>
+                                        <span class="text-xs text-primary font-bold bg-primary/10 px-3 py-1 rounded-full border border-primary/20">90%</span>
+                                    </div>
+                                    <input type="range" min="0" max="100" value="90" class="studio-slider w-full pointer-events-none">
+                                    <div class="flex justify-between text-[10px] text-body-muted mt-2 uppercase font-bold"><span>Low</span><span>High</span></div>
+                                </div>
+
+                                <div>
+                                    <div class="flex justify-between items-center mb-3">
+                                        <label class="text-sm font-bold text-body-muted tracking-wide uppercase">Exaggeration</label>
+                                        <span class="text-xs text-primary font-bold bg-primary/10 px-3 py-1 rounded-full border border-primary/20">40%</span>
+                                    </div>
+                                    <input type="range" min="0" max="100" value="40" class="studio-slider w-full pointer-events-none">
+                                    <div class="flex justify-between text-[10px] text-body-muted mt-2 uppercase font-bold"><span>Subtle</span><span>Theatrical</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w-full lg:w-1/2 text-center lg:text-left">
+                        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider mb-6 border border-primary/20">
+                            <i class="fas fa-sliders"></i> Direction
+                        </div>
+                        <h2 class="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--text-color)] mb-6 leading-tight">Granular Emotion Control</h2>
+                        <p class="text-lg text-body-muted font-medium mb-8 leading-relaxed">
+                            Don't just generate speech—direct the performance. Command your AI voices to whisper, shout, cry, or laugh using intuitive slider controls. Adjust the micro-expressions that make a voice truly human.
+                        </p>
+                        <div class="flex flex-wrap justify-center lg:justify-start gap-4">
+                            <span class="px-5 py-2.5 rounded-xl bg-card border border-theme text-sm font-bold text-[var(--text-color)] shadow-sm hover:border-primary transition-colors cursor-default"><i class="fas fa-face-smile text-primary mr-2"></i> Joyful</span>
+                            <span class="px-5 py-2.5 rounded-xl bg-card border border-theme text-sm font-bold text-[var(--text-color)] shadow-sm hover:border-primary transition-colors cursor-default"><i class="fas fa-face-sad-tear text-primary mr-2"></i> Somber</span>
+                            <span class="px-5 py-2.5 rounded-xl bg-card border border-theme text-sm font-bold text-[var(--text-color)] shadow-sm hover:border-primary transition-colors cursor-default"><i class="fas fa-bolt text-primary mr-2"></i> Intense</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 md:py-32 bg-card border-b border-theme transition-colors relative w-full overflow-hidden">
+            <div class="container mx-auto px-4 md:px-8">
+                <div class="flex flex-col lg:flex-row-reverse items-center gap-12 lg:gap-20">
+                    
+                    <div class="w-full lg:w-1/2 relative flex justify-center lg:justify-end">
+                        <div class="relative w-full max-w-md aspect-square flex items-center justify-center">
+                            <div class="absolute z-20 w-28 h-28 bg-primary text-white rounded-full flex items-center justify-center text-3xl font-black shadow-[0_0_40px_rgba(37,99,235,0.5)] animate-pulse">
+                                EN
+                            </div>
+                            
+                            <div class="absolute z-10 w-16 h-16 bg-[var(--bg-color)] border-2 border-theme rounded-full flex items-center justify-center font-bold text-[var(--text-color)] -translate-y-36 shadow-lg">FR</div>
+                            <div class="absolute z-10 w-16 h-16 bg-[var(--bg-color)] border-2 border-theme rounded-full flex items-center justify-center font-bold text-[var(--text-color)] translate-x-36 translate-y-12 shadow-lg">ES</div>
+                            <div class="absolute z-10 w-16 h-16 bg-[var(--bg-color)] border-2 border-theme rounded-full flex items-center justify-center font-bold text-[var(--text-color)] -translate-x-36 translate-y-12 shadow-lg">JP</div>
+                            <div class="absolute z-10 w-16 h-16 bg-[var(--bg-color)] border-2 border-theme rounded-full flex items-center justify-center font-bold text-[var(--text-color)] translate-y-36 -translate-x-16 shadow-lg">DE</div>
+                            <div class="absolute z-10 w-16 h-16 bg-[var(--bg-color)] border-2 border-theme rounded-full flex items-center justify-center font-bold text-[var(--text-color)] translate-y-36 translate-x-16 shadow-lg">IT</div>
+                            
+                            <svg class="absolute inset-0 w-full h-full -z-10 text-[var(--text-muted)] opacity-30" viewBox="0 0 400 400">
+                                <line x1="200" y1="200" x2="200" y2="56" stroke="currentColor" stroke-width="2" stroke-dasharray="6" />
+                                <line x1="200" y1="200" x2="344" y2="248" stroke="currentColor" stroke-width="2" stroke-dasharray="6" />
+                                <line x1="200" y1="200" x2="56" y2="248" stroke="currentColor" stroke-width="2" stroke-dasharray="6" />
+                                <line x1="200" y1="200" x2="136" y2="344" stroke="currentColor" stroke-width="2" stroke-dasharray="6" />
+                                <line x1="200" y1="200" x2="264" y2="344" stroke="currentColor" stroke-width="2" stroke-dasharray="6" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="w-full lg:w-1/2 text-center lg:text-left">
+                        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider mb-6 border border-primary/20">
+                            <i class="fas fa-globe"></i> Localization
+                        </div>
+                        <h2 class="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--text-color)] mb-6 leading-tight">Seamless Multi-Language Translation</h2>
+                        <p class="text-lg text-body-muted font-medium mb-8 leading-relaxed">
+                            Break global barriers. Translate your cloned voice into over 50 languages instantly. Our engine retains the exact vocal characteristics and emotional delivery of the original audio, allowing you to speak fluently to the world.
+                        </p>
+                        <a href="features.html" class="inline-flex items-center gap-2 text-[var(--text-color)] border-b-2 border-primary pb-1 font-bold hover:text-primary transition-colors uppercase tracking-widest text-sm">
+                            View Supported Languages <i class="fas fa-arrow-right ml-1 text-primary"></i>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 md:py-32 bg-black text-white relative w-full overflow-hidden border-b border-theme">
+            <div class="container mx-auto px-4 md:px-8 relative z-10">
+                <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+                    
+                    <div class="w-full lg:w-1/2 text-center lg:text-left">
+                        <span class="text-primary font-bold tracking-widest uppercase text-sm block mb-4">For Developers</span>
+                        <h2 class="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">Build with the VoxForge API</h2>
+                        <p class="text-lg text-white/70 font-medium mb-10 leading-relaxed">
+                            Integrate world-class voice synthesis directly into your apps, games, or automated workflows. Our robust REST API is built for scale, offering sub-50ms latency for streaming audio generation.
+                        </p>
+                        <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
+                            <a href="#" class="px-8 py-4 bg-primary text-white rounded-xl font-bold uppercase tracking-widest text-sm hover:scale-105 transition-transform text-center shadow-[0_0_15px_rgba(37,99,235,0.4)]">Get API Keys</a>
+                            <a href="#" class="px-8 py-4 bg-transparent border-2 border-white/20 text-white rounded-xl font-bold uppercase tracking-widest text-sm hover:bg-white/10 transition-colors text-center flex items-center justify-center gap-2"><i class="fas fa-book"></i> Documentation</a>
+                        </div>
+                    </div>
+
+                    <div class="w-full lg:w-1/2">
+                        <div class="rounded-2xl overflow-hidden bg-[#111111] border border-[#333] shadow-2xl transition-transform hover:-translate-y-2 duration-500 text-left">
+                            <div class="flex items-center gap-2 px-4 py-3 bg-[#000000] border-b border-[#333]">
+                                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                                <span class="ml-2 text-xs font-sans font-bold text-gray-400">POST /v1/generate</span>
+                            </div>
+                            <div class="p-6 md:p-8 font-sans font-medium text-sm sm:text-base overflow-x-auto leading-relaxed">
+                                <span class="text-pink-500">curl</span> <span class="text-gray-400">--request</span> <span class="text-green-500">POST</span> \<br>
+                                &nbsp;&nbsp;<span class="text-gray-400">--url</span> <span class="text-yellow-500">https://api.voxforge.ai/v1/generate</span> \<br>
+                                &nbsp;&nbsp;<span class="text-gray-400">--header</span> <span class="text-yellow-500">'Authorization: Bearer YOUR_API_KEY'</span> \<br>
+                                &nbsp;&nbsp;<span class="text-gray-400">--header</span> <span class="text-yellow-500">'Content-Type: application/json'</span> \<br>
+                                &nbsp;&nbsp;<span class="text-gray-400">--data</span> <span class="text-yellow-500">'{</span><br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-secondary">"text"</span><span class="text-yellow-500">: "Hello, world!",</span><br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-secondary">"voice_id"</span><span class="text-yellow-500">: "nx-alex-v2",</span><br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-secondary">"model"</span><span class="text-yellow-500">: "eleven_multilingual_v2",</span><br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-secondary">"settings"</span><span class="text-yellow-500">: {</span><br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-secondary">"stability"</span><span class="text-yellow-500">: 0.75</span><br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-yellow-500">}</span><br>
+                                &nbsp;&nbsp;<span class="text-yellow-500">}'</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-[var(--bg-color)] text-[var(--text-muted)] pt-20 pb-10 border-t border-theme w-full flex flex-col items-center">
+        <div class="container mx-auto px-4 md:px-8 max-w-[1600px]">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16 text-center md:text-left">
+                <div class="flex flex-col items-center md:items-start">
+                   <a href="index.html" class="flex items-center gap-2 no-underline transition-transform duration-300 hover:scale-105">
+                    <div class="w-8 h-8 md:w-10 md:h-10 bg-primary rounded-xl flex items-center justify-center text-white shrink-0 shadow-md">
+                        <i class="fas fa-microphone-lines text-sm md:text-base"></i>
+                    </div>
+                    <div class="text-xl md:text-2xl font-black tracking-tight navbar-brand-text">VoxForge<span class="text-primary">.AI</span></div>
+                </a>
+                    <p class="text-sm mb-6 leading-relaxed">
+                        Pioneering the future of synthetic media with ethical, hyper-realistic voice cloning technology.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-card border border-theme flex items-center justify-center hover:bg-primary hover:border-primary hover:text-white transition-all text-[var(--text-color)]"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-card border border-theme flex items-center justify-center hover:bg-primary hover:border-primary hover:text-white transition-all text-[var(--text-color)]"><i class="fab fa-discord"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-card border border-theme flex items-center justify-center hover:bg-primary hover:border-primary hover:text-white transition-all text-[var(--text-color)]"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="flex flex-col items-center md:items-start">
+                    <h4 class="font-bold text-lg mb-6 text-[var(--text-color)] tracking-wide">Product</h4>
+                    <ul class="space-y-3 font-medium text-sm text-center md:text-left">
+                        <li><a href="features.html" class="hover:text-primary transition-colors">Features</a></li>
+                        <li><a href="ai-voice.html" class="hover:text-primary transition-colors">Voice Library</a></li>
+                        <li><a href="pricing.html" class="hover:text-primary transition-colors">Pricing</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">API Documentation</a></li>
+                    </ul>
+                </div>
+
+                <div class="flex flex-col items-center md:items-start">
+                    <h4 class="font-bold text-lg mb-6 text-[var(--text-color)] tracking-wide">Resources</h4>
+                    <ul class="space-y-3 font-medium text-sm text-center md:text-left">
+                        <li><a href="case-studies.html" class="hover:text-primary transition-colors">Case Studies</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Blog</a></li>
+                        <li><a href="faq.html" class="hover:text-primary transition-colors">Help Center</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Community</a></li>
+                    </ul>
+                </div>
+
+                <div class="flex flex-col items-center md:items-start">
+                    <h4 class="font-bold text-lg mb-6 text-[var(--text-color)] tracking-wide">Company</h4>
+                    <ul class="space-y-3 font-medium text-sm text-center md:text-left">
+                        <li><a href="about.html" class="hover:text-primary transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Careers</a></li>
+                        <li><a href="contact.html" class="hover:text-primary transition-colors">Contact</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Ethics Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-theme pt-8 flex flex-col md:flex-row justify-between items-center text-sm font-medium">
+                <p>&copy; 2026 VoxForge AI. All rights reserved.</p>
+                <div class="flex gap-6 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-primary transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-primary transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // --- THEME LOGIC ---
+        const htmlElement = document.documentElement;
+        const themeToggles = document.querySelectorAll('#desktop-theme-toggle-btn, #mobile-theme-toggle');
+
+        function updateThemeIcon() {
+            const isDark = htmlElement.classList.contains('dark');
+            themeToggles.forEach(btn => {
+                const icon = btn.querySelector('i');
+                if (icon) {
+                    icon.className = isDark ? 'fas fa-sun text-[10px]' : 'fas fa-moon text-[10px]';
+                }
+            });
+        }
+
+        function toggleDarkMode() {
+            htmlElement.classList.toggle('dark');
+            const isDark = htmlElement.classList.contains('dark');
+            htmlElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            updateThemeIcon();
+        }
+
+        themeToggles.forEach(btn => btn.addEventListener('click', toggleDarkMode));
+
+        const savedTheme = localStorage.getItem('theme') || 'dark'; 
+        if (savedTheme === 'dark') {
+            htmlElement.classList.add("dark");
+            htmlElement.setAttribute('data-theme', 'dark');
+        } else {
+            htmlElement.classList.remove("dark");
+            htmlElement.setAttribute('data-theme', 'light');
+        }
+        updateThemeIcon();
+
+        // --- RTL LOGIC ---
+        const rtlToggles = document.querySelectorAll('#desktop-rtl-toggle-btn, #mobile-rtl-toggle');
+
+        function toggleRTL() {
+            const current = htmlElement.getAttribute("dir") || "ltr";
+            const next = current === "rtl" ? "ltr" : "rtl";
+            htmlElement.setAttribute("dir", next);
+            localStorage.setItem("direction", next);
+        }
+
+        rtlToggles.forEach(btn => btn.addEventListener("click", toggleRTL));
+
+        if (localStorage.getItem("direction") === "rtl") {
+            htmlElement.setAttribute("dir", "rtl");
+        } else {
+            htmlElement.setAttribute("dir", "ltr");
+        }
+
+        // --- DROPDOWNS & MENU ---
+        function toggleDesktopDropdown(id) {
+            document.querySelectorAll('.dropdown').forEach(d => {
+                if(d.id !== id) d.classList.remove('active');
+            });
+            document.getElementById(id).classList.toggle('active');
+        }
+        
+        window.toggleMobileDropdown = function(id) {
+            const content = document.getElementById(id);
+            const button = content.previousElementSibling;
+            const arrow = button.querySelector('.dropdown-arrow');
+            
+            content.classList.toggle('active');
+            
+            if(content.classList.contains('active')) {
+                arrow.style.transform = 'rotate(180deg)';
+            } else {
+                arrow.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.dropdown')) {
+                document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('active'));
+            }
+        });
+
+        // --- MOBILE MENU BEHAVIOR ---
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileOverlay = document.getElementById('mobile-overlay');
+        const closeMobileMenu = document.getElementById('close-mobile-menu');
+
+        function openMobileNav() {
+            mobileMenu.classList.add('active');
+            mobileOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden'; 
+        }
+
+        function closeMobileNav() {
+            mobileMenu.classList.remove('active');
+            mobileOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        if(mobileMenuBtn) mobileMenuBtn.addEventListener('click', openMobileNav);
+        if(closeMobileMenu) closeMobileMenu.addEventListener('click', closeMobileNav);
+        if(mobileOverlay) mobileOverlay.addEventListener('click', closeMobileNav);
+
+        window.addEventListener('resize', () => {
+            if(window.innerWidth >= 1280 && mobileMenu) {
+                closeMobileNav();
+            }
+        });
+    </script>
+</body>
+</html>
