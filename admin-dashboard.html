@@ -6,7 +6,7 @@
     <meta name="description" content="Admin Dashboard | VoxForge AI">
     <title>Admin Dashboard | VoxForge AI</title>
     
-    <link rel="icon" href="Images/Growwpark Favicon.jpg">
+   <link rel="icon" type="image/jpeg" href="Images\Growwpark favicon.jpg">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
@@ -147,32 +147,29 @@
 </head>
 <body class="flex flex-col antialiased selection:bg-primary selection:text-white">
 
-    <nav class="glass-nav w-full flex items-center justify-between px-4 lg:px-8 shrink-0 z-50 relative">
+    <nav class="glass-nav w-full flex items-center justify-between px-3 sm:px-6 lg:px-8 shrink-0 z-50 relative">
         
-        <div class="flex items-center gap-4">
-            <button id="mobileMenuBtn" class="xl:hidden flex w-10 h-10 shrink-0 items-center justify-center text-[var(--text-color)] hover:text-white hover:bg-primary transition-all bg-transparent border border-transparent cursor-pointer rounded-lg group">
-                <i class="fas fa-bars text-xl group-hover:text-white"></i>
+        <div class="flex items-center gap-2 sm:gap-4">
+            <button id="mobileMenuBtn" class="xl:hidden flex w-8 h-8 sm:w-10 sm:h-10 shrink-0 items-center justify-center text-[var(--text-color)] hover:text-white hover:bg-primary transition-all bg-transparent border border-transparent cursor-pointer rounded-lg group">
+                <i class="fas fa-bars text-lg sm:text-xl group-hover:text-white"></i>
             </button>
 
-           <a href="index.html" class="flex items-center gap-2 no-underline transition-transform duration-300 hover:scale-105">
-                <div class="w-8 h-8 md:w-10 md:h-10 bg-primary rounded-xl flex items-center justify-center text-white shrink-0 shadow-md">
-                    <i class="fas fa-microphone-lines text-sm md:text-base"></i>
-                </div>
-                <div class="text-xl md:text-2xl font-black tracking-tight navbar-brand-text">VoxForge<span class="text-primary">.AI</span></div>
+           <a href="index.html" class="flex items-center gap-2 no-underline transition-transform duration-300 hover:scale-105 shrink-0">
+                <div class="text-[17px] sm:text-xl md:text-2xl font-black tracking-tight navbar-brand-text">VoxForge<span class="text-primary">.AI</span></div>
             </a>
         </div>
 
-        <div class="hidden xl:flex items-center gap-3">
-            <button class="theme-toggle w-10 h-10 rounded-full flex items-center justify-center border border-theme hover:bg-primary hover:text-white hover:border-primary transition-all text-[var(--text-color)] shrink-0 group cursor-pointer" title="Toggle Dark/Light Mode">
-                <i class="fas fa-moon transition-transform group-hover:text-white"></i>
+        <div class="flex items-center gap-1.5 sm:gap-3">
+            <button class="theme-toggle w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center border border-theme hover:bg-primary hover:text-white hover:border-primary transition-all text-[var(--text-color)] shrink-0 group cursor-pointer" title="Toggle Dark/Light Mode">
+                <i class="fas fa-moon transition-transform group-hover:text-white text-xs sm:text-base"></i>
             </button>
 
-            <button class="rtl-toggle-btn w-10 h-10 rounded-full items-center justify-center border border-theme hover:bg-primary hover:text-white hover:border-primary transition-all font-bold text-[10px] text-[var(--text-color)] shrink-0 cursor-pointer" title="Toggle RTL">
+            <button class="rtl-toggle-btn w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center border border-theme hover:bg-primary hover:text-white hover:border-primary transition-all font-bold text-[8px] sm:text-[10px] text-[var(--text-color)] shrink-0 cursor-pointer" title="Toggle RTL">
                 RTL
             </button>
 
-            <a href="login.html" class="bg-gradient-to-r from-primary to-accent text-white px-5 py-2.5 rounded-full font-bold hover:shadow-[0_0_20px_rgba(37,99,235,0.6)] transform hover:-translate-y-0.5 duration-200 whitespace-nowrap text-xs sm:text-[13px] uppercase tracking-wider border border-white/20 flex items-center cursor-pointer no-underline ml-1 sm:ml-3">
-                 Logout
+            <a href="login.html" class="bg-gradient-to-r from-primary to-accent text-white px-3 sm:px-5 py-2 sm:py-2.5 rounded-full font-bold hover:shadow-[0_0_20px_rgba(37,99,235,0.6)] transform hover:-translate-y-0.5 duration-200 whitespace-nowrap text-[9px] sm:text-[13px] uppercase tracking-wider border border-white/20 flex items-center cursor-pointer no-underline ml-0.5 sm:ml-2">
+                Logout
             </a>
         </div>
     </nav>
@@ -181,33 +178,9 @@
 
     <div class="flex flex-1 w-full overflow-hidden relative">
         
-        <aside id="sidebar" class="sidebar w-64 shrink-0 flex flex-col absolute xl:relative inset-y-0 start-0 z-40 transition-transform duration-300 transform -translate-x-full rtl:translate-x-full xl:translate-x-0 rtl:xl:translate-x-0 overflow-y-auto border-r border-theme">
+        <aside id="sidebar" class="sidebar w-64 shrink-0 flex flex-col absolute xl:relative inset-y-0 start-0 z-40 transition-transform duration-300 transform -translate-x-full rtl:translate-x-full xl:translate-x-0 rtl:xl:translate-x-0 overflow-y-auto border-r border-theme pt-6 xl:pt-4">
             
-            <div class="xl:hidden flex flex-col border-b border-theme pb-5 pt-4 px-4 mb-2 gap-3">
-                <div class="flex justify-between items-center mb-4 pb-2 border-b border-theme">
-                    <a href="index.html" class="flex items-center gap-2 no-underline">
-                        <div class="w-7 h-7 bg-primary rounded flex items-center justify-center text-white shrink-0">
-                            <i class="fas fa-microphone-lines text-[10px]"></i>
-                        </div>
-                        <span class="text-[15px] font-bold tracking-tight text-[var(--text-color)] block">VoxForge<span class="text-primary">.AI</span></span>
-                    </a>
-                    <button id="closeSidebarBtn" class="text-[var(--text-color)] hover:text-red-500 cursor-pointer transition-transform active:scale-90 bg-transparent border-none">
-                        <i class="fas fa-times text-lg"></i>
-                    </button>
-                </div>
-                
-                <button class="theme-toggle w-full py-3 rounded-lg border border-theme flex items-center justify-center text-sm font-bold text-[var(--text-color)] hover:bg-primary hover:text-white transition-colors cursor-pointer">
-                    <i class="fas fa-moon mr-2"></i> Toggle Theme
-                </button>
-                <button class="rtl-toggle-btn w-full py-3 rounded-lg border border-theme flex items-center justify-center text-sm font-bold text-[var(--text-color)] hover:bg-primary hover:text-white transition-colors cursor-pointer">
-                    Toggle RTL
-                </button>
-                <a href="login.html" class="w-full py-3 mt-1 rounded-lg bg-gradient-to-r from-primary to-accent text-white text-center text-sm font-bold shadow-sm transition-colors hover:shadow-lg block no-underline cursor-pointer uppercase tracking-wider">
-                     Logout
-                </a>
-            </div>
-
-            <div class="space-y-1 mt-6 px-3">
+            <div class="space-y-1 px-3">
                 <div class="px-4 py-2 mb-2">
                     <p class="text-xs font-bold uppercase tracking-widest text-body-muted">Store Management</p>
                 </div>
@@ -461,7 +434,6 @@
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const sidebar = document.getElementById('sidebar');
         const mobileOverlay = document.getElementById('mobile-overlay');
-        const closeSidebarBtn = document.getElementById('closeSidebarBtn');
 
         // --- THEME LOGIC ---
         function updateTheme() {
@@ -550,7 +522,7 @@
         }
 
         if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', openSidebar);
-        if (closeSidebarBtn) closeSidebarBtn.addEventListener('click', closeSidebar);
+        // Since the 'X' button is removed from the sidebar, users close it by tapping the dark overlay
         if (mobileOverlay) mobileOverlay.addEventListener('click', closeSidebar);
 
         // --- TAB SWITCHING LOGIC (ADMIN DASHBOARD) ---
