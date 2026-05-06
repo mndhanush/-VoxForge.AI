@@ -6,7 +6,7 @@
     <meta name="description" content="VoxForge AI - Clone Voices in Seconds">
     <title>Home 2 | VoxForge AI</title>
     
-   <link rel="icon" type="image/jpeg" href="Images\Growwpark favicon.jpg">
+   <link rel="icon" type="image/jpeg" href="Images\Growwpark Favicon.jpg">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
@@ -102,6 +102,13 @@
             color: var(--text-color);
             transition: background-color 0.3s ease, color 0.3s ease;
             overflow-x: hidden;
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
+        /* Scrollbar Hidden */
+        ::-webkit-scrollbar { 
+            display: none; 
         }
 
         .text-body-muted { color: var(--text-muted); transition: color 0.3s ease; }
@@ -248,12 +255,6 @@
         .studio-slider::-webkit-slider-thumb:hover {
             transform: scale(1.2);
         }
-
-        /* Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--bg-color); }
-        ::-webkit-scrollbar-thumb { background: #2563EB; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #1D4ED8; }
     </style>
 </head>
 <body class="antialiased selection:bg-primary selection:text-white flex flex-col items-center">
@@ -402,7 +403,7 @@
 
             <div class="container mx-auto px-4 relative z-10 text-center flex-grow flex flex-col justify-center items-center w-full">
                 
-                <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6 leading-tight text-white drop-shadow-lg">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-tight text-white drop-shadow-lg">
                     Create Hyper-Realistic <br/>
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-white animate-glow drop-shadow-none">AI Voices</span> in Seconds
                 </h1>
@@ -429,7 +430,7 @@
             <div class="container mx-auto px-4 md:px-8 flex flex-col items-center text-center">
                 <div class="text-center mb-16 max-w-2xl">
                     <span class="text-primary font-bold tracking-widest uppercase text-sm block mb-3 drop-shadow-md">Experience It</span>
-                    <h2 class="text-3xl md:text-5xl font-bold text-[var(--text-color)]">Hear the Power of AI Voice Cloning</h2>
+                    <h2 class="text-3xl md:text-4xl font-bold text-[var(--text-color)]">Hear the Power of AI Voice Cloning</h2>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-[1200px]">
@@ -437,7 +438,7 @@
                     <div class="bg-[var(--bg-color)] p-6 rounded-3xl border border-theme shadow-sm hover:shadow-[0_0_20px_rgba(37,99,235,0.2)] hover:border-primary transition-all duration-300 group flex flex-col text-center items-center">
                         <div class="flex justify-between items-center w-full mb-6">
                             <div class="text-left">
-                                <h3 class="font-bold text-xl text-[var(--text-color)]">James</h3>
+                                <h3 class="font-bold text-lg text-[var(--text-color)]">James</h3>
                                 <p class="text-xs text-body-muted font-bold uppercase tracking-wider mt-1">Male</p>
                             </div>
                             <button class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center text-lg group-hover:bg-primary group-hover:text-white transition-colors play-demo-btn">
@@ -455,7 +456,7 @@
                     <div class="bg-[var(--bg-color)] p-6 rounded-3xl border border-theme shadow-sm hover:shadow-[0_0_20px_rgba(37,99,235,0.2)] hover:border-primary transition-all duration-300 group flex flex-col text-center items-center">
                         <div class="flex justify-between items-center w-full mb-6">
                             <div class="text-left">
-                                <h3 class="font-bold text-xl text-[var(--text-color)]">Sophia</h3>
+                                <h3 class="font-bold text-lg text-[var(--text-color)]">Sophia</h3>
                                 <p class="text-xs text-body-muted font-bold uppercase tracking-wider mt-1">Female</p>
                             </div>
                             <button class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center text-lg group-hover:bg-primary group-hover:text-white transition-colors play-demo-btn">
@@ -473,7 +474,7 @@
                     <div class="bg-[var(--bg-color)] p-6 rounded-3xl border border-theme shadow-sm hover:shadow-[0_0_20px_rgba(37,99,235,0.2)] hover:border-primary transition-all duration-300 group flex flex-col text-center items-center">
                         <div class="flex justify-between items-center w-full mb-6">
                             <div class="text-left">
-                                <h3 class="font-bold text-xl text-[var(--text-color)]">William</h3>
+                                <h3 class="font-bold text-lg text-[var(--text-color)]">William</h3>
                                 <p class="text-xs text-body-muted font-bold uppercase tracking-wider mt-1">Narrator</p>
                             </div>
                             <button class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center text-lg group-hover:bg-primary group-hover:text-white transition-colors play-demo-btn">
@@ -491,7 +492,7 @@
                     <div class="bg-[var(--bg-color)] p-6 rounded-3xl border border-theme shadow-sm hover:shadow-[0_0_20px_rgba(37,99,235,0.2)] hover:border-primary transition-all duration-300 group flex flex-col text-center items-center">
                         <div class="flex justify-between items-center w-full mb-6">
                             <div class="text-left">
-                                <h3 class="font-bold text-xl text-[var(--text-color)]">Jax</h3>
+                                <h3 class="font-bold text-lg text-[var(--text-color)]">Jax</h3>
                                 <p class="text-xs text-body-muted font-bold uppercase tracking-wider mt-1">Gaming</p>
                             </div>
                             <button class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center text-lg group-hover:bg-primary group-hover:text-white transition-colors play-demo-btn">
@@ -514,7 +515,7 @@
             <div class="container mx-auto px-4 md:px-8 flex flex-col items-center">
                 <div class="text-center mb-16 max-w-3xl">
                     <span class="text-primary font-bold tracking-widest uppercase text-sm block mb-3">Workflow</span>
-                    <h2 class="text-3xl md:text-5xl font-bold text-[var(--text-color)]">From Voice Sample to Studio Audio in 3 Steps</h2>
+                    <h2 class="text-3xl md:text-4xl font-bold text-[var(--text-color)]">From Voice Sample to Studio Audio in 3 Steps</h2>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10 w-full max-w-[1200px]">
@@ -524,7 +525,7 @@
                         <div class="w-24 h-24 mx-auto bg-[var(--bg-color)] rounded-full flex items-center justify-center text-4xl text-primary mb-6 border border-theme shadow-md group-hover:scale-110 transition-transform group-hover:bg-primary group-hover:text-white">
                             <i class="fas fa-microphone"></i>
                         </div>
-                        <h3 class="text-2xl font-bold text-[var(--text-color)] mb-4">1. Upload Voice Sample</h3>
+                        <h3 class="text-xl font-bold text-[var(--text-color)] mb-4">1. Upload Voice Sample</h3>
                         <p class="text-body-muted font-medium">Record or upload a clean, 60-second audio clip of the voice you want to clone.</p>
                     </div>
 
@@ -532,7 +533,7 @@
                         <div class="w-24 h-24 mx-auto bg-[var(--bg-color)] rounded-full flex items-center justify-center text-4xl text-primary mb-6 border border-theme shadow-md group-hover:scale-110 transition-transform group-hover:bg-primary group-hover:text-white">
                             <i class="fas fa-brain"></i>
                         </div>
-                        <h3 class="text-2xl font-bold text-[var(--text-color)] mb-4">2. Train AI Model</h3>
+                        <h3 class="text-xl font-bold text-[var(--text-color)] mb-4">2. Train AI Model</h3>
                         <p class="text-body-muted font-medium">Our advanced neural network processes the unique vocal traits and emotional range in seconds.</p>
                     </div>
 
@@ -540,7 +541,7 @@
                         <div class="w-24 h-24 mx-auto bg-[var(--bg-color)] rounded-full flex items-center justify-center text-4xl text-primary mb-6 border border-theme shadow-md group-hover:scale-110 transition-transform group-hover:bg-primary group-hover:text-white">
                             <i class="fas fa-headphones"></i>
                         </div>
-                        <h3 class="text-2xl font-bold text-[var(--text-color)] mb-4">3. Generate Audio</h3>
+                        <h3 class="text-xl font-bold text-[var(--text-color)] mb-4">3. Generate Audio</h3>
                         <p class="text-body-muted font-medium">Type your script, adjust pacing, and instantly generate studio-quality speech.</p>
                     </div>
                 </div>
@@ -553,7 +554,7 @@
             <div class="container mx-auto px-4 md:px-8 flex flex-col items-center relative z-10">
                 <div class="text-center mb-20 max-w-3xl flex flex-col items-center">
                     <span class="text-primary font-bold tracking-widest uppercase text-sm block mb-4 border border-primary/20 bg-primary/5 px-4 py-1.5 rounded-full">Versatility</span>
-                    <h2 class="text-4xl md:text-6xl font-black text-[var(--text-color)] mb-6 tracking-tight">Built for Every Creator</h2>
+                    <h2 class="text-3xl md:text-4xl font-black text-[var(--text-color)] mb-6 tracking-tight">Built for Every Creator</h2>
                     <p class="text-body-muted text-lg md:text-xl font-medium text-center leading-relaxed">Unleash your creative potential. Our AI adapts flawlessly to your specific industry demands, delivering stunning, studio-quality results every single time.</p>
                 </div>
 
@@ -564,7 +565,7 @@
                         <div class="w-24 h-24 bg-card border border-theme rounded-3xl flex items-center justify-center text-4xl mb-8 text-primary shadow-inner group-hover:scale-110 group-hover:bg-primary group-hover:text-white group-hover:rotate-6 transition-all duration-500 z-10 relative">
                             <i class="fas fa-clapperboard"></i>
                         </div>
-                        <h3 class="text-2xl md:text-3xl font-bold text-[var(--text-color)] mb-5 z-10 relative tracking-tight">Content Creators</h3>
+                        <h3 class="text-xl md:text-2xl font-bold text-[var(--text-color)] mb-5 z-10 relative tracking-tight">Content Creators</h3>
                         <p class="text-body-muted font-medium flex-grow z-10 relative leading-relaxed text-base">Automate voiceovers for faceless channels, craft engaging shorts, or instantly fix flubbed lines without ever re-recording your audio.</p>
                     </div>
 
@@ -574,7 +575,7 @@
                         <div class="w-28 h-28 bg-primary rounded-[2rem] flex items-center justify-center text-5xl mb-8 text-white shadow-[0_10px_30px_rgba(37,99,235,0.4)] group-hover:scale-110 transition-all duration-500 z-10 relative group-hover:-rotate-6 hover:bg-accent">
                             <i class="fas fa-gamepad"></i>
                         </div>
-                        <h3 class="text-2xl md:text-3xl font-bold text-[var(--text-color)] mb-5 z-10 relative tracking-tight">Game Developers</h3>
+                        <h3 class="text-xl md:text-2xl font-bold text-[var(--text-color)] mb-5 z-10 relative tracking-tight">Game Developers</h3>
                         <p class="text-body-muted font-medium flex-grow z-10 relative leading-relaxed text-base">Scale NPC dialogue production dynamically. Prototype vast, branching dialogue trees in real-time without expensive studio booking.</p>
                     </div>
 
@@ -583,7 +584,7 @@
                         <div class="w-24 h-24 bg-card border border-theme rounded-3xl flex items-center justify-center text-4xl mb-8 text-primary shadow-inner group-hover:scale-110 group-hover:bg-primary group-hover:text-white group-hover:rotate-6 transition-all duration-500 z-10 relative">
                             <i class="fas fa-podcast"></i>
                         </div>
-                        <h3 class="text-2xl md:text-3xl font-bold text-[var(--text-color)] mb-5 z-10 relative tracking-tight">Podcasters</h3>
+                        <h3 class="text-xl md:text-2xl font-bold text-[var(--text-color)] mb-5 z-10 relative tracking-tight">Podcasters</h3>
                         <p class="text-body-muted font-medium flex-grow z-10 relative leading-relaxed text-base">Generate dynamic sponsor reads in your exact voice, create flawless intros, or faithfully translate your entire podcast globally.</p>
                     </div>
                 </div>
@@ -597,7 +598,7 @@
             <div class="container mx-auto px-4 md:px-8 relative z-10 flex flex-col items-center">
                 <div class="text-center mb-16 max-w-3xl">
                     <span class="text-primary font-bold tracking-widest uppercase text-sm block mb-3">Premium Models</span>
-                    <h2 class="text-3xl md:text-5xl font-bold text-[var(--text-color)]">Explore Our Premium Voice Library</h2>
+                    <h2 class="text-3xl md:text-4xl font-bold text-[var(--text-color)]">Explore Our Premium Voice Library</h2>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-[1200px]">
@@ -605,7 +606,7 @@
                     <div class="bg-card rounded-[2rem] border border-theme p-8 hover:scale-105 transition-transform duration-300 flex flex-col items-center text-center shadow-xl relative overflow-hidden group">
                         <div class="absolute inset-0 bg-gradient-to-b from-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                         <img src="Images/marcus.jpg" alt="Marcus" class="w-24 h-24 rounded-full border-4 border-card shadow-lg mb-6 relative z-10 object-cover">
-                        <h3 class="font-serif text-2xl font-bold text-[var(--text-color)] mb-2 relative z-10 w-full text-center">Marcus</h3>
+                        <h3 class="font-serif text-xl font-bold text-[var(--text-color)] mb-2 relative z-10 w-full text-center">Marcus</h3>
                         <p class="text-primary font-bold uppercase tracking-wider text-xs mb-6 relative z-10 text-center w-full">US Accent • Energetic/Promo</p>
                         
                         <div class="w-full flex flex-col gap-3 relative z-10 mt-auto">
@@ -622,7 +623,7 @@
                         <div class="absolute top-4 right-4 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full shadow-md z-20">Popular</div>
                         <div class="absolute inset-0 bg-gradient-to-b from-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                         <img src="Images/emma.jpg" alt="Emma" class="w-24 h-24 rounded-full border-4 border-card shadow-lg mb-6 relative z-10 object-cover">
-                        <h3 class="font-serif text-2xl font-bold text-[var(--text-color)] mb-2 relative z-10 w-full text-center">Emma</h3>
+                        <h3 class="font-serif text-xl font-bold text-[var(--text-color)] mb-2 relative z-10 w-full text-center">Emma</h3>
                         <p class="text-primary font-bold uppercase tracking-wider text-xs mb-6 relative z-10 text-center w-full">British Accent • Authoritative</p>
                         
                         <div class="w-full flex flex-col gap-3 relative z-10 mt-auto">
@@ -638,7 +639,7 @@
                     <div class="bg-card rounded-[2rem] border border-theme p-8 hover:scale-105 transition-transform duration-300 flex flex-col items-center text-center shadow-xl relative overflow-hidden group">
                         <div class="absolute inset-0 bg-gradient-to-b from-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                         <img src="Images/chole.jpg" alt="Chloe" class="w-24 h-24 rounded-full border-4 border-card shadow-lg mb-6 relative z-10 object-cover">
-                        <h3 class="font-serif text-2xl font-bold text-[var(--text-color)] mb-2 relative z-10 w-full text-center">Chloe</h3>
+                        <h3 class="font-serif text-xl font-bold text-[var(--text-color)] mb-2 relative z-10 w-full text-center">Chloe</h3>
                         <p class="text-primary font-bold uppercase tracking-wider text-xs mb-6 relative z-10 text-center w-full">Italian Accent • Conversational</p>
                         
                         <div class="w-full flex flex-col gap-3 relative z-10 mt-auto">
@@ -660,7 +661,7 @@
             <div class="container mx-auto px-4 md:px-8 flex flex-col items-center z-10">
                 <div class="text-center mb-16 max-w-3xl">
                     <span class="text-primary font-bold tracking-widest uppercase text-sm block mb-3">Professional Suite</span>
-                    <h2 class="text-3xl md:text-5xl font-bold text-[var(--text-color)]">Command The Forge</h2>
+                    <h2 class="text-3xl md:text-4xl font-bold text-[var(--text-color)]">Command The Forge</h2>
                     <p class="text-body-muted text-lg mt-4 max-w-2xl mx-auto font-medium">Fine-tune your generated audio with studio-grade controls. Adjust emotion, pitch, and speed in real-time before exporting.</p>
                 </div>
 

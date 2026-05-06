@@ -65,7 +65,7 @@
     
     <style>
         :root {
-            --bg-color: #F8FAFC; /* Slightly off-white to match image background naturally */
+            --bg-color: #F8FAFC; 
             --text-color: #0F172A;
             --text-muted: #4B5563;
             --card-bg: #FFFFFF;
@@ -96,6 +96,15 @@
             transition: background-color 0.3s ease, color 0.3s ease;
             overflow-x: hidden;
             font-family: 'Inter', sans-serif;
+            
+            /* Hide scrollbar for a cleaner layout */
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        ::-webkit-scrollbar { 
+            display: none; 
         }
 
         .text-body-muted { color: var(--text-muted); transition: color 0.3s ease; }
@@ -180,7 +189,7 @@
         .dropdown-arrow { font-size: 0.7rem; transition: transform 0.3s ease; }
         .dropdown:hover .dropdown-arrow { transform: rotate(180deg); }
         
-        /* Reference Image Specific Mobile Menu */
+        /* Mobile Menu */
         .mobile-menu {
             transform: translateX(-100%);
             transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -230,12 +239,6 @@
             background: #2563EB;
             cursor: pointer;
         }
-
-        /* Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--bg-color); }
-        ::-webkit-scrollbar-thumb { background: #2563EB; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #1D4ED8; }
     </style>
 </head>
 <body class="antialiased selection:bg-primary selection:text-white">
@@ -245,7 +248,6 @@
             <div class="flex items-center justify-between h-14 md:h-auto">
                 
                 <a href="index.html" class="flex items-center gap-2 no-underline transition-transform duration-300 hover:scale-105">
-                    
                     <div class="text-xl md:text-2xl font-black tracking-tight navbar-brand-text">VoxForge<span class="text-primary">.AI</span></div>
                 </a>
                 
@@ -311,7 +313,6 @@
             
             <div class="flex justify-between items-center mb-6 pb-6 border-b border-[var(--border-color)]">
                 <a href="index.html" class="flex items-center gap-2 no-underline">
-                   
                     <span class="text-[15px] font-bold tracking-tight text-[var(--text-color)] block">VoxForge<span class="text-primary">.AI</span></span>
                 </a>
                 
@@ -376,45 +377,45 @@
 
     <main class="w-full flex-grow">
 
-        <section class="relative min-h-[100dvh] w-full flex flex-col justify-center overflow-hidden bg-[var(--bg-color)] border-b border-theme pt-14">
+        <section class="relative h-[100dvh] w-full flex flex-col justify-center overflow-hidden bg-[var(--bg-color)] border-b border-theme pt-24 pb-6">
             <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full mix-blend-multiply filter blur-[128px] animate-blob pointer-events-none"></div>
             <div class="absolute top-1/3 right-1/4 w-96 h-96 bg-secondary/20 rounded-full mix-blend-multiply filter blur-[128px] animate-blob animation-delay-2000 pointer-events-none"></div>
             
-            <div class="container mx-auto px-4 relative z-10 text-center w-full flex flex-col items-center justify-center h-full">
+            <div class="container mx-auto px-4 relative z-10 text-center w-full flex flex-col items-center justify-between h-full">
                 
-                <h1 class="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold text-[var(--text-color)] tracking-tight mb-4 lg:mb-6 leading-tight">
-                    Clone Voices in <br class="hidden sm:block"/>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Seconds.</span>
-                </h1>
-                
-               
-                
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10 lg:mb-16 w-full sm:w-auto">
-                    <a href="#demo" class="w-full sm:w-auto px-8 py-3.5 lg:py-4 bg-primary text-white rounded-full font-bold text-base lg:text-lg hover:bg-accent transition-all transform hover:-translate-y-1 shadow-[0_10px_25px_rgba(37,99,235,0.5)] flex items-center justify-center gap-2">
-                        Try Demo <i class="fas fa-play text-sm"></i>
-                    </a>
-                    <a href="register.html" class="w-full sm:w-auto px-8 py-3.5 lg:py-4 bg-card text-[var(--text-color)] border-2 border-theme rounded-full font-bold text-base lg:text-lg hover:border-primary hover:text-primary transition-all flex items-center justify-center gap-2">
-                        Start for Free
-                    </a>
-                </div>
-
-                <div class="max-w-3xl w-full mx-auto bg-card border border-theme rounded-3xl p-4 sm:p-8 shadow-xl flex items-center justify-center gap-1 md:gap-2 h-24 sm:h-32 md:h-40 relative overflow-hidden group cursor-pointer">
-                    <div class="absolute inset-0 bg-gradient-to-r from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                    <div id="hero-waveform" class="flex items-center justify-center gap-1 h-full w-full"></div>
-                    <div class="absolute inset-0 flex items-center justify-center">
-                        <button class="w-12 h-12 sm:w-16 sm:h-16 bg-primary text-white rounded-full flex items-center justify-center text-lg sm:text-xl shadow-[0_0_30px_rgba(37,99,235,0.6)] group-hover:scale-110 transition-transform">
-                            <i class="fas fa-microphone"></i>
-                        </button>
+                <!-- Text Container (Takes minimal necessary space) -->
+                <div class="flex-none flex flex-col items-center justify-center w-full pt-4 md:pt-6">
+                    <h1 class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-[var(--text-color)] tracking-tight mb-3 lg:mb-4 leading-tight">
+                        Clone Voices in <br class="hidden sm:block"/>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Seconds.</span>
+                    </h1>
+                    
+                    <p class="text-[var(--text-muted)] max-w-2xl mx-auto text-sm sm:text-base lg:text-lg mb-6 font-medium">Create studio-quality voiceovers effortlessly with our hyper-realistic AI engine. Perfect for content creators, game developers, and podcasters.</p>
+                    
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6 w-full sm:w-auto">
+                        <a href="#demo" class="w-full sm:w-auto px-8 py-3 bg-primary text-white rounded-full font-bold text-sm hover:bg-accent transition-all transform hover:-translate-y-1 shadow-[0_10px_25px_rgba(37,99,235,0.5)] flex items-center justify-center gap-2">
+                            Try Demo <i class="fas fa-play text-xs"></i>
+                        </a>
+                        <a href="register.html" class="w-full sm:w-auto px-8 py-3 bg-card text-[var(--text-color)] border-2 border-theme rounded-full font-bold text-sm hover:border-primary hover:text-primary transition-all flex items-center justify-center gap-2">
+                            Start for Free
+                        </a>
                     </div>
                 </div>
+
+                <!-- Image Container (Flex-1 to perfectly fill remaining viewport space without scrolling) -->
+                <div class="flex-1 w-full max-w-6xl mx-auto rounded-[2rem] overflow-hidden shadow-[0_20px_50px_rgba(37,99,235,0.15)] border border-theme relative group min-h-[200px]">
+                    <div class="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none"></div>
+                    <img src="Images/home1.jpg" alt="VoxForge AI Dashboard" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                </div>
+
             </div>
         </section>
 
-        <section id="demo" class="py-24 bg-card border-b border-theme relative transition-colors">
+        <section id="demo" class="py-20 bg-card border-b border-theme relative transition-colors">
             <div class="container mx-auto px-4 md:px-8 max-w-5xl">
-                <div class="text-center mb-16">
+                <div class="text-center mb-12">
                     <span class="text-primary font-bold tracking-widest uppercase text-sm block mb-3 text-center">Live Demo</span>
-                    <h2 class="text-3xl md:text-5xl font-bold text-[var(--text-color)]">Hear the Magic</h2>
+                    <h2 class="text-3xl md:text-4xl font-bold text-[var(--text-color)]">Hear the Magic</h2>
                 </div>
 
                 <div class="bg-[var(--bg-color)] rounded-3xl border border-theme shadow-lg overflow-hidden flex flex-col md:flex-row">
@@ -476,84 +477,88 @@
             </div>
         </section>
 
-        <section class="py-24 bg-[var(--bg-color)] border-b border-theme transition-colors relative overflow-hidden">
+        <section class="py-20 bg-[var(--bg-color)] border-b border-theme transition-colors relative overflow-hidden">
             <div class="container mx-auto px-4 md:px-8">
-                <div class="text-center mb-16">
+                <div class="text-center mb-12">
                     <span class="text-primary font-bold tracking-widest uppercase text-sm block mb-3 text-center">Simple Process</span>
-                    <h2 class="text-3xl md:text-5xl font-bold text-[var(--text-color)]">How It Works</h2>
+                    <h2 class="text-3xl md:text-4xl font-bold text-[var(--text-color)]">How It Works</h2>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
-                    <div class="hidden md:block absolute top-1/2 left-[15%] right-[15%] h-0.5 bg-gradient-to-r from-primary/10 via-primary/50 to-primary/10 -z-10 -translate-y-1/2 border-dashed"></div>
-
-                    <div class="bg-card rounded-3xl p-8 border border-theme text-center relative group hover:border-primary transition-colors shadow-sm">
-                        <div class="w-20 h-20 mx-auto bg-[var(--bg-color)] rounded-2xl flex items-center justify-center text-3xl text-primary mb-6 border border-theme shadow-md group-hover:scale-110 transition-transform group-hover:bg-primary group-hover:text-white">
-                            <i class="fas fa-cloud-arrow-up"></i>
-                        </div>
-                        <div class="absolute -top-4 -right-4 w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center font-bold text-lg border-4 border-card shadow-sm">1</div>
-                        <h3 class="text-xl font-bold text-[var(--text-color)] mb-3">Upload Audio</h3>
+                    <div class="bg-card rounded-3xl p-6 border border-theme text-left relative group hover:border-primary transition-colors shadow-sm flex flex-col">
+                        <img src="https://images.unsplash.com/photo-1589903308904-1010c2294adc?w=500&auto=format&fit=crop" class="w-full h-40 object-cover rounded-2xl mb-6 shadow-sm" alt="Upload Audio">
+                        <div class="absolute top-4 right-4 w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center font-bold text-lg border-4 border-card shadow-sm z-10">1</div>
+                        <h3 class="text-lg font-bold text-[var(--text-color)] mb-2">Upload Audio</h3>
                         <p class="text-sm text-body-muted font-medium">Upload just 1 minute of clean audio. No massive datasets required.</p>
                     </div>
 
-                    <div class="bg-card rounded-3xl p-8 border border-theme text-center relative group hover:border-primary transition-colors shadow-sm">
-                        <div class="w-20 h-20 mx-auto bg-[var(--bg-color)] rounded-2xl flex items-center justify-center text-3xl text-primary mb-6 border border-theme shadow-md group-hover:scale-110 transition-transform group-hover:bg-primary group-hover:text-white">
-                            <i class="fas fa-brain"></i>
-                        </div>
-                        <div class="absolute -top-4 -right-4 w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center font-bold text-lg border-4 border-card shadow-sm">2</div>
-                        <h3 class="text-xl font-bold text-[var(--text-color)] mb-3">AI Training</h3>
+                    <div class="bg-card rounded-3xl p-6 border border-theme text-left relative group hover:border-primary transition-colors shadow-sm flex flex-col">
+                        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=500&auto=format&fit=crop" class="w-full h-40 object-cover rounded-2xl mb-6 shadow-sm" alt="AI Training">
+                        <div class="absolute top-4 right-4 w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center font-bold text-lg border-4 border-card shadow-sm z-10">2</div>
+                        <h3 class="text-lg font-bold text-[var(--text-color)] mb-2">AI Training</h3>
                         <p class="text-sm text-body-muted font-medium">Our neural network analyzes pitch, tone, and emotion in seconds.</p>
                     </div>
 
-                    <div class="bg-card rounded-3xl p-8 border border-theme text-center relative group hover:border-primary transition-colors shadow-sm">
-                        <div class="w-20 h-20 mx-auto bg-[var(--bg-color)] rounded-2xl flex items-center justify-center text-3xl text-primary mb-6 border border-theme shadow-md group-hover:scale-110 transition-transform group-hover:bg-primary group-hover:text-white">
-                            <i class="fas fa-wave-square"></i>
-                        </div>
-                        <div class="absolute -top-4 -right-4 w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center font-bold text-lg border-4 border-card shadow-sm">3</div>
-                        <h3 class="text-xl font-bold text-[var(--text-color)] mb-3">Generate</h3>
+                    <div class="bg-card rounded-3xl p-6 border border-theme text-left relative group hover:border-primary transition-colors shadow-sm flex flex-col">
+                        <img src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=500&auto=format&fit=crop" class="w-full h-40 object-cover rounded-2xl mb-6 shadow-sm" alt="Generate Voice">
+                        <div class="absolute top-4 right-4 w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center font-bold text-lg border-4 border-card shadow-sm z-10">3</div>
+                        <h3 class="text-lg font-bold text-[var(--text-color)] mb-2">Generate</h3>
                         <p class="text-sm text-body-muted font-medium">Type any text and generate studio-quality audio in your cloned voice.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="py-24 bg-card border-b border-theme transition-colors">
+        <section class="py-20 bg-card border-b border-theme transition-colors">
             <div class="container mx-auto px-4 md:px-8">
-                <div class="text-center mb-16">
+                <div class="text-center mb-12">
                     <span class="text-primary font-bold tracking-widest uppercase text-sm block mb-3 text-center">Built For Creators</span>
-                    <h2 class="text-3xl md:text-5xl font-bold text-[var(--text-color)]">Endless Possibilities</h2>
+                    <h2 class="text-3xl md:text-4xl font-bold text-[var(--text-color)]">Endless Possibilities</h2>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     
-                    <div class="bg-[var(--bg-color)] p-8 rounded-3xl border border-theme hover:-translate-y-2 transition-transform shadow-sm flex flex-col items-start group">
-                        <div class="w-12 h-12 bg-primary/10 text-primary rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
-                            <i class="fab fa-youtube"></i>
+                    <div class="bg-[var(--bg-color)] p-6 rounded-3xl border border-theme hover:-translate-y-2 transition-transform shadow-sm flex flex-col items-start group">
+                        <div class="relative w-full h-32 mb-6 rounded-xl overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=500&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="YouTubers">
+                            <div class="absolute inset-0 bg-black/40 flex items-center justify-center text-white text-3xl">
+                                <i class="fab fa-youtube"></i>
+                            </div>
                         </div>
-                        <h3 class="text-xl font-bold text-[var(--text-color)] mb-3">YouTubers</h3>
+                        <h3 class="text-lg font-bold text-[var(--text-color)] mb-2">YouTubers</h3>
                         <p class="text-sm text-body-muted font-medium">Fix flubbed lines instantly or narrate faceless channels with hyper-realistic emotion.</p>
                     </div>
 
-                    <div class="bg-[var(--bg-color)] p-8 rounded-3xl border border-theme hover:-translate-y-2 transition-transform shadow-sm flex flex-col items-start group">
-                        <div class="w-12 h-12 bg-primary/10 text-primary rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
-                            <i class="fas fa-podcast"></i>
+                    <div class="bg-[var(--bg-color)] p-6 rounded-3xl border border-theme hover:-translate-y-2 transition-transform shadow-sm flex flex-col items-start group">
+                        <div class="relative w-full h-32 mb-6 rounded-xl overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1581368135153-a506cf13b1e1?w=500&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Podcasters">
+                            <div class="absolute inset-0 bg-black/40 flex items-center justify-center text-white text-3xl">
+                                <i class="fas fa-podcast"></i>
+                            </div>
                         </div>
-                        <h3 class="text-xl font-bold text-[var(--text-color)] mb-3">Podcasters</h3>
+                        <h3 class="text-lg font-bold text-[var(--text-color)] mb-2">Podcasters</h3>
                         <p class="text-sm text-body-muted font-medium">Create dynamic intros, generate ad reads in your own voice, or translate episodes.</p>
                     </div>
 
-                    <div class="bg-[var(--bg-color)] p-8 rounded-3xl border border-theme hover:-translate-y-2 transition-transform shadow-sm flex flex-col items-start group">
-                        <div class="w-12 h-12 bg-primary/10 text-primary rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
-                            <i class="fas fa-gamepad"></i>
+                    <div class="bg-[var(--bg-color)] p-6 rounded-3xl border border-theme hover:-translate-y-2 transition-transform shadow-sm flex flex-col items-start group">
+                        <div class="relative w-full h-32 mb-6 rounded-xl overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=500&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Game Devs">
+                            <div class="absolute inset-0 bg-black/40 flex items-center justify-center text-white text-3xl">
+                                <i class="fas fa-gamepad"></i>
+                            </div>
                         </div>
-                        <h3 class="text-xl font-bold text-[var(--text-color)] mb-3">Game Devs</h3>
+                        <h3 class="text-lg font-bold text-[var(--text-color)] mb-2">Game Devs</h3>
                         <p class="text-sm text-body-muted font-medium">Voice hundreds of NPCs affordably. Prototype dialogue trees without booking studios.</p>
                     </div>
 
-                    <div class="bg-[var(--bg-color)] p-8 rounded-3xl border border-theme hover:-translate-y-2 transition-transform shadow-sm flex flex-col items-start group">
-                        <div class="w-12 h-12 bg-primary/10 text-primary rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
-                            <i class="fas fa-bullhorn"></i>
+                    <div class="bg-[var(--bg-color)] p-6 rounded-3xl border border-theme hover:-translate-y-2 transition-transform shadow-sm flex flex-col items-start group">
+                        <div class="relative w-full h-32 mb-6 rounded-xl overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1557838923-2985c318be48?w=500&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Advertising">
+                            <div class="absolute inset-0 bg-black/40 flex items-center justify-center text-white text-3xl">
+                                <i class="fas fa-bullhorn"></i>
+                            </div>
                         </div>
-                        <h3 class="text-xl font-bold text-[var(--text-color)] mb-3">Advertising</h3>
+                        <h3 class="text-lg font-bold text-[var(--text-color)] mb-2">Advertising</h3>
                         <p class="text-sm text-body-muted font-medium">A/B test voiceovers rapidly. Generate dynamic, localized ad reads at scale.</p>
                     </div>
 
@@ -561,12 +566,12 @@
             </div>
         </section>
 
-        <section class="py-24 bg-[var(--bg-color)] border-b border-theme transition-colors relative">
+        <section class="py-20 bg-[var(--bg-color)] border-b border-theme transition-colors relative">
             <div class="container mx-auto px-4 md:px-8">
                 <div class="flex flex-col md:flex-row justify-between items-center md:items-end text-center md:text-left mb-12 gap-6">
                     <div>
                         <span class="text-primary font-bold tracking-widest uppercase text-sm block mb-3 md:mb-2 text-center md:text-left">Library</span>
-                        <h2 class="text-3xl md:text-5xl font-bold text-[var(--text-color)] leading-tight md:leading-none">Featured Voices</h2>
+                        <h2 class="text-3xl md:text-4xl font-bold text-[var(--text-color)] leading-tight md:leading-none">Featured Voices</h2>
                     </div>
                     <a href="ai-voice.html" class="text-primary font-bold hover:text-accent transition-colors hidden md:flex items-center gap-2 whitespace-nowrap md:mb-1">
                         View All Voices <i class="fas fa-arrow-right text-xs"></i>
@@ -652,13 +657,13 @@
             </div>
         </section>
 
-        <section class="py-24 bg-card transition-colors relative overflow-hidden">
+        <section class="py-20 bg-card transition-colors relative overflow-hidden">
             <div class="container mx-auto px-4 md:px-8">
                 <div class="bg-gradient-to-br from-primary to-accent rounded-[3rem] p-10 md:p-20 text-center relative overflow-hidden shadow-[0_20px_50px_rgba(37,99,235,0.2)]">
                     <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 mix-blend-overlay"></div>
                     
                     <div class="relative z-10 max-w-3xl mx-auto">
-                        <h2 class="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">Ready to build your digital twin?</h2>
+                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">Ready to build your digital twin?</h2>
                         <p class="text-xl text-white/90 font-medium mb-10">Join 50,000+ creators generating studio-quality voiceovers instantly.</p>
                         
                         <a href="register.html" class="inline-flex items-center justify-center gap-3 bg-white text-primary px-10 py-5 rounded-full font-bold text-lg hover:scale-105 transition-transform shadow-xl">
@@ -672,7 +677,6 @@
 
     </main>
 
-   
     <footer class="bg-[var(--bg-color)] text-[var(--text-muted)] pt-20 pb-10 border-t border-theme w-full flex flex-col items-center">
         <div class="container mx-auto px-4 md:px-8 max-w-[1600px]">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16 text-center md:text-left">
@@ -681,7 +685,7 @@
                     
                     <div class="text-xl md:text-2xl font-black tracking-tight navbar-brand-text">VoxForge<span class="text-primary">.AI</span></div>
                 </a>
-                    <p class="text-sm mb-6 leading-relaxed">
+                    <p class="text-sm mb-6 leading-relaxed mt-4">
                         Pioneering the future of synthetic media with ethical, hyper-realistic voice cloning technology.
                     </p>
                     <div class="flex gap-4">
@@ -779,8 +783,7 @@
         }
 
         function updateRTLIcons(dir) {
-            // Keep the text RTL since the image just has "RTL" as text for mobile, 
-            // but desktop might use an icon if you revert it, keeping it text for now based on image matching.
+            // Placeholder for UI changes based on RTL state
         }
 
         rtlToggles.forEach(btn => btn.addEventListener("click", toggleRTL));
@@ -847,19 +850,6 @@
                 closeMobileNav();
             }
         });
-
-        // --- JS for Hero Waveform Generation ---
-        const waveContainer = document.getElementById('hero-waveform');
-        if(waveContainer) {
-            for(let i = 0; i < 30; i++) {
-                const bar = document.createElement('div');
-                bar.className = 'w-1.5 md:w-2 bg-primary rounded-full animate-wave';
-                bar.style.height = `${Math.max(20, Math.random() * 100)}%`;
-                bar.style.animationDelay = `${Math.random() * 1.5}s`;
-                bar.style.opacity = Math.max(0.3, Math.random());
-                waveContainer.appendChild(bar);
-            }
-        }
 
         // --- Simple Demo Player Interaction UI ---
         const mainPlayBtn = document.getElementById('main-play-btn');

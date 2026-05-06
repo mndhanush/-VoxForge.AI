@@ -109,6 +109,10 @@
             color: var(--text-color);
             transition: background-color 0.3s ease, color 0.3s ease;
             overflow-x: hidden;
+            
+            /* CHANGED: Hide scrollbar on body for cross-browser cleaner layout */
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
         }
 
         .text-body-muted { color: var(--text-muted); transition: color 0.3s ease; }
@@ -244,11 +248,10 @@
             border: 1px solid rgba(0, 0, 0, 0.05);
         }
 
-        /* Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--bg-color); }
-        ::-webkit-scrollbar-thumb { background: #2563EB; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #1D4ED8; }
+        /* CHANGED: Completely removed scrollbar styling to ensure no left/right scrollbar displays */
+        ::-webkit-scrollbar { 
+            display: none; 
+        }
     </style>
 </head>
 <body class="antialiased selection:bg-primary selection:text-white flex flex-col items-center">
@@ -402,7 +405,8 @@
                     The Architects of Audio
                 </div>
 
-                <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6 leading-tight text-white drop-shadow-md max-w-5xl mx-auto">
+                <!-- CHANGED: Reduced font size from text-5xl/6xl/7xl to text-4xl/5xl/6xl -->
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-tight text-white drop-shadow-md max-w-5xl mx-auto">
                     Redefining Human Expression through <span class="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-white animate-glow drop-shadow-none">Artificial Intelligence</span>
                 </h1>
                 
@@ -425,7 +429,8 @@
 
                     <div class="w-full lg:w-1/2">
                         <span class="text-primary font-bold tracking-widest uppercase text-sm block mb-3">Our Origin</span>
-                        <h2 class="font-serif text-3xl md:text-5xl font-bold text-[var(--text-color)] mb-6 leading-tight">Born from a Need for Authentic Emotion</h2>
+                        <!-- CHANGED: Reduced font size from text-3xl/5xl to text-2xl/4xl -->
+                        <h2 class="font-serif text-2xl md:text-4xl font-bold text-[var(--text-color)] mb-6 leading-tight">Born from a Need for Authentic Emotion</h2>
                         <p class="text-lg text-body-muted font-medium mb-6 leading-relaxed">
                             Founded in 2024, VoxForge AI emerged from a simple, frustrating reality: robotic TTS engines were destroying narrative immersion. Creators needed voices that breathed, paused, and emoted.
                         </p>
@@ -435,11 +440,13 @@
                         
                         <div class="grid grid-cols-2 gap-8 border-t border-theme pt-8">
                             <div>
-                                <h4 class="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent mb-2">50M+</h4>
+                                <!-- CHANGED: Reduced font size from text-4xl to text-3xl -->
+                                <h4 class="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent mb-2">50M+</h4>
                                 <p class="text-sm font-bold text-[var(--text-color)] uppercase tracking-wider">Audio Hours Generated</p>
                             </div>
                             <div>
-                                <h4 class="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent mb-2">120+</h4>
+                                <!-- CHANGED: Reduced font size from text-4xl to text-3xl -->
+                                <h4 class="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent mb-2">120+</h4>
                                 <p class="text-sm font-bold text-[var(--text-color)] uppercase tracking-wider">Languages & Dialects</p>
                             </div>
                         </div>
@@ -455,7 +462,8 @@
             <div class="container mx-auto px-4 md:px-8 relative z-10">
                 <div class="text-center mb-16">
                     <span class="text-primary font-bold tracking-widest uppercase text-sm block mb-3">The Forge Directives</span>
-                    <h2 class="text-3xl md:text-5xl font-bold text-[var(--text-color)]">Our Core Values</h2>
+                    <!-- CHANGED: Reduced font size from text-3xl/5xl to text-2xl/4xl -->
+                    <h2 class="text-2xl md:text-4xl font-bold text-[var(--text-color)]">Our Core Values</h2>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
@@ -464,7 +472,8 @@
                         <div class="w-14 h-14 bg-primary/10 text-primary rounded-2xl flex items-center justify-center text-2xl mb-6 border border-primary/20">
                             <i class="fas fa-scale-balanced"></i>
                         </div>
-                        <h3 class="text-2xl font-bold text-[var(--text-color)] mb-4">Ethical AI First</h3>
+                        <!-- CHANGED: Reduced font size from text-2xl to text-xl -->
+                        <h3 class="text-xl font-bold text-[var(--text-color)] mb-4">Ethical AI First</h3>
                         <p class="text-body-muted font-medium leading-relaxed">
                             We implement strict audio watermarking (SynthID) and consent-verification protocols to ensure our cloning technology cannot be weaponized for deepfakes.
                         </p>
@@ -474,7 +483,8 @@
                         <div class="w-14 h-14 bg-primary text-white rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-[0_0_20px_rgba(37,99,235,0.5)]">
                             <i class="fas fa-bolt"></i>
                         </div>
-                        <h3 class="text-2xl font-bold text-[var(--text-color)] mb-4">Zero Latency</h3>
+                        <!-- CHANGED: Reduced font size from text-2xl to text-xl -->
+                        <h3 class="text-xl font-bold text-[var(--text-color)] mb-4">Zero Latency</h3>
                         <p class="text-body-muted font-medium leading-relaxed">
                             Creativity shouldn't wait. Our edge-computing infrastructure ensures that generation happens in a fraction of real-time, keeping you in the flow state.
                         </p>
@@ -484,7 +494,8 @@
                         <div class="w-14 h-14 bg-primary/10 text-primary rounded-2xl flex items-center justify-center text-2xl mb-6 border border-primary/20">
                             <i class="fas fa-shield-halved"></i>
                         </div>
-                        <h3 class="text-2xl font-bold text-[var(--text-color)] mb-4">Absolute Security</h3>
+                        <!-- CHANGED: Reduced font size from text-2xl to text-xl -->
+                        <h3 class="text-xl font-bold text-[var(--text-color)] mb-4">Absolute Security</h3>
                         <p class="text-body-muted font-medium leading-relaxed">
                             Your voice is your most personal data. All voice models are encrypted at rest with AES-256 and never shared or used to train public models.
                         </p>
@@ -494,7 +505,8 @@
                         <div class="w-14 h-14 bg-primary/10 text-primary rounded-2xl flex items-center justify-center text-2xl mb-6 border border-primary/20">
                             <i class="fas fa-globe"></i>
                         </div>
-                        <h3 class="text-2xl font-bold text-[var(--text-color)] mb-4">Global Accessibility</h3>
+                        <!-- CHANGED: Reduced font size from text-2xl to text-xl -->
+                        <h3 class="text-xl font-bold text-[var(--text-color)] mb-4">Global Accessibility</h3>
                         <p class="text-body-muted font-medium leading-relaxed">
                             Language shouldn't be a barrier. Our engine automatically translates and retains the original speaker's emotional intonation across 120 dialects.
                         </p>
@@ -513,22 +525,26 @@
                     <div class="absolute top-0 right-0 w-full h-2 bg-gradient-to-r from-transparent via-primary to-transparent opacity-50"></div>
                     
                     <span class="text-primary font-bold tracking-widest uppercase text-sm block mb-3">Under the Hood</span>
-                    <h2 class="text-3xl md:text-5xl font-bold text-[var(--text-color)] mb-6 max-w-2xl mx-auto">Powered by Neural-X Architecture</h2>
+                    <!-- CHANGED: Reduced font size from text-3xl/5xl to text-2xl/4xl -->
+                    <h2 class="text-2xl md:text-4xl font-bold text-[var(--text-color)] mb-6 max-w-2xl mx-auto">Powered by Neural-X Architecture</h2>
                     <p class="text-lg text-body-muted font-medium mb-12 max-w-3xl mx-auto">
                         Our proprietary acoustic model doesn't just piece together phonemes; it understands the semantic context of a sentence to predict where to breathe, where to stress, and when to whisper.
                     </p>
 
                     <div class="w-full grid grid-cols-1 sm:grid-cols-3 gap-6 divide-y sm:divide-y-0 sm:divide-x divide-theme pt-8 border-t border-theme">
                         <div class="px-6 py-4">
-                            <h4 class="text-3xl font-black text-[var(--text-color)] mb-2">&lt; 50ms</h4>
+                            <!-- CHANGED: Reduced font size from text-3xl to text-2xl -->
+                            <h4 class="text-2xl font-black text-[var(--text-color)] mb-2">&lt; 50ms</h4>
                             <p class="text-xs font-bold text-body-muted uppercase tracking-wider">Streaming Latency</p>
                         </div>
                         <div class="px-6 py-4">
-                            <h4 class="text-3xl font-black text-[var(--text-color)] mb-2">500M+</h4>
+                            <!-- CHANGED: Reduced font size from text-3xl to text-2xl -->
+                            <h4 class="text-2xl font-black text-[var(--text-color)] mb-2">500M+</h4>
                             <p class="text-xs font-bold text-body-muted uppercase tracking-wider">Model Parameters</p>
                         </div>
                         <div class="px-6 py-4">
-                            <h4 class="text-3xl font-black text-[var(--text-color)] mb-2">48kHz</h4>
+                            <!-- CHANGED: Reduced font size from text-3xl to text-2xl -->
+                            <h4 class="text-2xl font-black text-[var(--text-color)] mb-2">48kHz</h4>
                             <p class="text-xs font-bold text-body-muted uppercase tracking-wider">Studio Sample Rate</p>
                         </div>
                     </div>
@@ -540,7 +556,8 @@
     <div class="container mx-auto px-4 md:px-8">
         <div class="text-center mb-16">
             <span class="text-primary font-bold tracking-widest uppercase text-sm block mb-3">Leadership</span>
-            <h2 class="text-3xl md:text-5xl font-bold text-[var(--text-color)]">Meet the Architects</h2>
+            <!-- CHANGED: Reduced font size from text-3xl/5xl to text-2xl/4xl -->
+            <h2 class="text-2xl md:text-4xl font-bold text-[var(--text-color)]">Meet the Architects</h2>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -550,7 +567,8 @@
                 <img src="Images/marcus.jpg" class="absolute inset-0 w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500">
                 <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
                 <div class="absolute bottom-0 left-0 w-full p-8 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                    <h3 class="text-xl font-bold text-white mb-1">Alex Mercer</h3>
+                    <!-- CHANGED: Reduced font size from text-xl to text-lg -->
+                    <h3 class="text-lg font-bold text-white mb-1">Alex Mercer</h3>
                     <p class="text-sm font-bold text-primary mb-4 uppercase tracking-wider">Founder & CEO</p>
                     <div class="flex gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
                         <a href="#" class="text-white/70 hover:text-white"><i class="fab fa-linkedin text-xl"></i></a>
@@ -565,7 +583,8 @@
                 <img src="Images/sarah.jpg" class="absolute inset-0 w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500">
                 <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
                 <div class="absolute bottom-0 left-0 w-full p-8 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                    <h3 class="text-xl font-bold text-white mb-1">Dr. Sarah Chen</h3>
+                    <!-- CHANGED: Reduced font size from text-xl to text-lg -->
+                    <h3 class="text-lg font-bold text-white mb-1">Dr. Sarah Chen</h3>
                     <p class="text-sm font-bold text-primary mb-4 uppercase tracking-wider">Head of AI</p>
                     <div class="flex gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
                         <a href="#" class="text-white/70 hover:text-white"><i class="fab fa-linkedin text-xl"></i></a>
@@ -580,7 +599,8 @@
                 <img src="Images/david.jpg" class="absolute inset-0 w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500">
                 <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
                 <div class="absolute bottom-0 left-0 w-full p-8 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                    <h3 class="text-xl font-bold text-white mb-1">David Rossi</h3>
+                    <!-- CHANGED: Reduced font size from text-xl to text-lg -->
+                    <h3 class="text-lg font-bold text-white mb-1">David Rossi</h3>
                     <p class="text-sm font-bold text-primary mb-4 uppercase tracking-wider">Chief Audio Engineer</p>
                     <div class="flex gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
                         <a href="#" class="text-white/70 hover:text-white"><i class="fab fa-linkedin text-xl"></i></a>
@@ -595,7 +615,8 @@
                 <img src="Images/emma.jpg" class="absolute inset-0 w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500">
                 <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
                 <div class="absolute bottom-0 left-0 w-full p-8 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                    <h3 class="text-xl font-bold text-white mb-1">Maya Patel</h3>
+                    <!-- CHANGED: Reduced font size from text-xl to text-lg -->
+                    <h3 class="text-lg font-bold text-white mb-1">Maya Patel</h3>
                     <p class="text-sm font-bold text-primary mb-4 uppercase tracking-wider">VP of Ethics</p>
                     <div class="flex gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
                         <a href="#" class="text-white/70 hover:text-white"><i class="fab fa-linkedin text-xl"></i></a>
@@ -615,7 +636,8 @@
                     <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 mix-blend-overlay pointer-events-none"></div>
                     
                     <div class="relative z-10 max-w-3xl mx-auto">
-                        <h2 class="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">Ready to build your digital twin?</h2>
+                        <!-- CHANGED: Reduced font size from text-4xl/6xl to text-3xl/5xl -->
+                        <h2 class="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">Ready to build your digital twin?</h2>
                         <p class="text-xl text-white/90 font-medium mb-10">Join the thousands of creators generating studio-quality voiceovers instantly.</p>
                         
                         <div class="flex flex-col sm:flex-row justify-center gap-4">

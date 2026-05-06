@@ -110,6 +110,8 @@
             color: var(--text-color);
             transition: background-color 0.3s ease, color 0.3s ease;
             overflow-x: hidden;
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
         }
 
         .text-body-muted { color: var(--text-muted); transition: color 0.3s ease; }
@@ -275,11 +277,10 @@
             box-shadow: 0 0 10px rgba(37, 99, 235, 0.5);
         }
 
-        /* Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--bg-color); }
-        ::-webkit-scrollbar-thumb { background: #2563EB; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #1D4ED8; }
+        /* Scrollbar - Hidden for cleaner layout */
+        ::-webkit-scrollbar { 
+            display: none; 
+        }
     </style>
 </head>
 <body class="antialiased selection:bg-primary selection:text-white flex flex-col items-center">
@@ -434,7 +435,7 @@
                     500+ Premium Voices Available
                 </div>
 
-                <h1 class="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight mb-6 leading-tight text-white drop-shadow-lg max-w-5xl mx-auto">
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight mb-6 leading-tight text-white drop-shadow-lg max-w-5xl mx-auto">
                     The Ultimate <br/>
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-white animate-glow drop-shadow-none">Voice Library</span>
                 </h1>
@@ -451,14 +452,14 @@
             <div class="container mx-auto px-4 md:px-8">
                 <div class="text-center mb-16">
                     <span class="text-primary font-bold tracking-widest uppercase text-sm block mb-3">Top Rated</span>
-                    <h2 class="text-3xl md:text-5xl font-bold text-[var(--text-color)]">Featured Pro Voices</h2>
+                    <h2 class="text-2xl md:text-4xl font-bold text-[var(--text-color)]">Featured Pro Voices</h2>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div class="glass-card rounded-[2rem] p-8 hover:-translate-y-2 transition-transform duration-300 shadow-lg border border-theme relative flex flex-col items-center text-center">
                         <div class="absolute top-4 right-4 bg-primary text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">Featured</div>
                         <img src="Images/David Ross.jpg" alt="Marcus" class="w-24 h-24 rounded-full border-4 border-card shadow-lg mb-4 object-cover">
-                        <h3 class="font-serif text-2xl font-bold text-[var(--text-color)] mb-1">Marcus</h3>
+                        <h3 class="font-serif text-xl font-bold text-[var(--text-color)] mb-1">Marcus</h3>
                         <p class="text-body-muted text-sm font-medium mb-4">English (UK) • Authoritative</p>
                         
                         <div class="w-full flex items-center gap-3 bg-card border border-theme rounded-full p-2 mb-6 shadow-inner">
@@ -475,7 +476,7 @@
                     <div class="glass-card rounded-[2rem] p-8 hover:-translate-y-2 transition-transform duration-300 shadow-xl border-primary/40 relative flex flex-col items-center text-center transform scale-105 z-10 bg-gradient-to-b from-card to-[var(--bg-color)]">
                         <div class="absolute top-4 right-4 bg-accent text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">Trending</div>
                         <img src="Images/Emma Wilson.jpg" alt="Chloe" class="w-24 h-24 rounded-full border-4 border-primary/20 shadow-lg mb-4 object-cover">
-                        <h3 class="font-serif text-2xl font-bold text-[var(--text-color)] mb-1">Chloe</h3>
+                        <h3 class="font-serif text-xl font-bold text-[var(--text-color)] mb-1">Chloe</h3>
                         <p class="text-body-muted text-sm font-medium mb-4">English (US) • Enthusiastic</p>
                         
                         <div class="w-full flex items-center gap-3 bg-[var(--bg-color)] border border-theme rounded-full p-2 mb-6 shadow-inner">
@@ -492,7 +493,7 @@
                     <div class="glass-card rounded-[2rem] p-8 hover:-translate-y-2 transition-transform duration-300 shadow-lg border border-theme relative flex flex-col items-center text-center">
                         <div class="absolute top-4 right-4 bg-gray-500 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">Pro</div>
                         <img src="Images/sarah.jpg" alt="David" class="w-24 h-24 rounded-full border-4 border-card shadow-lg mb-4 object-cover">
-                        <h3 class="font-serif text-2xl font-bold text-[var(--text-color)] mb-1">David</h3>
+                        <h3 class="font-serif text-xl font-bold text-[var(--text-color)] mb-1">David</h3>
                         <p class="text-body-muted text-sm font-medium mb-4">English (US) • Cinematic Trailer</p>
                         
                         <div class="w-full flex items-center gap-3 bg-card border border-theme rounded-full p-2 mb-6 shadow-inner">
@@ -513,31 +514,31 @@
             <div class="container mx-auto px-4 md:px-8">
                 <div class="text-center mb-16">
                     <span class="text-primary font-bold tracking-widest uppercase text-sm block mb-3">Genres</span>
-                    <h2 class="text-3xl md:text-5xl font-bold text-[var(--text-color)]">Find the Perfect Tone</h2>
+                    <h2 class="text-2xl md:text-4xl font-bold text-[var(--text-color)]">Find the Perfect Tone</h2>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     <a href="#" class="group block bg-[var(--bg-color)] p-8 rounded-3xl border border-theme hover:border-primary transition-all duration-300 hover:shadow-xl hover:-translate-y-2 text-center">
                         <div class="w-16 h-16 mx-auto bg-primary/10 text-primary rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform"><i class="fas fa-book-open"></i></div>
-                        <h3 class="text-xl font-bold text-[var(--text-color)] mb-2">Narrative & Audiobooks</h3>
+                        <h3 class="text-lg font-bold text-[var(--text-color)] mb-2">Narrative & Audiobooks</h3>
                         <p class="text-sm text-body-muted font-medium">Clear, steady voices designed for long-form listening and storytelling.</p>
                     </a>
                     
                     <a href="#" class="group block bg-[var(--bg-color)] p-8 rounded-3xl border border-theme hover:border-primary transition-all duration-300 hover:shadow-xl hover:-translate-y-2 text-center">
                         <div class="w-16 h-16 mx-auto bg-primary/10 text-primary rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform"><i class="fas fa-comments"></i></div>
-                        <h3 class="text-xl font-bold text-[var(--text-color)] mb-2">Conversational AI</h3>
+                        <h3 class="text-lg font-bold text-[var(--text-color)] mb-2">Conversational AI</h3>
                         <p class="text-sm text-body-muted font-medium">Natural, breathable voices perfect for chatbots and virtual assistants.</p>
                     </a>
 
                     <a href="#" class="group block bg-[var(--bg-color)] p-8 rounded-3xl border border-theme hover:border-primary transition-all duration-300 hover:shadow-xl hover:-translate-y-2 text-center">
                         <div class="w-16 h-16 mx-auto bg-primary/10 text-primary rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform"><i class="fas fa-gamepad"></i></div>
-                        <h3 class="text-xl font-bold text-[var(--text-color)] mb-2">Gaming & Animation</h3>
+                        <h3 class="text-lg font-bold text-[var(--text-color)] mb-2">Gaming & Animation</h3>
                         <p class="text-sm text-body-muted font-medium">Highly emotive, character-driven voices for immersive experiences.</p>
                     </a>
 
                     <a href="#" class="group block bg-[var(--bg-color)] p-8 rounded-3xl border border-theme hover:border-primary transition-all duration-300 hover:shadow-xl hover:-translate-y-2 text-center">
                         <div class="w-16 h-16 mx-auto bg-primary/10 text-primary rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform"><i class="fas fa-bullhorn"></i></div>
-                        <h3 class="text-xl font-bold text-[var(--text-color)] mb-2">Commercial & Promo</h3>
+                        <h3 class="text-lg font-bold text-[var(--text-color)] mb-2">Commercial & Promo</h3>
                         <p class="text-sm text-body-muted font-medium">Upbeat, persuasive tones optimized for ads, marketing, and YouTube.</p>
                     </a>
                 </div>
@@ -552,7 +553,7 @@
                         <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider mb-6 border border-primary/20">
                             <i class="fas fa-mixer"></i> Infinite Possibilities
                         </div>
-                        <h2 class="font-serif text-4xl md:text-5xl font-bold text-[var(--text-color)] mb-6 leading-tight">Create Unique Personas with Voice Blending</h2>
+                        <h2 class="font-serif text-3xl md:text-4xl font-bold text-[var(--text-color)] mb-6 leading-tight">Create Unique Personas with Voice Blending</h2>
                         <p class="text-lg text-body-muted font-medium mb-8 leading-relaxed">
                             Can't find the exact sound you need in the library? Select any two voices and blend them together to create a completely unique, royalty-free synthetic persona.
                         </p>
@@ -571,7 +572,7 @@
 
                     <div class="w-full lg:w-1/2 relative">
                         <div class="glass-card rounded-[2.5rem] p-8 md:p-10 border border-theme shadow-2xl relative z-10 text-center">
-                            <h3 class="text-xl font-bold text-[var(--text-color)] mb-8 uppercase tracking-widest">Voice Mixer</h3>
+                            <h3 class="text-lg font-bold text-[var(--text-color)] mb-8 uppercase tracking-widest">Voice Mixer</h3>
                             
                             <div class="flex justify-between items-center mb-8 relative">
                                 <div class="flex flex-col items-center z-10">
@@ -623,7 +624,7 @@
                         <div class="w-20 h-20 mx-auto bg-white text-primary rounded-2xl flex items-center justify-center text-3xl mb-8 shadow-xl">
                             <i class="fas fa-microphone"></i>
                         </div>
-                        <h2 class="text-3xl md:text-5xl font-black text-white mb-6 leading-tight">Don't see what you need?</h2>
+                        <h2 class="text-2xl md:text-4xl font-black text-white mb-6 leading-tight">Don't see what you need?</h2>
                         <p class="text-lg md:text-xl text-white/90 font-medium mb-10 max-w-2xl mx-auto">
                             Upload a 60-second audio sample of your own voice, and our AI will create a flawless digital twin in minutes. Safe, secure, and private.
                         </p>

@@ -6,7 +6,7 @@
     <meta name="description" content="Admin Dashboard | VoxForge AI">
     <title>Admin Dashboard | VoxForge AI</title>
     
-   <link rel="icon" type="image/jpeg" href="Images\Growwpark favicon.jpg">
+   <link rel="icon" type="image/jpeg" href="Images\Growwpark Favicon.jpg">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
@@ -73,11 +73,18 @@
             overflow: hidden; 
         }
 
-        body {
+        body, .sidebar, main {
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
             transition: background-color 0.3s ease, color 0.3s ease;
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
+        /* Scrollbar Hidden for cleaner layout */
+        ::-webkit-scrollbar { 
+            display: none; 
         }
         
         /* Glassmorphism Navbar */
@@ -132,12 +139,6 @@
             border-radius: 4px 0 0 4px;
         }
 
-        /* Scrollbar */
-        ::-webkit-scrollbar { width: 8px; height: 8px; }
-        ::-webkit-scrollbar-track { background: var(--bg-color); }
-        ::-webkit-scrollbar-thumb { background: #2563EB; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #1D4ED8; }
-        
         /* Utility Classes */
         .bg-card-theme { background-color: var(--card-bg); border-color: var(--border-color); }
         .text-body-muted { color: var(--text-muted); }
@@ -168,9 +169,10 @@
                 RTL
             </button>
 
-            <a href="login.html" class="bg-gradient-to-r from-primary to-accent text-white px-3 sm:px-5 py-2 sm:py-2.5 rounded-full font-bold hover:shadow-[0_0_20px_rgba(37,99,235,0.6)] transform hover:-translate-y-0.5 duration-200 whitespace-nowrap text-[9px] sm:text-[13px] uppercase tracking-wider border border-white/20 flex items-center cursor-pointer no-underline ml-0.5 sm:ml-2">
-                Logout
-            </a>
+            <!-- Profile positioned at the top right -->
+            <button class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold border border-primary/20 hover:bg-primary hover:text-white transition-colors ml-1 sm:ml-2 cursor-pointer" title="Profile">
+                <i class="fas fa-user text-xs sm:text-sm"></i>
+            </button>
         </div>
     </nav>
 
@@ -180,7 +182,7 @@
         
         <aside id="sidebar" class="sidebar w-64 shrink-0 flex flex-col absolute xl:relative inset-y-0 start-0 z-40 transition-transform duration-300 transform -translate-x-full rtl:translate-x-full xl:translate-x-0 rtl:xl:translate-x-0 overflow-y-auto border-r border-theme pt-6 xl:pt-4">
             
-            <div class="space-y-1 px-3">
+            <div class="space-y-1 px-3 flex-grow">
                 <div class="px-4 py-2 mb-2">
                     <p class="text-xs font-bold uppercase tracking-widest text-body-muted">Store Management</p>
                 </div>
@@ -203,13 +205,20 @@
                 </button>
             </div>
             
+            <!-- Logout option at the bottom of the sidebar -->
+            <div class="p-4 mt-auto border-t border-theme">
+                <a href="login.html" class="nav-item w-full text-start flex items-center px-4 py-3.5 rounded-xl font-bold text-sm border-none cursor-pointer bg-transparent uppercase tracking-wide text-red-500 hover:text-red-600 hover:bg-red-500/10 transition-colors no-underline">
+                    <i class="fas fa-sign-out-alt w-5 text-center mr-3 opacity-80"></i> Logout
+                </a>
+            </div>
         </aside>
 
         <main class="flex-1 overflow-y-auto p-4 md:p-8 relative">
             
             <div class="mb-10 flex flex-col lg:flex-row lg:items-end justify-between gap-6">
                 <div>
-                    <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight text-[var(--text-color)] mb-2">Admin Command Center</h1>
+                    <!-- Reduced heading size -->
+                    <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight text-[var(--text-color)] mb-2">Admin Command Center</h1>
                     <p class="text-body-muted font-medium text-sm md:text-base tracking-wide" id="section-description">Monitor your store's performance and environmental impact.</p>
                 </div>
                 <div class="flex flex-wrap gap-3 shrink-0">
@@ -225,7 +234,8 @@
                     <div class="absolute -right-4 -bottom-4 opacity-5 text-primary text-6xl transition-transform group-hover:scale-110"><i class="fas fa-dollar-sign"></i></div>
                     <p class="text-xs font-bold uppercase tracking-widest text-body-muted relative z-10">Total Revenue (30d)</p>
                     <div class="flex items-end justify-between relative z-10">
-                        <h3 class="text-3xl md:text-4xl font-black text-primary truncate">$45,230</h3>
+                        <!-- Reduced stats heading size -->
+                        <h3 class="text-2xl md:text-3xl font-black text-primary truncate">$45,230</h3>
                         <span class="text-xs font-bold text-primary bg-primary/10 px-2 py-1 rounded shrink-0">+12%</span>
                     </div>
                 </div>
@@ -234,7 +244,7 @@
                     <div class="absolute -right-4 -bottom-4 opacity-5 text-blue-400 text-6xl transition-transform group-hover:scale-110"><i class="fas fa-box-open"></i></div>
                     <p class="text-xs font-bold uppercase tracking-widest text-body-muted relative z-10">Pending Orders</p>
                     <div class="flex items-end justify-between relative z-10">
-                        <h3 class="text-3xl md:text-4xl font-black text-[var(--text-color)] truncate">142</h3>
+                        <h3 class="text-2xl md:text-3xl font-black text-[var(--text-color)] truncate">142</h3>
                         <span class="text-xs font-bold text-blue-400 bg-blue-400/10 px-2 py-1 rounded shrink-0">Needs Action</span>
                     </div>
                 </div>
@@ -243,7 +253,7 @@
                     <div class="absolute -right-4 -bottom-4 opacity-5 text-secondary text-6xl transition-transform group-hover:scale-110"><i class="fas fa-seedling"></i></div>
                     <p class="text-xs font-bold uppercase tracking-widest text-body-muted relative z-10">Global Trees Planted</p>
                     <div class="flex items-end justify-between relative z-10">
-                        <h3 class="text-3xl md:text-4xl font-black text-[var(--text-color)] truncate">15,400</h3>
+                        <h3 class="text-2xl md:text-3xl font-black text-[var(--text-color)] truncate">15,400</h3>
                         <span class="text-xs font-bold text-secondary bg-secondary/10 px-2 py-1 rounded shrink-0">Impact</span>
                     </div>
                 </div>
@@ -254,7 +264,8 @@
                 
                 <div id="orders-section" class="lg:col-span-2 bg-card-theme rounded-[1.5rem] shadow-sm border border-theme overflow-hidden flex flex-col transition-all duration-300">
                     <div class="p-6 border-b border-theme flex justify-between items-center">
-                        <h2 class="text-2xl font-bold text-[var(--text-color)] tracking-wide">Recent Customer Orders</h2>
+                        <!-- Reduced sub-heading size -->
+                        <h2 class="text-xl font-bold text-[var(--text-color)] tracking-wide">Recent Customer Orders</h2>
                         <a href="#" class="text-sm font-bold text-primary hover:underline">View All Orders</a>
                     </div>
                     <div class="overflow-x-auto">
@@ -319,7 +330,7 @@
                 </div>
 
                 <div id="inventory-section" class="bg-card-theme rounded-[1.5rem] shadow-sm border border-theme p-8 flex flex-col h-full transition-all duration-300">
-                    <h2 class="text-2xl font-bold text-[var(--text-color)] mb-8 tracking-wide text-red-500">Low Stock Alerts</h2>
+                    <h2 class="text-xl font-bold text-[var(--text-color)] mb-8 tracking-wide text-red-500">Low Stock Alerts</h2>
                     
                     <div class="space-y-5 mb-10 flex-grow">
                         <div class="flex justify-between items-center border-b border-theme pb-4">
@@ -356,7 +367,7 @@
             
             <div id="customers-section" class="hidden bg-card-theme rounded-[1.5rem] shadow-sm border border-theme overflow-hidden flex flex-col transition-all duration-300 w-full mb-8">
                 <div class="p-6 border-b border-theme flex justify-between items-center">
-                    <h2 class="text-2xl font-bold text-[var(--text-color)] tracking-wide">Customer Directory</h2>
+                    <h2 class="text-xl font-bold text-[var(--text-color)] tracking-wide">Customer Directory</h2>
                 </div>
                 <div class="p-6">
                     <p class="text-body-muted mb-6 font-medium text-sm">Here you can manage your customer accounts, view their purchase history, and see their eco-impact scores.</p>
@@ -389,7 +400,7 @@
             </div>
 
             <div id="settings-section" class="hidden bg-card-theme rounded-[1.5rem] shadow-sm border border-theme p-8 flex flex-col transition-all duration-300 w-full mb-8">
-                <h2 class="text-2xl font-bold text-[var(--text-color)] mb-8 tracking-wide">Store Settings</h2>
+                <h2 class="text-xl font-bold text-[var(--text-color)] mb-8 tracking-wide">Store Settings</h2>
                 
                 <div class="space-y-6">
                     <div class="bg-[var(--bg-color)] p-5 rounded-2xl border border-theme flex flex-wrap items-center justify-between gap-4 hover:border-primary transition-colors">

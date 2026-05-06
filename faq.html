@@ -106,6 +106,9 @@
             color: var(--text-color);
             transition: background-color 0.3s ease, color 0.3s ease;
             overflow-x: hidden;
+            /* Hide scrollbar for cleaner layout */
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
         }
 
         .text-body-muted { color: var(--text-muted); transition: color 0.3s ease; }
@@ -250,10 +253,9 @@
         }
 
         /* Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--bg-color); }
-        ::-webkit-scrollbar-thumb { background: #2563EB; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #1D4ED8; }
+        ::-webkit-scrollbar { 
+            display: none; /* Hide Webkit Scrollbar */
+        }
     </style>
 </head>
 <body class="antialiased selection:bg-primary selection:text-white flex flex-col items-center">
@@ -402,7 +404,7 @@
                     Support Center
                 </div>
                 
-                <h1 class="text-5xl md:text-7xl font-black tracking-tight mb-8 leading-tight text-white drop-shadow-lg">
+                <h1 class="text-4xl md:text-6xl font-black tracking-tight mb-8 leading-tight text-white drop-shadow-lg">
                     How can we <br class="hidden sm:block"/>
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-white animate-glow drop-shadow-none">help you?</span>
                 </h1>
@@ -417,7 +419,7 @@
                         <div class="w-16 h-16 bg-primary/10 text-primary rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
                             <i class="fas fa-rocket"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-[var(--text-color)] mb-2">Getting Started</h3>
+                        <h3 class="text-lg font-bold text-[var(--text-color)] mb-2">Getting Started</h3>
                         <p class="text-sm text-body-muted font-medium">Basic concepts and first steps.</p>
                     </a>
 
@@ -425,7 +427,7 @@
                         <div class="w-16 h-16 bg-green-500/10 text-green-500 rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:bg-green-500 group-hover:text-white transition-colors">
                             <i class="fas fa-credit-card"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-[var(--text-color)] mb-2">Billing & Plans</h3>
+                        <h3 class="text-lg font-bold text-[var(--text-color)] mb-2">Billing & Plans</h3>
                         <p class="text-sm text-body-muted font-medium">Manage subscriptions and credits.</p>
                     </a>
 
@@ -433,7 +435,7 @@
                         <div class="w-16 h-16 bg-purple-500/10 text-purple-500 rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:bg-purple-500 group-hover:text-white transition-colors">
                             <i class="fas fa-code"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-[var(--text-color)] mb-2">API & Tech</h3>
+                        <h3 class="text-lg font-bold text-[var(--text-color)] mb-2">API & Tech</h3>
                         <p class="text-sm text-body-muted font-medium">Integration and troubleshooting.</p>
                     </a>
                 </div>
@@ -444,7 +446,7 @@
             <div class="container mx-auto px-4 md:px-8">
                 <div class="text-center mb-16">
                     <span class="text-primary font-bold tracking-widest uppercase text-sm block mb-3 text-center w-full">Documentation</span>
-                    <h2 class="text-3xl md:text-5xl font-bold text-[var(--text-color)]">Explore Popular Topics</h2>
+                    <h2 class="text-2xl md:text-4xl font-bold text-[var(--text-color)] w-full text-center">Explore Popular Topics</h2>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-6 max-w-6xl mx-auto">
@@ -458,7 +460,7 @@
                             <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center text-white text-xl mb-6 shadow-lg transform group-hover:-translate-y-2 transition-transform duration-300">
                                 <i class="fas fa-terminal"></i>
                             </div>
-                            <h3 class="text-3xl font-bold text-white mb-4">API Quickstart</h3>
+                            <h3 class="text-2xl font-bold text-white mb-4">API Quickstart</h3>
                             <p class="text-slate-400 font-medium mb-6 max-w-sm">Everything you need to integrate our TTS and voice cloning endpoints directly into your application in minutes.</p>
                             <span class="text-primary font-bold tracking-wider uppercase text-sm flex items-center gap-2">
                                 Read Documentation <i class="fas fa-arrow-right transform group-hover:translate-x-2 transition-transform"></i>
@@ -473,7 +475,7 @@
                                 <div class="w-12 h-12 bg-white/20 backdrop-blur-md rounded-xl flex items-center justify-center text-white text-xl shadow-lg">
                                     <i class="fas fa-wave-square"></i>
                                 </div>
-                                <h3 class="text-2xl font-bold text-white">Voice Cloning Best Practices</h3>
+                                <h3 class="text-xl font-bold text-white">Voice Cloning Best Practices</h3>
                             </div>
                             <p class="text-white/80 font-medium mb-4 max-w-md">Learn how to record the perfect sample to get an indistinguishable digital twin.</p>
                             <span class="text-white font-bold tracking-wider uppercase text-xs flex items-center gap-2 opacity-90 group-hover:opacity-100">
@@ -487,7 +489,7 @@
                             <div class="w-12 h-12 bg-green-500/10 text-green-500 rounded-xl flex items-center justify-center text-xl mb-4 group-hover:bg-green-500 group-hover:text-white transition-colors duration-300">
                                 <i class="fas fa-file-contract"></i>
                             </div>
-                            <h3 class="text-lg font-bold text-[var(--text-color)] mb-2">Commercial Licensing</h3>
+                            <h3 class="text-base font-bold text-[var(--text-color)] mb-2">Commercial Licensing</h3>
                             <p class="text-xs text-body-muted font-medium">Understand copyright and usage rights.</p>
                         </div>
                     </div>
@@ -497,7 +499,7 @@
                             <div class="w-12 h-12 bg-yellow-500/10 text-yellow-500 rounded-xl flex items-center justify-center text-xl mb-4 group-hover:bg-yellow-500 group-hover:text-white transition-colors duration-300">
                                 <i class="fas fa-wrench"></i>
                             </div>
-                            <h3 class="text-lg font-bold text-[var(--text-color)] mb-2">Troubleshooting</h3>
+                            <h3 class="text-base font-bold text-[var(--text-color)] mb-2">Troubleshooting</h3>
                             <p class="text-xs text-body-muted font-medium">Fix common audio rendering errors.</p>
                         </div>
                     </div>
@@ -510,13 +512,13 @@
             <div class="container mx-auto px-4 md:px-8">
                 <div class="text-center mb-16">
                     <span class="text-primary font-bold tracking-widest uppercase text-sm block mb-3 text-center w-full">General Inquiries</span>
-                    <h2 class="text-3xl md:text-5xl font-bold text-[var(--text-color)]">The Basics</h2>
+                    <h2 class="text-2xl md:text-4xl font-bold text-[var(--text-color)] w-full text-center">The Basics</h2>
                 </div>
 
                 <div class="max-w-3xl mx-auto space-y-4">
                     <div class="faq-item bg-[var(--bg-color)] border border-theme rounded-2xl px-6 py-5 cursor-pointer hover:border-primary transition-all shadow-sm">
                         <div class="flex justify-between items-center w-full">
-                            <h4 class="font-bold text-lg text-[var(--text-color)]">What exactly is VoxForge AI?</h4>
+                            <h4 class="font-bold text-base text-[var(--text-color)]">What exactly is VoxForge AI?</h4>
                             <i class="fas fa-plus text-body-muted transition-transform duration-300 faq-icon text-xl"></i>
                         </div>
                         <div class="faq-content">
@@ -528,7 +530,7 @@
 
                     <div class="faq-item bg-[var(--bg-color)] border border-theme rounded-2xl px-6 py-5 cursor-pointer hover:border-primary transition-all shadow-sm">
                         <div class="flex justify-between items-center w-full">
-                            <h4 class="font-bold text-lg text-[var(--text-color)]">How much audio do I need to clone a voice?</h4>
+                            <h4 class="font-bold text-base text-[var(--text-color)]">How much audio do I need to clone a voice?</h4>
                             <i class="fas fa-plus text-body-muted transition-transform duration-300 faq-icon text-xl"></i>
                         </div>
                         <div class="faq-content">
@@ -540,7 +542,7 @@
 
                     <div class="faq-item bg-[var(--bg-color)] border border-theme rounded-2xl px-6 py-5 cursor-pointer hover:border-primary transition-all shadow-sm">
                         <div class="flex justify-between items-center w-full">
-                            <h4 class="font-bold text-lg text-[var(--text-color)]">Can I use generated voices in commercial projects?</h4>
+                            <h4 class="font-bold text-base text-[var(--text-color)]">Can I use generated voices in commercial projects?</h4>
                             <i class="fas fa-plus text-body-muted transition-transform duration-300 faq-icon text-xl"></i>
                         </div>
                         <div class="faq-content">
@@ -552,7 +554,7 @@
 
                     <div class="faq-item bg-[var(--bg-color)] border border-theme rounded-2xl px-6 py-5 cursor-pointer hover:border-primary transition-all shadow-sm">
                         <div class="flex justify-between items-center w-full">
-                            <h4 class="font-bold text-lg text-[var(--text-color)]">How many languages are supported?</h4>
+                            <h4 class="font-bold text-base text-[var(--text-color)]">How many languages are supported?</h4>
                             <i class="fas fa-plus text-body-muted transition-transform duration-300 faq-icon text-xl"></i>
                         </div>
                         <div class="faq-content">
@@ -569,13 +571,13 @@
             <div class="container mx-auto px-4 md:px-8">
                 <div class="text-center mb-16">
                     <span class="text-primary font-bold tracking-widest uppercase text-sm block mb-3 text-center w-full">Pricing & Subscriptions</span>
-                    <h2 class="text-3xl md:text-5xl font-bold text-[var(--text-color)]">Billing Questions</h2>
+                    <h2 class="text-2xl md:text-4xl font-bold text-[var(--text-color)] w-full text-center">Billing Questions</h2>
                 </div>
 
                 <div class="max-w-3xl mx-auto space-y-4">
                     <div class="faq-item bg-card border border-theme rounded-2xl px-6 py-5 cursor-pointer hover:border-primary transition-all shadow-sm">
                         <div class="flex justify-between items-center w-full">
-                            <h4 class="font-bold text-lg text-[var(--text-color)]">What counts as a "character" towards my quota?</h4>
+                            <h4 class="font-bold text-base text-[var(--text-color)]">What counts as a "character" towards my quota?</h4>
                             <i class="fas fa-plus text-body-muted transition-transform duration-300 faq-icon text-xl"></i>
                         </div>
                         <div class="faq-content">
@@ -587,7 +589,7 @@
 
                     <div class="faq-item bg-card border border-theme rounded-2xl px-6 py-5 cursor-pointer hover:border-primary transition-all shadow-sm">
                         <div class="flex justify-between items-center w-full">
-                            <h4 class="font-bold text-lg text-[var(--text-color)]">Do unused characters roll over to the next month?</h4>
+                            <h4 class="font-bold text-base text-[var(--text-color)]">Do unused characters roll over to the next month?</h4>
                             <i class="fas fa-plus text-body-muted transition-transform duration-300 faq-icon text-xl"></i>
                         </div>
                         <div class="faq-content">
@@ -599,7 +601,7 @@
 
                     <div class="faq-item bg-card border border-theme rounded-2xl px-6 py-5 cursor-pointer hover:border-primary transition-all shadow-sm">
                         <div class="flex justify-between items-center w-full">
-                            <h4 class="font-bold text-lg text-[var(--text-color)]">How do I cancel my subscription?</h4>
+                            <h4 class="font-bold text-base text-[var(--text-color)]">How do I cancel my subscription?</h4>
                             <i class="fas fa-plus text-body-muted transition-transform duration-300 faq-icon text-xl"></i>
                         </div>
                         <div class="faq-content">
@@ -616,13 +618,13 @@
             <div class="container mx-auto px-4 md:px-8">
                 <div class="text-center mb-16">
                     <span class="text-primary font-bold tracking-widest uppercase text-sm block mb-3 text-center w-full">Technical & API</span>
-                    <h2 class="text-3xl md:text-5xl font-bold text-[var(--text-color)]">Technical Support</h2>
+                    <h2 class="text-2xl md:text-4xl font-bold text-[var(--text-color)] w-full text-center">Technical Support</h2>
                 </div>
 
                 <div class="max-w-3xl mx-auto space-y-4">
                     <div class="faq-item bg-[var(--bg-color)] border border-theme rounded-2xl px-6 py-5 cursor-pointer hover:border-primary transition-all shadow-sm">
                         <div class="flex justify-between items-center w-full">
-                            <h4 class="font-bold text-lg text-[var(--text-color)]">What are the API rate limits?</h4>
+                            <h4 class="font-bold text-base text-[var(--text-color)]">What are the API rate limits?</h4>
                             <i class="fas fa-plus text-body-muted transition-transform duration-300 faq-icon text-xl"></i>
                         </div>
                         <div class="faq-content">
@@ -634,7 +636,7 @@
 
                     <div class="faq-item bg-[var(--bg-color)] border border-theme rounded-2xl px-6 py-5 cursor-pointer hover:border-primary transition-all shadow-sm">
                         <div class="flex justify-between items-center w-full">
-                            <h4 class="font-bold text-lg text-[var(--text-color)]">What file formats are exported?</h4>
+                            <h4 class="font-bold text-base text-[var(--text-color)]">What file formats are exported?</h4>
                             <i class="fas fa-plus text-body-muted transition-transform duration-300 faq-icon text-xl"></i>
                         </div>
                         <div class="faq-content">
@@ -646,7 +648,7 @@
 
                     <div class="faq-item bg-[var(--bg-color)] border border-theme rounded-2xl px-6 py-5 cursor-pointer hover:border-primary transition-all shadow-sm">
                         <div class="flex justify-between items-center w-full">
-                            <h4 class="font-bold text-lg text-[var(--text-color)]">Why does my cloned voice sound slightly robotic?</h4>
+                            <h4 class="font-bold text-base text-[var(--text-color)]">Why does my cloned voice sound slightly robotic?</h4>
                             <i class="fas fa-plus text-body-muted transition-transform duration-300 faq-icon text-xl"></i>
                         </div>
                         <div class="faq-content">
@@ -665,7 +667,7 @@
             <div class="container mx-auto px-4 md:px-8 relative z-10">
                 <div class="text-center mb-16">
                     <span class="text-primary font-bold tracking-widest uppercase text-sm block mb-3 text-center w-full">Still Need Help?</span>
-                    <h2 class="text-3xl md:text-5xl font-bold text-[var(--text-color)]">Get in touch with us</h2>
+                    <h2 class="text-2xl md:text-4xl font-bold text-[var(--text-color)] w-full text-center">Get in touch with us</h2>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto items-stretch">
@@ -674,7 +676,7 @@
                         <div class="w-16 h-16 bg-blue-500/10 text-blue-500 rounded-full flex items-center justify-center text-2xl mb-6 group-hover:bg-blue-500 group-hover:text-white transition-colors">
                             <i class="fab fa-discord"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-[var(--text-color)] mb-2 w-full">Community Forum</h3>
+                        <h3 class="text-lg font-bold text-[var(--text-color)] mb-2 w-full">Community Forum</h3>
                         <p class="text-sm text-body-muted font-medium mb-8">Join 10,000+ creators in our Discord to share tips and get peer support.</p>
                         <a href="#" class="mt-auto w-full py-3 rounded-xl bg-[var(--bg-color)] border border-theme text-[var(--text-color)] font-bold hover:bg-blue-500 hover:text-white hover:border-blue-500 transition-all uppercase tracking-wider text-xs">Join Discord</a>
                     </div>
@@ -684,7 +686,7 @@
                         <div class="w-16 h-16 bg-primary text-white shadow-[0_0_15px_rgba(37,99,235,0.5)] rounded-full flex items-center justify-center text-2xl mb-6">
                             <i class="fas fa-envelope"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-[var(--text-color)] mb-2 w-full">Email Support</h3>
+                        <h3 class="text-lg font-bold text-[var(--text-color)] mb-2 w-full">Email Support</h3>
                         <p class="text-sm text-body-muted font-medium mb-8">Drop us a line directly. Our support team typically replies within 24 hours.</p>
                         <a href="mailto:support@voxforge.ai" class="mt-auto w-full py-3 rounded-xl bg-primary text-white font-bold hover:bg-accent transition-all shadow-md uppercase tracking-wider text-xs">support@voxforge.ai</a>
                     </div>
@@ -693,7 +695,7 @@
                         <div class="w-16 h-16 bg-yellow-500/10 text-yellow-500 rounded-full flex items-center justify-center text-2xl mb-6 group-hover:bg-yellow-500 group-hover:text-white transition-colors">
                             <i class="fas fa-ticket"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-[var(--text-color)] mb-2 w-full">Priority Ticket</h3>
+                        <h3 class="text-lg font-bold text-[var(--text-color)] mb-2 w-full">Priority Ticket</h3>
                         <p class="text-sm text-body-muted font-medium mb-8">For Studio and Enterprise users. Open a ticket from your dashboard for fast routing.</p>
                         <a href="user-dashboard.html" class="mt-auto w-full py-3 rounded-xl bg-[var(--bg-color)] border border-theme text-[var(--text-color)] font-bold hover:bg-yellow-500 hover:text-white hover:border-yellow-500 transition-all uppercase tracking-wider text-xs">Go to Dashboard</a>
                     </div>
@@ -723,7 +725,7 @@
                 </div>
 
                 <div class="flex flex-col items-center md:items-start">
-                    <h4 class="font-bold text-lg mb-6 text-[var(--text-color)] tracking-wide">Product</h4>
+                    <h4 class="font-bold text-base mb-6 text-[var(--text-color)] tracking-wide">Product</h4>
                     <ul class="space-y-3 font-medium text-sm text-center md:text-left">
                         <li><a href="features.html" class="hover:text-primary transition-colors">Features</a></li>
                         <li><a href="ai-voice.html" class="hover:text-primary transition-colors">Voice Library</a></li>
@@ -733,7 +735,7 @@
                 </div>
 
                 <div class="flex flex-col items-center md:items-start">
-                    <h4 class="font-bold text-lg mb-6 text-[var(--text-color)] tracking-wide">Resources</h4>
+                    <h4 class="font-bold text-base mb-6 text-[var(--text-color)] tracking-wide">Resources</h4>
                     <ul class="space-y-3 font-medium text-sm text-center md:text-left">
                         <li><a href="case-studies.html" class="hover:text-primary transition-colors">Case Studies</a></li>
                         <li><a href="#" class="hover:text-primary transition-colors">Blog</a></li>
@@ -743,7 +745,7 @@
                 </div>
 
                 <div class="flex flex-col items-center md:items-start">
-                    <h4 class="font-bold text-lg mb-6 text-[var(--text-color)] tracking-wide">Company</h4>
+                    <h4 class="font-bold text-base mb-6 text-[var(--text-color)] tracking-wide">Company</h4>
                     <ul class="space-y-3 font-medium text-sm text-center md:text-left">
                         <li><a href="about.html" class="hover:text-primary transition-colors">About Us</a></li>
                         <li><a href="#" class="hover:text-primary transition-colors">Careers</a></li>

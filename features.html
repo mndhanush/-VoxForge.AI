@@ -264,11 +264,14 @@
             box-shadow: 0 0 10px rgba(37, 99, 235, 0.5);
         }
 
-        /* Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--bg-color); }
-        ::-webkit-scrollbar-thumb { background: #2563EB; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #1D4ED8; }
+        /* Hide Scrollbar for a cleaner layout */
+        ::-webkit-scrollbar { 
+            display: none; 
+        }
+        html, body {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
     </style>
 </head>
 <body class="antialiased selection:bg-primary selection:text-white flex flex-col items-center">
@@ -415,7 +418,7 @@
             <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 z-0 pointer-events-none"></div>
 
             <div class="container mx-auto px-4 relative z-10 text-center flex-grow flex flex-col justify-center items-center w-full">
-                <h1 class="text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tight mb-6 leading-tight text-white drop-shadow-lg max-w-5xl mx-auto">
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6 leading-tight text-white drop-shadow-lg max-w-5xl mx-auto">
                     Powerful AI <br/>
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-white animate-glow drop-shadow-none">Audio Tools</span>
                 </h1>
@@ -445,7 +448,7 @@
                         <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider mb-6 border border-primary/20">
                             <i class="fas fa-fingerprint"></i> Core Feature
                         </div>
-                        <h2 class="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--text-color)] mb-6 leading-tight">Instant Voice Cloning</h2>
+                        <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-[var(--text-color)] mb-6 leading-tight">Instant Voice Cloning</h2>
                         <p class="text-lg text-body-muted font-medium mb-8 leading-relaxed">
                             Replicate any voice with astonishing accuracy using just a 60-second audio sample. Our neural engine captures the unique timbre, pacing, and breath patterns of the original speaker, creating a flawless digital twin.
                         </p>
@@ -453,14 +456,14 @@
                             <div class="flex items-start gap-4 text-left">
                                 <div class="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0 mt-1 border border-primary/20"><i class="fas fa-check text-sm"></i></div>
                                 <div>
-                                    <h4 class="font-bold text-[var(--text-color)] text-lg">Zero Studio Time</h4>
+                                    <h4 class="font-bold text-[var(--text-color)] text-base">Zero Studio Time</h4>
                                     <p class="text-sm text-body-muted font-medium mt-1">Clone from existing recordings or phone memos anywhere, instantly.</p>
                                 </div>
                             </div>
                             <div class="flex items-start gap-4 text-left">
                                 <div class="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0 mt-1 border border-primary/20"><i class="fas fa-check text-sm"></i></div>
                                 <div>
-                                    <h4 class="font-bold text-[var(--text-color)] text-lg">Emotional Integrity</h4>
+                                    <h4 class="font-bold text-[var(--text-color)] text-base">Emotional Integrity</h4>
                                     <p class="text-sm text-body-muted font-medium mt-1">Retains the natural emotional resonance and human touch of the source.</p>
                                 </div>
                             </div>
@@ -508,7 +511,7 @@
                         <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider mb-6 border border-primary/20">
                             <i class="fas fa-keyboard"></i> Synthesis
                         </div>
-                        <h2 class="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--text-color)] mb-6 leading-tight">Ultra-Realistic Text-to-Speech</h2>
+                        <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-[var(--text-color)] mb-6 leading-tight">Ultra-Realistic Text-to-Speech</h2>
                         <p class="text-lg text-body-muted font-medium mb-8 leading-relaxed">
                             Generate studio-quality voiceovers from text in milliseconds. Eliminate robotic cadences with our context-aware pronunciation models that understand natural sentence flow, punctuation, and emphasis.
                         </p>
@@ -527,7 +530,7 @@
                     
                     <div class="w-full lg:w-1/2 relative">
                         <div class="glass-card rounded-[2.5rem] p-8 md:p-10 border border-theme shadow-2xl relative z-10 transition-transform duration-500 hover:scale-[1.02]">
-                            <h3 class="text-xl font-bold text-[var(--text-color)] mb-8 border-b border-theme pb-4 uppercase tracking-widest text-center">Performance Settings</h3>
+                            <h3 class="text-lg font-bold text-[var(--text-color)] mb-8 border-b border-theme pb-4 uppercase tracking-widest text-center">Performance Settings</h3>
                             
                             <div class="space-y-8 text-left">
                                 <div>
@@ -564,7 +567,7 @@
                         <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider mb-6 border border-primary/20">
                             <i class="fas fa-sliders"></i> Direction
                         </div>
-                        <h2 class="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--text-color)] mb-6 leading-tight">Granular Emotion Control</h2>
+                        <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-[var(--text-color)] mb-6 leading-tight">Granular Emotion Control</h2>
                         <p class="text-lg text-body-muted font-medium mb-8 leading-relaxed">
                             Don't just generate speech—direct the performance. Command your AI voices to whisper, shout, cry, or laugh using intuitive slider controls. Adjust the micro-expressions that make a voice truly human.
                         </p>
@@ -609,7 +612,7 @@
                         <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider mb-6 border border-primary/20">
                             <i class="fas fa-globe"></i> Localization
                         </div>
-                        <h2 class="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--text-color)] mb-6 leading-tight">Seamless Multi-Language Translation</h2>
+                        <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-[var(--text-color)] mb-6 leading-tight">Seamless Multi-Language Translation</h2>
                         <p class="text-lg text-body-muted font-medium mb-8 leading-relaxed">
                             Break global barriers. Translate your cloned voice into over 50 languages instantly. Our engine retains the exact vocal characteristics and emotional delivery of the original audio, allowing you to speak fluently to the world.
                         </p>
@@ -628,7 +631,7 @@
                     
                     <div class="w-full lg:w-1/2 text-center lg:text-left">
                         <span class="text-primary font-bold tracking-widest uppercase text-sm block mb-4">For Developers</span>
-                        <h2 class="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">Build with the VoxForge API</h2>
+                        <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">Build with the VoxForge API</h2>
                         <p class="text-lg text-white/70 font-medium mb-10 leading-relaxed">
                             Integrate world-class voice synthesis directly into your apps, games, or automated workflows. Our robust REST API is built for scale, offering sub-50ms latency for streaming audio generation.
                         </p>
@@ -688,7 +691,7 @@
                 </div>
 
                 <div class="flex flex-col items-center md:items-start">
-                    <h4 class="font-bold text-lg mb-6 text-[var(--text-color)] tracking-wide">Product</h4>
+                    <h4 class="font-bold text-base mb-6 text-[var(--text-color)] tracking-wide">Product</h4>
                     <ul class="space-y-3 font-medium text-sm text-center md:text-left">
                         <li><a href="features.html" class="hover:text-primary transition-colors">Features</a></li>
                         <li><a href="ai-voice.html" class="hover:text-primary transition-colors">Voice Library</a></li>
@@ -698,7 +701,7 @@
                 </div>
 
                 <div class="flex flex-col items-center md:items-start">
-                    <h4 class="font-bold text-lg mb-6 text-[var(--text-color)] tracking-wide">Resources</h4>
+                    <h4 class="font-bold text-base mb-6 text-[var(--text-color)] tracking-wide">Resources</h4>
                     <ul class="space-y-3 font-medium text-sm text-center md:text-left">
                         <li><a href="case-studies.html" class="hover:text-primary transition-colors">Case Studies</a></li>
                         <li><a href="#" class="hover:text-primary transition-colors">Blog</a></li>
@@ -708,7 +711,7 @@
                 </div>
 
                 <div class="flex flex-col items-center md:items-start">
-                    <h4 class="font-bold text-lg mb-6 text-[var(--text-color)] tracking-wide">Company</h4>
+                    <h4 class="font-bold text-base mb-6 text-[var(--text-color)] tracking-wide">Company</h4>
                     <ul class="space-y-3 font-medium text-sm text-center md:text-left">
                         <li><a href="about.html" class="hover:text-primary transition-colors">About Us</a></li>
                         <li><a href="#" class="hover:text-primary transition-colors">Careers</a></li>

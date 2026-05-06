@@ -69,6 +69,18 @@
             --hover-highlight: #60A5FA;
         }
 
+        /* Hide scrollbars completely for a cleaner layout */
+        ::-webkit-scrollbar {
+            display: none;
+            width: 0;
+            background: transparent;
+        }
+        
+        * {
+            -ms-overflow-style: none; /* IE and Edge */
+            scrollbar-width: none; /* Firefox */
+        }
+
         html, body {
             margin: 0; 
             padding: 0; 
@@ -176,7 +188,7 @@
         <div class="w-full max-w-[360px] bg-card-theme rounded-[1.5rem] shadow-2xl border border-theme animate-fadeInUp p-6 relative z-10">
             
             <div class="mb-6 text-center">
-                <h1 class="text-2xl font-black text-[var(--text-color)] mb-1.5 tracking-tight">Welcome Back</h1>
+                <h1 class="text-xl font-black text-[var(--text-color)] mb-1.5 tracking-tight">Welcome Back</h1>
                 <p class="text-body-muted text-xs font-medium">Sign in to access your dashboard.</p>
             </div>
 
@@ -244,7 +256,7 @@
         <div class="bg-card-theme rounded-[1.5rem] p-6 max-w-[340px] w-full shadow-2xl transform transition-all duration-300 scale-95 border border-theme relative overflow-hidden">
             <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-primary to-accent"></div>
             <div class="flex justify-between items-center mb-4 mt-2">
-                <h3 class="text-lg font-bold text-[var(--text-color)] tracking-wide">Reset Password</h3>
+                <h3 class="text-base font-bold text-[var(--text-color)] tracking-wide">Reset Password</h3>
                 <button onclick="closePasswordReset()" class="text-body-muted hover:text-primary transition-colors cursor-pointer border-0 bg-transparent">
                     <i class="fas fa-times text-lg"></i>
                 </button>
