@@ -263,7 +263,6 @@
             <div class="flex items-center justify-between h-14 md:h-auto">
                 
                 <a href="index.html" class="flex items-center gap-2 no-underline transition-transform duration-300 hover:scale-105">
-                    
                     <div class="text-xl md:text-2xl font-black tracking-tight navbar-brand-text">VoxForge<span class="text-primary">.AI</span></div>
                 </a>
                 
@@ -329,7 +328,6 @@
             
             <div class="flex justify-between items-center mb-6 pb-6 border-b border-[var(--border-color)]">
                 <a href="index.html" class="flex items-center gap-2 no-underline">
-                  
                     <span class="text-[15px] font-bold tracking-tight text-[var(--text-color)] block">VoxForge<span class="text-primary">.AI</span></span>
                 </a>
                 
@@ -350,7 +348,8 @@
             
             <div class="space-y-1 flex-grow">
                 <div>
-                    <button class="flex items-center justify-between w-full text-[var(--text-color)] hover:bg-primary/5 text-[11px] font-bold py-3.5 px-4 rounded-lg cursor-pointer border-0 uppercase tracking-widest transition-colors bg-transparent" onclick="toggleMobileDropdown('home-mobile')">
+                    <!-- Aligning chevron directly with text inside the mobile menu -->
+                    <button class="flex items-center justify-start gap-2 w-full text-[var(--text-color)] hover:bg-primary/5 text-[11px] font-bold py-3.5 px-4 rounded-lg cursor-pointer border-0 uppercase tracking-widest transition-colors bg-transparent" onclick="toggleMobileDropdown('home-mobile')">
                         <span>HOME</span>
                         <i class="fas fa-chevron-down text-[var(--text-muted)] dropdown-arrow"></i>
                     </button>
@@ -369,7 +368,7 @@
                 <a href="contact.html" class="block text-[var(--text-color)] text-[11px] font-bold py-3.5 px-4 no-underline uppercase tracking-widest hover:bg-primary/5 rounded-lg transition-colors">CONTACT</a>
                 
                 <div>
-                    <button class="flex items-center justify-between w-full text-[var(--text-color)] hover:bg-primary/5 text-[11px] font-bold py-3.5 px-4 rounded-lg cursor-pointer border-0 bg-transparent uppercase tracking-widest transition-colors" onclick="toggleMobileDropdown('dashboard-mobile')">
+                    <button class="flex items-center justify-start gap-2 w-full text-[var(--text-color)] hover:bg-primary/5 text-[11px] font-bold py-3.5 px-4 rounded-lg cursor-pointer border-0 bg-transparent uppercase tracking-widest transition-colors" onclick="toggleMobileDropdown('dashboard-mobile')">
                         <span>DASHBOARD</span>
                         <i class="fas fa-chevron-down text-[var(--text-muted)] dropdown-arrow"></i>
                     </button>
@@ -552,65 +551,21 @@
                     </div>
                 </div>
 
+                <!-- Replaced The Daily Pulse Section -->
                 <div class="w-full h-px bg-gradient-to-r from-transparent via-theme to-transparent mb-32"></div>
 
-                <div class="flex flex-col lg:flex-row-reverse items-center gap-16">
-                    <div class="w-full lg:w-1/2">
-                        <div class="flex items-center gap-4 mb-6">
-                            <div class="w-16 h-16 rounded-2xl bg-card border border-theme flex items-center justify-center text-2xl text-[var(--text-color)] shadow-sm">
-                                <i class="fas fa-podcast"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-bold text-[var(--text-color)]">The Daily Pulse</h3>
-                                <p class="text-sm text-body-muted font-bold uppercase tracking-wider">Top 100 News Podcast</p>
-                            </div>
-                        </div>
-                        
-                        <h2 class="text-2xl md:text-4xl font-bold text-[var(--text-color)] mb-6 leading-tight">Going Global overnight.</h2>
-                        
-                        <div class="prose prose-lg dark:prose-invert text-body-muted font-medium mb-8">
-                            <p><strong>The Challenge:</strong> Expanding a daily US news podcast to international markets. Re-recording episodes daily in multiple languages with native speakers was logistically impossible and financially prohibitive.</p>
-                            <p><strong>The Solution:</strong> The Daily Pulse team used VoxForge's multi-language translation engine. They cloned the main host's voice once. Now, scripts are automatically translated and generated in Spanish, French, German, and Japanese, retaining the host's exact pacing and tone.</p>
-                        </div>
-
-                        <div class="grid grid-cols-2 gap-6 bg-card p-6 rounded-2xl border border-theme shadow-sm">
-                            <div>
-                                <h4 class="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent mb-1">300%</h4>
-                                <p class="text-xs font-bold text-[var(--text-color)] uppercase tracking-wider">Audience Growth</p>
-                            </div>
-                            <div>
-                                <h4 class="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent mb-1">95%</h4>
-                                <p class="text-xs font-bold text-[var(--text-color)] uppercase tracking-wider">Engagement Boost</p>
-                            </div>
+                <div class="bg-card border border-theme rounded-[2rem] p-8 md:p-12 shadow-sm max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-8">
+                    <div class="w-full md:w-1/3 flex justify-center">
+                        <div class="w-32 h-32 rounded-full bg-secondary/10 flex items-center justify-center border border-secondary/20 shadow-inner">
+                            <i class="fas fa-podcast text-5xl text-secondary"></i>
                         </div>
                     </div>
-
-                    <div class="w-full lg:w-1/2">
-                        <div class="glass-card rounded-[2rem] border border-theme p-8 shadow-2xl relative overflow-hidden flex flex-col items-center justify-center min-h-[400px]">
-                            
-                            <div class="bg-card w-full max-w-sm rounded-2xl border border-theme shadow-lg overflow-hidden z-10 relative">
-                                <img src="Images/mic.jpg" alt="Podcast Cover" class="w-full h-auto max-h-48 object-contain bg-black/50 opacity-80">
-                                <div class="p-6">
-                                    <h4 class="font-bold text-lg text-[var(--text-color)] mb-1">The Daily Pulse: Ep 402</h4>
-                                    <p class="text-xs text-primary font-bold mb-4 uppercase">Translated Audio</p>
-                                    
-                                    <div class="flex justify-between items-center mb-4">
-                                        <span class="text-xs font-bold px-2 py-1 bg-primary/10 text-primary rounded border border-primary/20">English</span>
-                                        <i class="fas fa-arrow-right text-body-muted text-xs"></i>
-                                        <span class="text-xs font-bold px-2 py-1 bg-green-500/10 text-green-500 rounded border border-green-500/20">Spanish</span>
-                                    </div>
-
-                                    <div class="h-1.5 w-full bg-theme rounded-full overflow-hidden mb-2">
-                                        <div class="h-full bg-primary w-1/3"></div>
-                                    </div>
-                                    <div class="flex justify-between text-[10px] text-body-muted font-bold">
-                                        <span>12:04</span>
-                                        <span>38:15</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
+                    <div class="w-full md:w-2/3 text-center md:text-left">
+                        <h3 class="text-2xl font-bold text-[var(--text-color)] mb-2">The Daily Pulse</h3>
+                        <h4 class="text-lg font-bold text-secondary mb-4 uppercase tracking-wide">Going Global Overnight</h4>
+                        <p class="text-body-muted font-medium mb-0 leading-relaxed text-base">
+                            Expanding a daily news podcast to international markets was once financially impossible for this Top 100 show. Using VoxForge's multi-language translation engine, The Daily Pulse now automatically translates and generates episodes in five languages daily—perfectly retaining the original host's distinct pacing, emotion, and tone.
+                        </p>
                     </div>
                 </div>
 
